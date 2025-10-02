@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sm.app.repository.ChatWaitSessionRepository">
+
+    <insert id="insert" parameterType="chatWaitSession">
+        INSERT INTO chat_wait_session (cust_id, status, inquiry_type, created_at, updated_at)
+        VALUES (#{custId}, 'WAITING', #{inquiryType}, NOW(), NOW())
+    </insert>
+
+    <update id="update" parameterType="chatWaitSession">
+        UPDATE chat_wait_session
+        SET admin_id = #{adminId}, status = #{status}
+        WHERE session_id = #{sessionId}
+    </update>
+
+    <select id="select" parameterType="int" resultType="chatWaitSession">
+        SELECT * FROM chat_wait_session WHERE session_id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="chatWaitSession">
+        SELECT * FROM chat_wait_session ORDER BY created_at DESC
+    </select>
+
+    <select id="selectByCustId" parameterType="String" resultType="chatWaitSession">
+        SELECT * FROM chat_wait_session WHERE cust_id = #{custId}
+    </select>
+
+    <select id="selectByStatus" parameterType="String" resultType="chatWaitSession">
+        SELECT * FROM chat_wait_session WHERE status = #{status} ORDER BY created_at ASC
+    </select>
+
+    <select id="selectByAdminIdAndStatus" resultType="chatWaitSession">
+        SELECT * FROM chat_wait_session WHERE admin_id = #{param1} AND status = #{param2} ORDER BY updated_at DESC
+    </select>
+
+    <update id="updateAdmin">
+        UPDATE chat_wait_session
+        SET admin_id = #{param2}, status = 'ACTIVE'
+        WHERE session_id = #{param1}
+    </update>
+
+</mapper>
