@@ -14,6 +14,8 @@
     <bytecodeTargetLevel>
       <module name="admin" target="17" />
       <module name="shop" target="17" />
+      <module name="test.main" target="17" />
+      <module name="test.test" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
