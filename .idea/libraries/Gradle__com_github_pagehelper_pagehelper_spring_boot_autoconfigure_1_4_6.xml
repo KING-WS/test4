@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.pagehelper:pagehelper-spring-boot-autoconfigure:1.4.6" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.github.pagehelper" artifactId="pagehelper-spring-boot-autoconfigure" version="1.4.6" baseVersion="1.4.6" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.pagehelper/pagehelper-spring-boot-autoconfigure/1.4.6/140707ba427554d923d0dda8f601ddb209060cd2/pagehelper-spring-boot-autoconfigure-1.4.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
