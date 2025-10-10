@@ -57,4 +57,16 @@ public class MapController {
         model.addAttribute("left",dir+"left");
         return "index";
     }
+    @RequestMapping("/map5")
+    public String map5(Model model) {
+        model.addAttribute("center",dir+"map5");
+        model.addAttribute("left",dir+"left");
+        return "index";
+    }
+    @RequestMapping("/register")
+    public String register(Model model) {
+        model.addAttribute("center",dir+"register");
+        model.addAttribute("left",dir+"left");
+        return "index";
+    }
 }
