@@ -6,13 +6,35 @@
   #map{
     width: auto;
     height: 400px;
-    border: 2px solid red;
+    /*border: 2px solid red;*/
   }
   #content{
     width:auto;
     height:500px;
-    border: 2px solid red;
+    /*border: 2px solid red;*/
     overflow: auto;
+  }
+  /* --- 상품 목록 스타일 추가 --- */
+  .product-item {
+    display: flex; /* 이미지와 텍스트를 가로로 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: #333; /* 기본 텍스트 색상 */
+    transition: background-color 0.2s;
+  }
+  .product-item:hover {
+    background-color: #f5f5f5; /* 마우스 올렸을 때 배경색 변경 */
+  }
+  .product-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover; /* 이미지가 비율을 유지하며 꽉 차도록 설정 */
+    border-radius: 5px;
+    margin-right: 15px; /* 이미지와 텍스트 사이 간격 */
   }
 </style>
 
@@ -129,8 +151,8 @@
 
           let iwContent = `<h6>\${item.productName}</h6>
                         <p>가격: \${item.productPrice.toLocaleString()}원</p>`;
-          if(item.img) {
-            iwContent += `<img src="<c:url value='/imgs/\${item.img}'/>" width="80">`;
+          if(item.productImg) {
+            iwContent += `<img src="<c:url value='/imgs/\${item.productImg}'/>" width="80">`;
           }
 
           let infowindow = new kakao.maps.InfoWindow({
@@ -152,15 +174,20 @@
         }
 
         // Make Content List (show all items, even those without location)
-        result += `<p>
-                    <a href="<c:url value='/market/detail?id=\${item.productId}'/>">
-                      `;
-        if(item.img) {
-          result += `<img width="30px" src="<c:url value='/imgs/\${item.img}'/> ">`;
+        // 카드 형태의 HTML 구조로 변경
+        result += `<a href="<c:url value='/market/detail?id=\${item.productId}'/>" class="product-item">`;
+
+        if(item.productImg) {
+          result += `<img src="<c:url value='/imgs/\${item.productImg}'/>">`;
+        } else {
+          // 이미지가 없을 경우 기본 이미지 표시
+          result += `<img src="<c:url value='/imgs/default.png'/>">`;
         }
-        result += ` \${item.productName} - \${item.productPrice.toLocaleString()}원
-                    </a>
-                   </p>`;
+
+        result += `<div>
+                     <strong>\${item.productName}</strong><br>
+                     <span>\${item.productPrice.toLocaleString()}원</span>
+                   </div></a>`;
       });
 
       $('#content').html(result);
