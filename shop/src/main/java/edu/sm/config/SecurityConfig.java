@@ -42,14 +42,6 @@ public class SecurityConfig  {
         http.csrf((csrf) -> csrf.disable());
         //http.cors(Customizer.withDefaults());
 
-        // <<-- 여기부터 추가 -->>
-        // 세션 관리 설정
-        http.sessionManagement(session -> session
-                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) // 세션이 필요할 때만 생성
-                .invalidSessionUrl("/login") // 세션이 유효하지 않을 때 이동할 페이지
-        );
-        // <<-- 여기까지 추가 -->>
-
         // 권한 규칙 작성
         http.authorizeHttpRequests(authorize -> authorize
                         //@PreAuthrization을 사용할 것이기 때문에 모든 경로에 대한 인증처리는 Pass

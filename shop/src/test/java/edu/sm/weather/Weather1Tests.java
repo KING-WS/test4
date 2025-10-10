@@ -13,13 +13,13 @@ import java.io.IOException;
 @Slf4j
 class Weather1Tests {
     @Value("${app.key.wkey}")
+    String key;
 
     @Test
     void contextLoads() throws IOException, ParseException {
-        String key = "mA8wMHYNbVXd9OjspdUOCiZQEccIrwJXkw41AMU54ypCYLPHqI95IVzq3dtu%2FCOKDpu15RmJTVW2uiuEHvbBNg%3D%3D";
         String loc = "108";
-        Object object= WeatherUtil.getWeather(loc,key);
-        log.info("{}",object);
+        Object object = WeatherUtil.getWeather(loc, key);
+        log.info("{}", object);
     }
 
 }

@@ -266,12 +266,12 @@
     websocketpage.init();
   });
 
-
   window.onbeforeunload = function (e) {
     //이벤트버블현상 처리막기
     e.preventDefault();
     websocketpage.endCall();
   };
+
 </script>
 
 

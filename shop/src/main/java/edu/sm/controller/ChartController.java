@@ -12,7 +12,6 @@ public class ChartController {
 
     String dir="chart/";
 
-
     @RequestMapping("")
     public String main(Model model) {
         model.addAttribute("center",dir+"center");

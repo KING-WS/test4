@@ -8,7 +8,7 @@
     <c:choose>
       <c:when test="${cpage.getPrePage() != 0}">
         <li class="page-item">
-          <a  class="page-link"  href="<c:url value="${target}/searchpage?pageNo=${cpage.getPrePage()}&custName=${custName}&startDate=${startDate}&endDate=${endDate}" />">Previous</a>
+          <a  class="page-link"  href="<c:url value="${target}/searchpage?pageNo=${cpage.getPrePage()}&productName=${productName}&startPrice=${startPrice}&endPrice=${endPrice}&cateId=${cateId}" />">Previous</a>
         </li>
       </c:when>
       <c:otherwise>
@@ -22,12 +22,12 @@
       <c:choose>
         <c:when test="${cpage.getPageNum() == page}">
           <li class="page-item active">
-            <a class="page-link"  href="<c:url value="${target}/searchpage?pageNo=${page}&custName=${custName}&startDate=${startDate}&endDate=${endDate}" />">${page }</a>
+            <a class="page-link"  href="<c:url value="${target}/searchpage?pageNo=${page}&productName=${productName}&startPrice=${startPrice}&endPrice=${endPrice}&cateId=${cateId}" />">${page }</a>
           </li>
         </c:when>
         <c:otherwise>
           <li class="page-item">
-            <a class="page-link"  href="<c:url value="${target}/searchpage?pageNo=${page}&custName=${custName}&startDate=${startDate}&endDate=${endDate}" />">${page }</a>
+            <a class="page-link"  href="<c:url value="${target}/searchpage?pageNo=${page}&productName=${productName}&startPrice=${startPrice}&endPrice=${endPrice}&cateId=${cateId}" />">${page }</a>
           </li>
         </c:otherwise>
       </c:choose>
@@ -36,7 +36,7 @@
     <c:choose>
       <c:when test="${cpage.getNextPage() != 0}">
         <li class="page-item">
-          <a class="page-link"  href="<c:url value="${target}/searchpage?pageNo=${cpage.getNextPage()}&custName=${custName}&startDate=${startDate}&endDate=${endDate}" />">Next</a>
+          <a class="page-link"  href="<c:url value="${target}/searchpage?pageNo=${cpage.getNextPage()}&productName=${productName}&startPrice=${startPrice}&endPrice=${endPrice}&cateId=${cateId}" />">Next</a>
         </li>
       </c:when>
       <c:otherwise>

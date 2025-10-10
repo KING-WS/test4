@@ -7,18 +7,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
 @SpringBootTest
 @Slf4j
-public class SelectTests {
+class SelectTests {
     @Autowired
     CateService cateService;
     @Test
-    void contextLoads() throws Exception {
+    void contextLoads() {
         try {
             cateService.get().forEach((c)->{log.info(c.toString());});
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }
