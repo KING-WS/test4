@@ -1,5 +1,5 @@
 server:
-  port: 8443
+  port: 8442
   ssl:
     enabled: true
     key-store: classpath:keystore.p12
@@ -47,10 +47,10 @@ app:
   url:
     websocketurl: https://192.168.1.4:8443/
   dir:
-    imgsdir: file:///C:/smspring/imgs/     # 화면 출력 용
-    uploadimgsdir: C:/smspring/imgs/    # 파일 Write 용
-    logsdir: file:///C:/smspring/logs/     # 화면 출력 용
-    logsdirRead: C:/smspring/logs/     # 화면 출력 용
+    imgsdir: file:///C:/test4/test4/imgs/     # 화면 출력 용
+    uploadimgsdir: C:/test4/test4/imgs/    # 파일 Write 용
+    logsdir: file:///C:/test4/logs/     # 화면 출력 용
+    logsdirRead: C:/test4/logs/     # 화면 출력 용
   key:
     skey: ${MY_KEY}
     kakao: ${KAKAO_APP_KEY}

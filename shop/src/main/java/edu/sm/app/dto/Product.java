@@ -14,11 +14,13 @@ public class Product {
     private int productId;
     private String productName;
     private int productPrice;
-    private double discountRate;
     private String productImg;
     private Timestamp productRegdate;
     private Timestamp productUpdate;
     private int cateId;
     private String cateName;
+    private Double lat;
+    private Double lng;
+    private String productDesc;
     private MultipartFile productImgFile;
 }

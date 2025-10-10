@@ -48,20 +48,16 @@ public class SseEmitters {
 
         // 연결 완료, 오류, 타임아웃 이벤트 핸들러 등록
         emitter.onCompletion(() -> {
-            try {
-                log.info("onCompletion for client: {}", clientId);
-                emitters.remove(clientId);
-            } catch (Exception e) {
-                log.error("Error during emitter completion for client: " + clientId, e);
-            }
+            log.info("onCompletion: {}", emitter);
+
+            emitters.remove(clientId);
+            cleanupEmitter(emitter);
         });
         emitter.onError((ex) -> {
-            try {
-                log.info("onError for client: " + clientId, ex);
-                emitters.remove(clientId);
-            } catch (Exception e) {
-                log.error("Error during emitter error handling for client: " + clientId, e);
-            }
+            log.info("onError:---------------------------- ");
+
+            emitters.remove(clientId);
+            cleanupEmitter(emitter);
         });
         emitter.onTimeout(() -> {
             emitters.remove(clientId);
