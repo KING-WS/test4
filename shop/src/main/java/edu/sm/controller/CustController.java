@@ -71,7 +71,7 @@ public class CustController {
 
         return "index";
     }
-//    @RequestMapping("/getpage")
+    //    @RequestMapping("/getpage")
 //    public String getpage(@RequestParam(value="pageNo", defaultValue = "1") int pageNo, Model model) throws Exception {
 //        PageInfo<Cust> p = null;
 //        p = new PageInfo<>(custService.getPage(pageNo), 3); // 5:하단 네비게이션 개수
@@ -83,7 +83,7 @@ public class CustController {
 //    }
     @RequestMapping("/searchpage")
     public String searchpage(@RequestParam(value="pageNo", defaultValue = "1") int pageNo, Model model,
-                          CustSearch custSearch) throws Exception {
+                             CustSearch custSearch) throws Exception {
         PageInfo<Cust> p = null;
         p = new PageInfo<>(custService.getPageSearch(pageNo, custSearch), 3); // 5:하단 네비게이션 개수
 

@@ -12,10 +12,13 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ebb7e444a8cd5d1f3bbc02bbacb744a&libraries=services"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bcc88354a0c06049623a690be552d3ac&libraries=services"></script>
+    
     <%-- highchart lib   --%>
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@highcharts/grid-lite/grid-lite.js"></script>
     <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
     <script src="https://code.highcharts.com/highcharts-3d.js"></script>
     <script src="https://code.highcharts.com/modules/cylinder.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -24,11 +27,9 @@
     <script src="https://code.highcharts.com/themes/adaptive.js"></script>
     <script src="https://code.highcharts.com/modules/non-cartesian-zoom.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
-
     <%-- Web Socket Lib --%>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-
 </head>
 <body>
 
@@ -37,30 +38,30 @@
     <h1><spring:message code="site.title"  arguments="aa,bb"  /></h1>
 </div>
 <ul class="nav justify-content-end">
-<c:choose>
-    <c:when test="${sessionScope.cust.custId == null}">
-        <li class="nav-item">
-            <a class="nav-link" href="<c:url value="/register"/> ">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<c:url value="/login"/>">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </c:when>
-    <c:otherwise>
-        <li class="nav-item">
-            <a class="nav-link" href="<c:url value="/custinfo?id=${sessionScope.cust.custId}"/> ">${sessionScope.cust.custId}</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<c:url value="/logout"/> ">Logout</a>
-        </li>
-    </c:otherwise>
-</c:choose>
+    <c:choose>
+        <c:when test="${sessionScope.cust.custId == null}">
+            <li class="nav-item">
+                <a class="nav-link" href="<c:url value="/register"/> ">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<c:url value="/login"/>">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </c:when>
+        <c:otherwise>
+            <li class="nav-item">
+                <a class="nav-link" href="<c:url value="/custinfo?id=${sessionScope.cust.custId}"/> ">${sessionScope.cust.custId}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<c:url value="/logout"/> ">Logout</a>
+            </li>
+        </c:otherwise>
+    </c:choose>
 </ul>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a class="navbar-brand" href="<c:url value="/"/>">Home</a>
@@ -69,6 +70,9 @@
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="<c:url value="/market"/>">짭근마켓</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/cust"/>">Cust</a>
             </li>
@@ -81,11 +85,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/chart"/>">Chart</a>
             </li>
-            <c:if test="${sessionScope.cust.custId != null}">
-                <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/chat"/>">Chat</a>
-                </li>
+            <li>
+                <c:if test = "${sessionScope.cust.custId != null}">
+            <li class="nav-item">
+                <a class="nav-link" href="<c:url value="/chat"/>">Chat</a>
+            </li>
             </c:if>
+            </li>
         </ul>
     </div>
 </nav>
