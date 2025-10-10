@@ -22,5 +22,6 @@ public class Product {
     private Double lat;
     private Double lng;
     private String productDesc;
+    private String custId;
     private MultipartFile productImgFile;
 }

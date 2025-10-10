@@ -17,9 +17,9 @@ spring:
       prefix: /views/
       suffix: .jsp
   datasource:
-    #url: jdbc:mysql://127.0.0.1:3306/shopdb?serverTimezone=Asia/Seoul
+    #url: jdbc:mysql://127.0.0.1:7306/shopdb?serverTimezone=Asia/Seoul
 #    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-#    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/shopdb?characterEncoding=utf8
+#    url: jdbc:log4jdbc:mysql://127.0.0.1:7306/shopdb?characterEncoding=utf8
 #    username: smuser
 #    password: ENC(idIWCdznEM3ggslDeTmLJw==)
     url: jdbc:postgresql://localhost:5432/postgres
@@ -40,9 +40,9 @@ logging:
 # @Value("${}")
 app:
   url:
-    sse: https://192.168.1.8:8444/   # admin
-    mainsse: https://192.168.1.8:8443/   #shop
-    websocketurl: https://192.168.1.8:8443/  #shop
+    sse: https://192.168.1.7:8444/   # admin
+    mainsse: https://192.168.1.7:8443/   #shop
+    websocketurl: https://192.168.1.7:8443/  #shop
   dir:
     imgsdir: file:///C:/test4/imgs/     # 화면 출력 용
     uploadimgsdir: C:/test4/imgs/    # 파일 Write 용

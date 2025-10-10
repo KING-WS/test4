@@ -10,6 +10,9 @@
     <li class="nav-item">
       <a class="nav-link" href="<c:url value="/market/map5"/>">주변 상품 지도</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<c:url value="/market/myitems"/>">내 상품 관리</a>
+    </li>
   </ul>
   <hr class="d-sm-none">
 </div>
