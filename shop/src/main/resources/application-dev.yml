@@ -53,16 +53,6 @@ app:
     logsdirRead: C:/smspring/logs/     # 화면 출력 용
   key:
     skey: ${MY_KEY}
+    kakao: ${KAKAO_APP_KEY}
     algo: PBEWithMD5AndDES
     wkey: ENC(UzWKYGJ+aTCk7OeZFEj7nCxzQEkETz/jHkcLOOT4Sh1xqjJlAXwb1lBnz3vTMltzuSyT6SQc1XlmowT6E0ICIYIKAxMhKWRIplUobmAYN0ClSGG+TkwAq0gaAkhdvwLkg9bL1gUYM54=)
-
-
-
-
-
-
-
-
-
-
-
