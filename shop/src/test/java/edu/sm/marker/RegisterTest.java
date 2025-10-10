@@ -4,6 +4,7 @@ import edu.sm.app.dto.Marker;
 import edu.sm.app.service.MarkerService;
 import edu.sm.controller.MainController;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,6 +14,7 @@ public class RegisterTest {
     @Autowired
     MarkerService markerService;
 
+    @Test
     void contextLoads() throws Exception {
         Marker marker = Marker.builder()
                 .target(305)
