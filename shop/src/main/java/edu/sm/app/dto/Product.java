@@ -20,5 +20,8 @@ public class Product {
     private Timestamp productUpdate;
     private int cateId;
     private String cateName;
+    private Double lat;
+    private Double lng;
+    private String productDesc;
     private MultipartFile productImgFile;
 }

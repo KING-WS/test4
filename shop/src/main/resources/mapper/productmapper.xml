@@ -69,7 +69,8 @@
                           inner join cate c on p.cate_id = c.cate_id
     </select>
     <insert id="insert" parameterType="Product">
-        INSERT INTO product VALUES (0,#{productName},#{productPrice},#{discountRate}, #{productImg}, NOW(), NOW(), #{cateId})
+        INSERT INTO product (product_id, product_name, product_price, discount_rate, product_img, product_regdate, product_update, cate_id, lat, lng, product_desc)
+        VALUES (DEFAULT, #{productName}, #{productPrice}, #{discountRate}, #{productImg}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{cateId}, #{lat}, #{lng}, #{productDesc})
     </insert>
     <update id="update" parameterType="Product">
         UPDATE product SET product_name=#{productName},product_price=#{productPrice},discount_rate=#{discountRate},product_img=#{productImg}, product_update=NOW() WHERE product_id=#{productId}
@@ -78,4 +79,7 @@
         DELETE FROM product WHERE product_id=#{productId}
     </delete>
 
+    <select id="getAllCate" resultType="edu.sm.app.dto.Cate">
+        SELECT * FROM cate
+    </select>
 </mapper>
