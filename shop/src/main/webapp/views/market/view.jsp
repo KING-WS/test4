@@ -22,6 +22,8 @@
     <!-- Product Info -->
     <h2>${p.productName}</h2>
     <h4><span class="badge badge-secondary">${p.cateName}</span></h4>
+    <h5><strong>판매자:</strong> ${p.custId}</h5>
+    <button class="btn btn-success btn-lg my-2">판매자와 채팅하기</button>
     <h1><fmt:formatNumber value="${p.productPrice}" pattern="#,###" /> 원</h1>
 
     <hr>

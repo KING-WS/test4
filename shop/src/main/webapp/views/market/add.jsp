@@ -48,14 +48,14 @@
           $('#lat').val(position.coords.latitude);
           $('#lng').val(position.coords.longitude);
         }, function(error) {
-          // 실패 시, 기본 위치(서울 시청)로 설정
-          $('#lat').val(37.5665);
-          $('#lng').val(126.9780);
+          // 실패 시, 기본 위치(선문대)로 설정
+          $('#lat').val(36.799079);
+          $('#lng').val(127.075027);
         });
       } else {
         // 브라우저가 지원하지 않을 경우, 기본 위치로 설정
-        $('#lat').val(37.5665);
-        $('#lng').val(126.9780);
+        $('#lat').val(36.799079);
+        $('#lng').val(127.075027);
       }
     });
   </script>
