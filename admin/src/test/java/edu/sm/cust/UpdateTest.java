@@ -9,16 +9,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Slf4j
-class UpdateTests {
+class UpdateTest {
     @Autowired
     CustService custService;
     @Test
     void contextLoads() throws Exception {
         Cust cust = Cust.builder()
                 .custId("id22")
-                .custPwd("pwd22")
-                .custName("김말자")
-                .custAddr("천안시")
+                .custName("황말자")
+                .custAddr("아산시")
                 .build();
         custService.modify(cust);
 

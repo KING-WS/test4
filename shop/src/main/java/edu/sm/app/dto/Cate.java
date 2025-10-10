@@ -8,9 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class AdminMsg {
-    int content1;
-    int content2;
-    int content3;
-    int content4;
+public class Cate {
+    private int cateId;
+    private String cateName;
 }

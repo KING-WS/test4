@@ -16,7 +16,6 @@ public class SseController {
 
     private final SseEmitters sseEmitters;
 
-
     @GetMapping(value = "/connect/{id}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public ResponseEntity<SseEmitter> connect(@PathVariable("id") String clientId ) {
         SseEmitter emitter = new SseEmitter();
@@ -31,6 +30,7 @@ public class SseController {
         }
         return ResponseEntity.ok(emitter);
     }
+
     @GetMapping("/count")
     public void count(@RequestParam("num") int num) {
         sseEmitters.count(num);

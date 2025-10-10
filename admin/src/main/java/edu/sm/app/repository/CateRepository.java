@@ -12,16 +12,16 @@ import java.util.List;
 @Mapper
 public interface CateRepository extends SmRepository<Cate, Integer> {
     @Override
-    @Insert("INSERT INTO cate VALUES (#{cateID}, #{cateName})")
+    @Insert("INSERT INTO cate VALUES (#{cateId}, #{cateName})")
     void insert(Cate cate) throws Exception;
 
     @Override
-    @Update("UPDATE cate SET cate_name = #{cateName} WHERE cate_id = #{cateID}")
+    @Update("UPDATE cate SET cate_name=#{cateName} WHERE cate_id=#{cateId}")
     void update(Cate cate) throws Exception;
 
     @Override
     @Delete("DELETE FROM cate WHERE cate_id=#{id}")
-    void delete(Integer integer) throws Exception;
+    void delete(Integer id) throws Exception;
 
     @Override
     @Select("SELECT * FROM cate")
@@ -29,5 +29,5 @@ public interface CateRepository extends SmRepository<Cate, Integer> {
 
     @Override
     @Select("SELECT * FROM cate WHERE cate_id=#{id}")
-    Cate select(Integer integer) throws Exception;
+    Cate select(Integer id) throws Exception;
 }

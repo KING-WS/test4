@@ -15,7 +15,6 @@
       <th>Id</th>
       <th>Name</th>
       <th>Price</th>
-      <th>Rate</th>
       <th>RegDate</th>
       <th>Category</th>
     </tr>
@@ -32,7 +31,6 @@
             <td><a href="/product/detail?id=${p.productId}">${p.productId}</a></td>
             <td>${p.productName}</td>
             <td><fmt:formatNumber type="number" pattern="###,###원" value="${p.productPrice}" /></td>
-            <td>${p.discountRate}</td>
             <td>
               <fmt:parseDate value="${ p.productRegdate }"
                              pattern="yyyy-MM-dd HH:mm:ss" var="parsedDateTime" type="both" />

@@ -21,12 +21,13 @@ import java.util.List;
 public class ProductController {
     final ProductService productService;
     final CateService cateService;
+
     String dir="product/";
 
 
     @RequestMapping("/add")
     public String add(Model model) throws Exception {
-        model.addAttribute("cate", cateService.get());
+        model.addAttribute("cate",cateService.get());
         model.addAttribute("center",dir+"add");
         return "index";
     }

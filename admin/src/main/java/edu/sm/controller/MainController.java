@@ -36,13 +36,13 @@ public class MainController {
     }
     @RequestMapping("/chat")
     public String chat(Model model) {
-        model.addAttribute("websocketurl", websocketurl);
+        model.addAttribute("websocketurl",websocketurl);
         model.addAttribute("center","chat");
         return "index";
     }
     @RequestMapping("/websocket")
     public String websocket(Model model) {
-        model.addAttribute("websocketurl", websocketurl);
+        model.addAttribute("websocketurl",websocketurl);
         model.addAttribute("center","websocket");
         return "index";
     }
