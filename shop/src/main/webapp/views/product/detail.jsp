@@ -45,10 +45,6 @@
       <input type="number" class="form-control" value="${p.productPrice}" id="price" name="productPrice">
     </div>
     <div class="form-group">
-      <label for="rate">Discount Rate:</label>
-      <input type="text" class="form-control" value="${p.discountRate}" id="rate" name="discountRate">
-    </div>
-    <div class="form-group">
       <label for="pimg">Product Image:</label>
       <input type="file" class="form-control" id="pimg" name="productImgFile">
     </div>
