@@ -43,7 +43,7 @@
           <h3>${msg}</h3>
         </c:when>
         <c:otherwise>
-          <h3>로그인 해 주세요 !!</h3>
+          <h3>로그인 해 주세요 !</h3>
         </c:otherwise>
       </c:choose>
     </div>
