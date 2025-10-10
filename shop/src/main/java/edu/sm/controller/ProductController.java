@@ -1,6 +1,7 @@
 package edu.sm.controller;
 
 import com.github.pagehelper.PageInfo;
+import edu.sm.app.dto.Cate;
 import edu.sm.app.dto.Cust;
 import edu.sm.app.dto.CustSearch;
 import edu.sm.app.dto.Product;
@@ -30,12 +31,7 @@ public class ProductController {
         model.addAttribute("left",dir+"left");
         return "index";
     }
-    @RequestMapping("/add")
-    public String add(Model model) {
-        model.addAttribute("center",dir+"add");
-        model.addAttribute("left",dir+"left");
-        return "index";
-    }
+
     @RequestMapping("/get")
     public String get(Model model) throws Exception {
         List<Product> list = null;
@@ -46,11 +42,7 @@ public class ProductController {
         model.addAttribute("center", dir+"get");
         return "index";
     }
-    @RequestMapping("/registerimpl")
-    public String registerimpl(Model model, Product product) throws Exception {
-        productService.register(product);
-        return "redirect:/product/get";
-    }
+
     @RequestMapping("/getpage")
     public String getpage(@RequestParam(value="pageNo", defaultValue = "1") int pageNo, Model model) throws Exception {
         PageInfo<Product> p = null;
@@ -87,16 +79,7 @@ public class ProductController {
         productService.remove(id);
         return "redirect:/product/get";
     }
-    @RequestMapping("/detail")
-    public String detail(Model model, @RequestParam("id") int id) throws Exception {
-        Product product = null;
-        product = productService.get(id);
-        model.addAttribute("p", product);
-        model.addAttribute("left", dir+"left");
-        model.addAttribute("center", dir+"detail");
-        log.info(product.getProductId()+","+product.getProductName());
-        return "index";
-    }
+
     @RequestMapping("/searchpage")
     public String searchPage(Model model, ProductSearch productSearch ) throws Exception {
         List<Product> list = null;

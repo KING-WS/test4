@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -6,8 +7,8 @@
         adminId:null,
         init:function(){
             <c:if test="${sessionScope.admin.adminId != null}">
-            this.adminId = '${sessionScope.admin.adminId}';
-            this.connect();
+                this.adminId = '${sessionScope.admin.adminId}';
+                this.connect();
             </c:if>
         },
         connect:function(){
@@ -367,7 +368,7 @@
 
 
 </div>
-<jsp:include page="/views/chart.jsp" />
+
 
 <!-- Page level plugins -->
 <script src="/vendor/chart.js/Chart.min.js"></script>

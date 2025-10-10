@@ -3,10 +3,7 @@ package edu.sm.app.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import edu.sm.app.dto.Cust;
-import edu.sm.app.dto.CustSearch;
-import edu.sm.app.dto.Product;
-import edu.sm.app.dto.ProductSearch;
+import edu.sm.app.dto.*;
 import edu.sm.app.repository.ProductRepository;
 import edu.sm.common.frame.SmService;
 import edu.sm.util.FileUploadUtil;
@@ -31,6 +28,21 @@ public class ProductService implements SmService<Product, Integer> {
             product.setProductImg(product.getProductImgFile().getOriginalFilename());
             FileUploadUtil.saveFile(product.getProductImgFile(), imgDir);
         }
+
+        // Add random offset to lat/lng to make the map look more natural
+        if (product.getLat() != null && product.getLng() != null) {
+            double lat = product.getLat();
+            double lng = product.getLng();
+
+            // Random offset within approx. +/- 500m
+            // 0.01 degrees is roughly 1.11km
+            double latOffset = (Math.random() - 0.5) * 0.01; // approx -0.005 to +0.005
+            double lngOffset = (Math.random() - 0.5) * 0.01;
+
+            product.setLat(lat + latOffset);
+            product.setLng(lng + lngOffset);
+        }
+
         productRepository.insert(product);
     }
 
@@ -72,5 +84,8 @@ public class ProductService implements SmService<Product, Integer> {
     public Page<Product> getPage(int pageNo) throws Exception {
         PageHelper.startPage(pageNo, 3); // 3: 한화면에 출력되는 개수
         return productRepository.getpage();
+    }
+    public List<Cate> getAllCate() throws Exception {
+        return productRepository.getAllCate();
     }
 }

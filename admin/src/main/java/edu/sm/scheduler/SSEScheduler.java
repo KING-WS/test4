@@ -39,7 +39,7 @@ public class SSEScheduler {
         adminMsg.setContent4(content4);
 
         sseEmitters.sendData(adminMsg);
-        // sseEmitters.count();
+       // sseEmitters.count();
 //        simpMessageSendingOperations.convertAndSend("/send2",adminMsg);
     }
 
