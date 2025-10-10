@@ -8,6 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 public class Msg {
+    private int roomId;
     private String sendid;
     private String receiveid;
     private String content1;
