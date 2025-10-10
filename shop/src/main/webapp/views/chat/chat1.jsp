@@ -1,12 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
-  #all {
-    width: 400px;
-    height: 200px;
-    overflow: auto;
-    border: 2px solid red;
-  }
+
 
   #me {
     width: 400px;
@@ -35,13 +30,7 @@
       $('#disconnect').click(()=>{
         this.disconnect();
       });
-      $('#sendall').click(()=>{
-        let msg = JSON.stringify({
-          'sendid' : this.id,
-          'content1' : $("#alltext").val()
-        });
-        this.stompClient.send("/receiveall", {}, msg);
-      });
+
       $('#sendme').click(()=>{
         let msg = JSON.stringify({
           'sendid' : this.id,
@@ -67,12 +56,7 @@
       this.setConnected(true);
       this.stompClient.connect({}, function(frame) {
         console.log('Connected: ' + frame);
-        this.subscribe('/send', function(msg) {
-          $("#all").prepend(
-                  "<h4>" + JSON.parse(msg.body).sendid +":"+
-                  JSON.parse(msg.body).content1
-                  + "</h4>");
-        });
+
         this.subscribe('/send/'+sid, function(msg) {
           $("#me").prepend(
                   "<h4>" + JSON.parse(msg.body).sendid +":"+
@@ -120,9 +104,6 @@
         <button id="connect">Connect</button>
         <button id="disconnect">Disconnect</button>
 
-        <h3>All</h3>
-        <input type="text" id="alltext"><button id="sendall">Send</button>
-        <div id="all"></div>
 
         <h3>Me</h3>
         <input type="text" id="metext"><button id="sendme">Send</button>
