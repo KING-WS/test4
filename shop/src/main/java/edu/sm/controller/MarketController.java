@@ -22,7 +22,9 @@ public class MarketController {
     String dir="market/";
 
     @RequestMapping("")
-    public String main(Model model) {
+    public String main(Model model) throws Exception {
+        List<Product> productList = productService.get();
+        model.addAttribute("productList", productList);
         model.addAttribute("center",dir+"center");
         model.addAttribute("left",dir+"left");
         return "index";

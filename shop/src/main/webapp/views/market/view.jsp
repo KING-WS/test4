@@ -4,38 +4,43 @@
 
 <div class="col-sm-10">
     <!-- Product Image -->
-    <div class="row">
-        <div class="col-12 text-center">
-            <c:if test="${p.productImg != null and not empty p.productImg}">
-                <img src="<c:url value='/imgs/${p.productImg}'/>" class="img-fluid" style="max-height: 400px;" alt="${p.productName}">
-            </c:if>
-            <c:if test="${p.productImg == null or empty p.productImg}">
-                <div style="height: 400px; width: 100%; background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                    <span>No Image</span>
-                </div>
-            </c:if>
+    <div class="row mb-4"> <%-- 이미지와 상품 정보를 묶는 row, 하단 여백 추가 --%>
+        <div class="col-md-6 text-center"> <%-- 중간 크기 화면 이상에서 6컬럼 차지 (이미지) --%>
+            <div class="product-image-container" style="height: 400px; display: flex; align-items: center; justify-content: center; background-color: #f8f9fa; border: 1px solid #dee2e6;">
+                <c:if test="${p.productImg != null and not empty p.productImg}">
+                    <img  src="<c:url value='/imgs/${p.productImg}'/>" class="img-fluid" style="max-height: 100%; max-width: 100%; object-fit: cover;" alt="${p.productName}">
+                </c:if>
+                <c:if test="${p.productImg == null or empty p.productImg}">
+                    <span class="text-muted">No Image</span>
+                </c:if>
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="col-md-6 d-flex flex-column justify-content-center"> <%-- 중간 크기 화면 이상에서 6컬럼 차지 (상품 정보) --%>
+            <h2 class="mb-2">${p.productName}</h2> <%-- 하단 여백 추가 --%>
+            <h4 class="mb-3"><span class="badge badge-secondary">${p.cateName}</span></h4> <%-- 하단 여백 추가 --%>
+            <h1 class="mb-4"><fmt:formatNumber value="${p.productPrice}" pattern="#,###" /> 원</h1> <%-- 하단 여백 추가 --%>
         </div>
     </div>
 
-    <hr>
-
-    <!-- Product Info -->
-    <h2>${p.productName}</h2>
-    <h4><span class="badge badge-secondary">${p.cateName}</span></h4>
-    <h1><fmt:formatNumber value="${p.productPrice}" pattern="#,###" /> 원</h1>
-
-    <hr>
+    <hr class="my-4"> <%-- 상하단 여백이 있는 구분선 --%>
 
     <!-- Product Description -->
-    <div class="product-description" style="margin-bottom: 20px; white-space: pre-wrap;">
+    <div class="product-description mb-4" style="white-space: pre-wrap;"> <%-- 주석 해제 및 하단 여백 추가 --%>
+        <h4>상품 설명</h4> <%-- 상품 설명 제목 추가 --%>
         <p>${p.productDesc}</p>
     </div>
 
-    <!-- Product Location Map -->
-    <h4>거래 희망 장소</h4>
-    <div id="static_map" style="width:100%;height:300px;"></div>
+    <hr class="my-4"> <%-- 상하단 여백이 있는 구분선 --%>
 
-    <hr>
+    <!-- Product Location Map -->
+    <div class="mb-4"> <%-- 하단 여백 추가 --%>
+        <h4>거래 희망 장소</h4>
+        <div id="static_map" style="width:100%;height:300px; border: 1px solid #dee2e6;"></div> <%-- 지도 테두리 추가 --%>
+    </div>
+
+    <hr class="my-4"> <%-- 상하단 여백이 있는 구분선 --%>
 
     <div class="text-right">
         <a href="<c:url value='/market/map5'/>" class="btn btn-primary">목록으로</a>
@@ -53,7 +58,7 @@
         let mapOption = {
             center: new kakao.maps.LatLng(lat, lng),
             level: 4, // Zoom level
-            draggable: false, // Disable drag
+            draggable: false, // 지도 드래그 비활성화 (정적 지도에 적합)
             scrollwheel: false, // Disable zoom
             keyboardShortcuts: false // Disable keyboard shortcuts
         };
