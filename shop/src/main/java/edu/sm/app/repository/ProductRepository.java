@@ -14,6 +14,7 @@ import java.util.List;
 public interface ProductRepository extends SmRepository<Product, Integer> {
     Page<Product> getpage() throws Exception;
     Page<Product> getpageSearch(ProductSearch productSearch) throws Exception;
+    Page<Product> getMyItemsSearchPage(ProductSearch productSearch) throws Exception;
     List<Product> searchProductList(ProductSearch productSearch) throws Exception;
     List<Cate> getAllCate() throws Exception;
     public List<Product> findByCustId(String custId);

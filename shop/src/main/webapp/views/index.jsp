@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9122c6ed65a3629b19d62bab6d93ffaf&libraries=services"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bcc88354a0c06049623a690be552d3ac&libraries=services"></script>
     
     <%-- highchart lib   --%>
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -34,9 +34,8 @@
 </head>
 <body>
 
-<div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>My First Bootstrap 4 Page</h1>
-    <h1><spring:message code="site.title"  arguments="aa,bb"  /></h1>
+<div class="jumbotron text-center" style="margin-bottom:0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0;">
+    <h1 style="color: white ">🥕짭근마켓</h1>
 </div>
 <ul class="nav justify-content-end">
     <c:choose>
