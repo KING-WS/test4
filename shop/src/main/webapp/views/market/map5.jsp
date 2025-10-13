@@ -80,7 +80,6 @@
     transition: left 0.5s;
   }
 
-
   /* 버튼에 마우스를 올렸을 때의 스타일 */
   .category-btn:hover {
     transform: translateY(-3px);
@@ -121,7 +120,6 @@
     background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
     transition: left 0.5s;
   }
-
 
   /* 상품 아이템에 마우스를 올렸을 때의 스타일 */
   .product-item:hover {
@@ -236,7 +234,7 @@
   .info-window h3 {
     margin: 0 0 8px 0;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #2c3e50;
   }
 
@@ -244,8 +242,11 @@
   .info-window .price {
     font-size: 1rem;
     font-weight: 600;
-    color: #e74c3c;
     margin: 8px 0;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   /* 정보창 내부의 이미지 스타일 */
@@ -263,6 +264,28 @@
     font-size: 0.8rem;
     color: #999;
     font-style: italic;
+  }
+
+  /* InfoWindow의 모든 하위 요소의 border 제거 */
+  .kakao-maps-info-window > div {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* InfoWindow의 tail(꼬리) 숨기기 */
+  .kakao-maps-info-window::after,
+  .kakao-maps-info-window::before {
+    display: none !important;
+    border: none !important;
+  }
+
+  /* CustomOverlay 형태로 사용하는 경우 */
+  .wrap {
+    border: none !important;
+  }
+
+  .wrap .info {
+    border: none !important;
   }
 
   /* 화면 너비가 768px 이하일 때 적용되는 반응형 디자인 */

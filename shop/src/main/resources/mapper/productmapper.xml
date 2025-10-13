@@ -56,9 +56,23 @@
             </if>
         </where>
     </select>
+    <select id="getMyItemsSearchPage"  parameterType="ProductSearch" resultType="Product">
+        select * from product p inner join cate c on p.cate_id = c.cate_id
+        <where>
+            p.cust_id = #{custId}
+            <if test="productName != null and !productName.equals('')">
+                AND p.product_name like concat('%',#{productName},'%')
+            </if>
+            <if test="cateId != null and cateId != 0">
+                AND c.cate_id  =  #{cateId}
+            </if>
+        </where>
+        ORDER BY p.product_regdate DESC
+    </select>
     <select id="getpage" resultType="Product">
         select * from product p
                           inner join cate c on p.cate_id = c.cate_id
+        ORDER BY p.product_regdate DESC
     </select>
     <select id="select" parameterType="Integer" resultType="Product">
         SELECT *, p.chat_count FROM product p

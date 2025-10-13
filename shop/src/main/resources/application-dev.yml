@@ -1,5 +1,5 @@
 server:
-  port: 8443
+  port: 8442
   ssl:
     enabled: true
     key-store: classpath:keystore.p12
@@ -9,6 +9,7 @@ server:
     encoding:
       charset: UTF-8
       force: true
+
 spring:
   messages:
     basename: message
@@ -23,11 +24,11 @@ spring:
       suffix: .jsp
   datasource:
     #url: jdbc:mysql://127.0.0.1:3306/shopdb?serverTimezone=Asia/Seoul
-#    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-#    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/shopdb?characterEncoding=utf8
-#    username: post
-#    password: ENC(idIWCdznEM3ggslDeTmLJw==)
-#    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    #    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    #    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/sshopdb?characterEncoding=utf8
+    #    username: smuser
+    #    password: ENC(idIWCdznEM3ggslDeTmLJw==)
+    #    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: ENC(idIWCdznEM3ggslDeTmLJw==)
@@ -44,19 +45,16 @@ logging:
 # Application Config
 app:
   url:
-    websocketurl: https://192.168.1.7:8443/
+    websocketurl: https://192.168.1.4:8443/
   dir:
-    imgsdir: file:///C:/test4/imgs/     # 화면 출력 용
-    uploadimgsdir: C:/test4/imgs/    # 파일 Write 용
+    imgsdir: file:///C:/test4/test4/imgs/     # 화면 출력 용
+    uploadimgsdir: C:/test4/test4/imgs/    # 파일 Write 용
     logsdir: file:///C:/test4/logs/     # 화면 출력 용
-    logsdirRead: C:/test4/logs/  #  Read 용
+    logsdirRead: C:/test4/logs/     # 화면 출력 용
   key:
     skey: ${MY_KEY}
     algo: PBEWithMD5AndDES
-    wkey: ENC(2hVNthZA5KlX7Hi6ow3pPTHPbML3w9MiiFjcZC76z1gV/iHPACQMY89q0CfK/knK0F1bFQuQ2tsarrZVbOkvjFbkkVzTOyYtCgo2qza+hu6k9WBQrShR7blvGPohoWQdjRe5ahrC8rbLhrhC7MHZlg==)
-    owkey: ENC(vIqd9CSeOJ2B+RNZB8q8uX2gqVeotK1BVjLTnpvApIu0QKfrK4PIS+zKhZuQbERZ)
-
-
+    wkey: ENC(UzWKYGJ+aTCk7OeZFEj7nCxzQEkETz/jHkcLOOT4Sh1xqjJlAXwb1lBnz3vTMltzuSyT6SQc1XlmowT6E0ICIYIKAxMhKWRIplUobmAYN0ClSGG+TkwAq0gaAkhdvwLkg9bL1gUYM54=)
 
 
 

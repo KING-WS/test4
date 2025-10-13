@@ -101,14 +101,111 @@
     font-weight: 300;
   }
 
+  /* 이미지 슬라이더 스타일 */
+  .image-slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .slider-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 이미지가 잘리지 않고 모두 보이도록 변경 */
+  }
+
+  /* 이전/다음 버튼 */
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 16px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .slider-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .prev-btn {
+    left: 20px;
+  }
+
+  .next-btn {
+    right: 20px;
+  }
+
+  /* 인디케이터 (점) */
+  .slider-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .indicator.active {
+    background-color: white;
+    width: 30px;
+    border-radius: 6px;
+  }
+
+  .indicator:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
   /* Price Ranking Styles */
   #price-ranking-content {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 15px;
     background-color: #f9f9f9;
-    height: 400px; /* 높이 고정 */
-    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 생성 */
   }
   #price-ranking-content ol {
     padding-left: 0; /* ol 태그의 기본 여백과 숫자 제거 */
@@ -142,6 +239,23 @@
     margin-left: 10px; /* 이름과 가격 사이 여백 */
   }
 
+  .rank-change {
+    font-weight: bold;
+    margin-left: 10px;
+    min-width: 40px; /* To align items */
+    text-align: left;
+  }
+  .rank-up {
+    color: red;
+  }
+  .rank-down {
+    color: blue;
+  }
+  .rank-new {
+    color: #ff6b6b;
+    font-weight: bold;
+  }
+
   /* NEW 뱃지 스타일 */
   .new-badge {
     color: #ff6b6b;
@@ -161,13 +275,11 @@
     background: #ffffff;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
-    flex-wrap: wrap;
   }
 
   .search-form-container .form-group {
@@ -189,6 +301,11 @@
     padding: 8px 15px;
     transition: all 0.3s ease;
     font-size: 14px;
+  }
+
+  /* 상품명 입력 필드 너비 조정 */
+  #productName {
+    min-width: 300px;
   }
 
   .search-form-container .form-control:focus {
@@ -267,18 +384,23 @@
 </style>
 
 <div class="col-sm-10">
-  <div class="welcome-section">
-    <h2>짭근마켓에 오신 것을 환영합니다</h2>
-    <h5>다양한 상품을 만나보세요</h5>
-  </div>
+<%--  <div class="welcome-section">--%>
+<%--    <c:choose>--%>
+<%--      <c:when test="${not empty sessionScope.cust.custName}">--%>
+<%--        <h2>${sessionScope.cust.custName}님, 환영합니다</h2>--%>
+<%--      </c:when>--%>
+<%--      <c:otherwise>--%>
+<%--        <h2>짭근마켓에 오신 것을 환영합니다</h2>--%>
+<%--      </c:otherwise>--%>
+<%--    </c:choose>--%>
+<%--    <h5>다양한 상품을 만나보세요</h5>--%>
+<%--  </div>--%>
 
   <form id="marketSearchForm" action="/market/search" method="get" class="search-form-container">
     <div class="form-group">
-      <label for="productName">상품명:</label>
-      <input type="text" name="productName" id="productName" class="form-control" value="${ps.productName}">
+      <input type="text" name="productName" placeholder="상품명 " id="productName" class="form-control" value="${ps.productName}">
     </div>
     <div class="form-group">
-      <label for="cateId">카테고리:</label>
       <select name="cateId" id="cateId" class="form-control">
         <option value="">전체</option>
         <c:forEach var="cate" items="${cateList}">
@@ -288,6 +410,36 @@
     </div>
     <button type="button" id="searchBtn" class="btn-search">검색</button>
   </form>
+
+  <!-- 이미지 슬라이더 추가 -->
+  <div class="image-slider-container">
+    <div class="slider-wrapper">
+      <div class="slider-track">
+        <div class="slide active">
+          <img src="/imgs/banner3.jpg" alt="배너 1">
+        </div>
+        <div class="slide">
+          <img src="/imgs/banner2.jpg" alt="배너 2">
+        </div>
+        <div class="slide">
+          <img src="/imgs/banner3.jpg" alt="배너 3">
+        </div>
+      </div>
+    </div>
+
+    <!-- 이전/다음 버튼 -->
+    <button class="slider-btn prev-btn">&#10094;</button>
+    <button class="slider-btn next-btn">&#10095;</button>
+
+    <!-- 인디케이터 (점) -->
+    <div class="slider-indicators">
+      <span class="indicator active" data-slide="0"></span>
+      <span class="indicator" data-slide="1"></span>
+      <span class="indicator" data-slide="2"></span>
+    </div>
+  </div>
+
+
 
   <div class="main-content-wrapper">
     <div class="product-grid-container">
@@ -300,6 +452,7 @@
             </div>
           </c:when>
           <c:otherwise>
+            <c:set var="now" value="<%=new java.util.Date()%>" />
             <c:forEach var="product" items="${productList.list}">
               <a href="/market/detail?id=${product.productId}" class="product-card">
                 <c:choose>
@@ -315,12 +468,18 @@
                 <div class="product-info">
                   <div class="product-title">
                       ${product.productName}
+                    <c:if test="${product.productRegdate != null}">
+                      <fmt:parseDate value="${product.productRegdate}" pattern="yyyy-MM-dd HH:mm:ss" var="parsedRegDateForBadge" />
+                      <c:set var="timeDiffInSeconds" value="${(now.time - parsedRegDateForBadge.time) / 1000}" />
+                      <c:if test="${timeDiffInSeconds <= 180}">
+                        <span class="new-badge">NEW</span>
+                      </c:if>
+                    </c:if>
                   </div>
                   <div class="product-price">
                     <fmt:formatNumber type="number" pattern="#,###원" value="${product.productPrice}" />
                   </div>
                   <div class="product-date">
-                    <c:set var="now" value="<%=new java.util.Date()%>" />
                     <c:set var="regDate" value="${product.productRegdate}" />
                     <c:choose>
                       <c:when test="${regDate != null}">
@@ -360,6 +519,77 @@
 <script>
   $(document).ready(function() {
     let showPriceRanking = true; // true: 가격 순위, false: 등록 순위
+    let previousPriceRanking = {}; // Store previous ranks {productId: rank}
+
+    // ========== 이미지 슬라이더 코드 ==========
+    let currentSlide = 0;
+    const slides = $('.slide');
+    const totalSlides = slides.length;
+    let autoSlideInterval;
+
+    // 슬라이드 이동 함수
+    function goToSlide(slideIndex) {
+      currentSlide = slideIndex;
+      const offset = -slideIndex * 100;
+      $('.slider-track').css('transform', `translateX(${offset}%)`);
+
+      // 인디케이터 업데이트
+      $('.indicator').removeClass('active');
+      $(`.indicator[data-slide="${slideIndex}"]`).addClass('active');
+    }
+
+    // 다음 슬라이드
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      goToSlide(currentSlide);
+    }
+
+    // 이전 슬라이드
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      goToSlide(currentSlide);
+    }
+
+    // 자동 슬라이드 시작
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextSlide, 5000); // 5초마다 변경
+    }
+
+    // 자동 슬라이드 정지
+    function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+
+    // 버튼 클릭 이벤트
+    $('.next-btn').on('click', function() {
+      stopAutoSlide();
+      nextSlide();
+      startAutoSlide(); // 다시 시작
+    });
+
+    $('.prev-btn').on('click', function() {
+      stopAutoSlide();
+      prevSlide();
+      startAutoSlide(); // 다시 시작
+    });
+
+    // 인디케이터 클릭 이벤트
+    $('.indicator').on('click', function() {
+      stopAutoSlide();
+      const slideIndex = parseInt($(this).data('slide'));
+      goToSlide(slideIndex);
+      startAutoSlide(); // 다시 시작
+    });
+
+    // 마우스 호버 시 자동 슬라이드 정지
+    $('.image-slider-container').hover(
+            function() { stopAutoSlide(); },
+            function() { startAutoSlide(); }
+    );
+
+    // 자동 슬라이드 시작
+    startAutoSlide();
+    // ========== 이미지 슬라이더 코드 끝 ==========
 
     // 가격 포맷팅 함수 (만, 억 단위)
     function formatKoreanPrice(price) {
@@ -378,7 +608,7 @@
           return `${억.toLocaleString()}억 ${만.toLocaleString()}만 원`;
         }
       }
-      
+
       // 100만 이상, 1억 미만일 경우
       const 만 = Math.floor(price / 10000);
       return `${만.toLocaleString()}만 원`;
@@ -397,21 +627,51 @@
 
           if (data && data.length > 0) {
             const ol = $('<ol></ol>');
+            const newRanking = {};
+
             data.forEach((product, index) => {
+              const newRank = index + 1;
+              newRanking[product.productId] = newRank;
+
               const li = $('<li></li>').attr('title', product.productName);
-              const rankSpan = $('<span class="ranking-number"></span>').text((index + 1) + '.');
-              
+              const rankSpan = $('<span class="ranking-number"></span>').text(newRank + '.');
+
               let displayName = product.productName;
-              if (displayName.length > 4) {
-                displayName = displayName.substring(0, 4) + '...';
+              if (displayName.length > 7) {
+                displayName = displayName.substring(0, 7) + '...';
               }
               const nameSpan = $('<span class="ranking-name"></span>').text(displayName);
 
-              const priceSpan = $('<span class="ranking-price"></span>').text(formatKoreanPrice(product.productPrice));
-              li.append(rankSpan).append(nameSpan).append(priceSpan);
+              // "new" 뱃지 로직 추가
+              const regDate = new Date(product.productRegdate);
+              const now = new Date();
+              const diffSeconds = (now.getTime() - regDate.getTime()) / 1000;
+
+              if (diffSeconds <= 180) {
+                const newBadge = $('<span class="new-badge">new</span>');
+                nameSpan.append(newBadge);
+              }
+
+              const oldRank = previousPriceRanking[product.productId];
+              let rankChangeSpan = $('<span class="rank-change"></span>');
+
+              // Only show UP/DOWN if it was previously ranked
+              if (Object.keys(previousPriceRanking).length > 0 && oldRank !== undefined && oldRank !== newRank) {
+                if (newRank < oldRank) {
+                  rankChangeSpan.html('UP').addClass('rank-up');
+                } else {
+                  rankChangeSpan.html('DOWN').addClass('rank-down');
+                }
+              }
+
+              li.append(rankSpan).append(nameSpan).append(rankChangeSpan);
               ol.append(li);
             });
             rankingContent.append(ol);
+
+            // Update previous ranking for the next call
+            previousPriceRanking = newRanking;
+
           } else {
             rankingContent.append('<p>랭킹 정보가 없습니다.</p>');
           }
@@ -433,7 +693,7 @@
         success: function(data) {
           const rankingContent = $('#price-ranking-content');
           rankingContent.empty();
-          const title = $('<h4></h4>').text('실시간 상품등록 순위').css('margin-bottom', '15px');
+          const title = $('<h4></h4>').text('실시간 상품 등록').css('margin-bottom', '15px');
           rankingContent.append(title);
 
           if (data && data.length > 0) {
@@ -441,10 +701,10 @@
             data.forEach((product, index) => {
               const li = $('<li></li>').attr('title', product.productName);
               const rankSpan = $('<span class="ranking-number"></span>').text((index + 1) + '.');
-              
+
               let displayName = product.productName;
-              if (displayName.length > 4) {
-                displayName = displayName.substring(0, 4) + '...';
+              if (displayName.length > 7) {
+                displayName = displayName.substring(0, 7) + '...';
               }
               const nameSpan = $('<span class="ranking-name"></span>').text(displayName);
 
@@ -453,7 +713,7 @@
               const now = new Date();
               const diffSeconds = (now.getTime() - regDate.getTime()) / 1000;
 
-              if (diffSeconds <= 30) {
+              if (diffSeconds <= 180) {
                 const newBadge = $('<span class="new-badge">new</span>');
                 nameSpan.append(newBadge);
               }
@@ -493,28 +753,28 @@
 
     // Search button click handler
     $('#searchBtn').on('click', function() {
-        const form = $('#marketSearchForm');
-        const productName = $('#productName').val();
-        const cateId = $('#cateId').val();
+      const form = $('#marketSearchForm');
+      const productName = $('#productName').val();
+      const cateId = $('#cateId').val();
 
-        let url = form.attr('action') + '?';
-        const params = [];
+      let url = form.attr('action') + '?';
+      const params = [];
 
-        if (productName && productName.trim() !== '') {
-            params.push('productName=' + encodeURIComponent(productName));
-        }
+      if (productName && productName.trim() !== '') {
+        params.push('productName=' + encodeURIComponent(productName));
+      }
 
-        if (cateId && cateId.trim() !== '') {
-            params.push('cateId=' + encodeURIComponent(cateId));
-        }
+      if (cateId && cateId.trim() !== '') {
+        params.push('cateId=' + encodeURIComponent(cateId));
+      }
 
-        window.location.href = url + params.join('&');
+      window.location.href = url + params.join('&');
     });
 
     // Handle Enter key press on the form
     $('#marketSearchForm').on('submit', function(event) {
-        event.preventDefault(); // Prevent default submission
-        $('#searchBtn').click(); // Trigger the custom search button click
+      event.preventDefault(); // Prevent default submission
+      $('#searchBtn').click(); // Trigger the custom search button click
     });
   });
 </script>
