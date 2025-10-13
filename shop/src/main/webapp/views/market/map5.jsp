@@ -13,6 +13,14 @@
     height:500px;
     /*border: 2px solid red;*/
     overflow: auto;
+    border: 1px solid #6c757d;
+
+  }
+
+  .content-container {
+    flex: 1; /* 3:1 비율로 공간 차지 */
+    display: flex;
+    flex-direction: column;
   }
   /* --- 상품 목록 스타일 추가 --- */
   .product-item {
