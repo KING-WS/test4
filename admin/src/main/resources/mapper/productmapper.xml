@@ -77,5 +77,8 @@
     <delete id="delete" parameterType="Integer">
         DELETE FROM product WHERE product_id=#{productId}
     </delete>
+    <select id="countAll" resultType="int">
+        SELECT COUNT(*) FROM product
+    </select>
 
 </mapper>

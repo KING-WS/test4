@@ -135,7 +135,6 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <c:if test="${sessionScope.admin != null}">
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
@@ -162,7 +161,7 @@
                 <!-- Divider -->
                 <hr class="sidebar-divider">
 
-            </c:if>
+<%--            <c:if test="${sessionScope.admin != null}">--%>
             <!-- Heading -->
             <div class="sidebar-heading">
                 Admin Menu
@@ -201,7 +200,7 @@
                         </div>
                     </div>
                 </li>
-
+<%--             </c:if>--%>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"

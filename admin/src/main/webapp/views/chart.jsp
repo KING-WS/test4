@@ -3,6 +3,20 @@
 
 <script>
     $(()=>{
+        // --- Function to update product count --- //
+        const updateProductCount = () => {
+            fetch('/api/products/count?_=' + new Date().getTime())
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('total-products-count').innerText = data;
+                })
+                .catch(error => console.error('Error fetching product count:', error));
+        };
+
+        // --- Initial Load and Interval --- //
+        updateProductCount(); // Initial call
+        setInterval(updateProductCount, 5000); // Refresh every 5 seconds
+
         // --- 1. 일별 접속자 수 (Line Chart) --- //
         const lineChartData = JSON.parse('${lineChartData}');
         const lineCategories = lineChartData.map(item => item.loginDay);
@@ -111,18 +125,18 @@
             </div>
         </div>
 
-        <!-- Earnings (Monthly) Card Example -->
+        <!-- Total Products Card -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Earnings (Annual)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                Total Products</div>
+                            <div id="total-products-count" class="h5 mb-0 font-weight-bold text-gray-800">${totalProducts}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <i class="fas fa-box fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
