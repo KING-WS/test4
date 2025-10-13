@@ -163,5 +163,89 @@ $(function() {
 });
 </script>
 
+<%-- ReportModal --%>
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reportModalLabel">신고하기</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm">
+                    <input type="hidden" id="reportCustId" name="reportedCustId">
+                    <div class="form-group">
+                        <label for="reportReason">신고 사유</label>
+                        <textarea class="form-control" id="reportReason" name="reason" rows="4" placeholder="신고 사유를 입력해주세요."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-danger" id="submitReportBtn">신고 제출</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // jQuery를 사용하는 경우
+    $(document).ready(function() {
+        $('#reportModal').on('show.bs.modal', function (event) {
+            // 모달을 연 버튼을 가져옴
+            var button = $(event.relatedTarget);
+
+            // 버튼의 data-target-id 값을 가져옴
+            var custId = button.data('target-id');
+
+            // 모달을 가져옴
+            var modal = $(this);
+
+            // 모달 안의 숨겨진 input 필드에 custId 값을 설정
+            modal.find('#reportCustId').val(custId);
+        });
+
+        // '신고 제출' 버튼 클릭 시 동작
+        $('#submitReportBtn').on('click', function() {
+            var reportedId = $('#reportCustId').val();
+            var reportContent = $('#reportReason').val();
+
+            if (!reportContent) {
+                alert('신고 사유를 입력해주세요.');
+                return;
+            }
+
+            // 서버로 신고 데이터를 전송하는 Ajax 코드
+            $.ajax({
+                url: '<c:url value="/cust/addReport"/>', // 요청을 보낼 URL
+                type: 'POST', // HTTP 메소드
+                data: {
+                    reportedId: reportedId,
+                    reportContent: reportContent
+                },
+                success: function(response) {
+                    // 서버로부터 응답을 성공적으로 받았을 때
+                    if (response === 'success') {
+                        alert('신고가 성공적으로 접수되었습니다.');
+                    } else if (response === 'fail_login') {
+                        alert('로그인이 필요합니다.');
+                    } else {
+                        alert('신고 접수 중 오류가 발생했습니다.');
+                    }
+                    // 모달 닫기 및 내용 초기화
+                    $('#reportModal').modal('hide');
+                    $('#reportReason').val('');
+                },
+                error: function(xhr, status, error) {
+                    // 서버 요청 실패 시
+                    alert('서버와 통신 중 오류가 발생했습니다.');
+                    console.error("AJAX Error: ", status, error);
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
