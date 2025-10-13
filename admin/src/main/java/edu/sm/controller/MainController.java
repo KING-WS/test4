@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.sm.app.dto.CategoryProductCountDTO;
 import edu.sm.app.dto.DailyLoginDTO;
 import edu.sm.app.service.ChartService;
+import edu.sm.app.service.ReportService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +27,7 @@ public class MainController {
     String websocketurl;
 
     private final ChartService chartService;
+    private final ReportService reportService;
 
     @RequestMapping("/")
     public String main(Model model) {
@@ -57,6 +59,9 @@ public class MainController {
             todayVisitorCount = dailyLoginStats.get(dailyLoginStats.size() - 1).getUserCount();
         }
         model.addAttribute("todayVisitorCount", todayVisitorCount);
+
+        int pendingReportCount = reportService.getReportCount();
+        model.addAttribute("pendingReportCount", pendingReportCount);
 
         model.addAttribute("center","chart");
         return "index";
