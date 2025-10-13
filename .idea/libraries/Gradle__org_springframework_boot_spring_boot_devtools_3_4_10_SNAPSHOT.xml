@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.springframework.boot:spring-boot-devtools:3.4.10-SNAPSHOT" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.springframework.boot" artifactId="spring-boot-devtools" version="3.4.10-SNAPSHOT" baseVersion="3.4.10-SNAPSHOT" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-devtools/3.4.10-SNAPSHOT/2b0be629d3881a2ef1b29e2cc063215a97dd1b77/spring-boot-devtools-3.4.10-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-devtools/3.4.10-SNAPSHOT/505e42124eb88638926ef041c582f702b084a2b7/spring-boot-devtools-3.4.10-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
