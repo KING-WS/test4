@@ -65,7 +65,7 @@ public class ProductService implements SmService<Product, Integer> {
     @Override
     public void remove(Integer s) throws Exception {
         Product product = this.get(s);
-        FileUploadUtil.deleteFile(product.getProductImg(), imgDir);
+        // FileUploadUtil.deleteFile(product.getProductImg(), imgDir);
         productRepository.delete(s);
     }
 
@@ -87,5 +87,8 @@ public class ProductService implements SmService<Product, Integer> {
     }
     public List<Cate> getAllCate() throws Exception {
         return productRepository.getAllCate();
+    }
+    public List<Product> getMyItems(String custId) throws Exception {
+        return productRepository.findByCustId(custId);
     }
 }

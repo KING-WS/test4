@@ -80,14 +80,6 @@
       });
       await this.startCam();
       await this.connect();
-<<<<<<< HEAD
-<<<<<<< HEAD
-      document.getElementById('userArea').style.display = 'none';
-
-=======
->>>>>>> origin/minwoo
-=======
->>>>>>> origin/minwoo
     },
     connect:function (){
       try {
@@ -145,14 +137,6 @@
 
         document.getElementById('startButton').style.display = 'none';
         document.getElementById('endButton').style.display = 'block';
-<<<<<<< HEAD
-<<<<<<< HEAD
-        document.getElementById('userArea').style.display = 'block';
-
-=======
->>>>>>> origin/minwoo
-=======
->>>>>>> origin/minwoo
       } catch (error) {
         console.error('Error starting call:', error);
         this.updateConnectionStatus('Error starting call');
@@ -168,13 +152,6 @@
         this.peerConnection = null;
       }
       document.getElementById('remoteVideo').srcObject = null;
-<<<<<<< HEAD
-<<<<<<< HEAD
-      document.getElementById('userArea').style.display = 'none';
-=======
->>>>>>> origin/minwoo
-=======
->>>>>>> origin/minwoo
       document.getElementById('startButton').style.display = 'block';
       document.getElementById('endButton').style.display = 'none';
       this.updateConnectionStatus('Call Ended');
@@ -218,26 +195,10 @@
               break;
             case 'join':
               $('#user').html("사용자가 방문 하였습니다.  Start Call 버튼을 누르세요");
-<<<<<<< HEAD
-<<<<<<< HEAD
-              document.getElementById('userArea').style.display = 'block';
-
-=======
->>>>>>> origin/minwoo
-=======
->>>>>>> origin/minwoo
               break;
             case 'bye':
               $('#user').html("접속이 끊어 졌습니다.");
               document.getElementById('remoteVideo').srcObject = null;
-<<<<<<< HEAD
-<<<<<<< HEAD
-              document.getElementById('userArea').style.display = 'none';
-
-=======
->>>>>>> origin/minwoo
-=======
->>>>>>> origin/minwoo
               break;
             case 'answer':
               await this.peerConnection.setRemoteDescription(new RTCSessionDescription(message.data));
@@ -275,13 +236,6 @@
       });
 
       this.peerConnection.ontrack = (event) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        console.log('Event Size ==========================> '+event.streams.length);
-=======
->>>>>>> origin/minwoo
-=======
->>>>>>> origin/minwoo
         if (document.getElementById('remoteVideo') && event.streams[0]) {
           document.getElementById('remoteVideo').srcObject = event.streams[0];
         }
@@ -331,15 +285,7 @@
         <video id="localVideo" autoplay playsinline muted class="video-stream"></video>
         <div class="video-label">Admin Stream</div>
       </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <div class="video-wrapper" id="userArea" style="display: none">
-=======
       <div class="video-wrapper">
->>>>>>> origin/minwoo
-=======
-      <div class="video-wrapper">
->>>>>>> origin/minwoo
         <video id="remoteVideo" autoplay playsinline class="video-stream"></video>
         <div class="video-label">User Stream</div>
       </div>
