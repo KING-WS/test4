@@ -15,36 +15,81 @@
         box-sizing: border-box;
     }
 
-    /* 채팅 전체를 감싸는 컨테이너 */
-    .chat-wrapper {
+    /* 전체 레이아웃 */
+    .chat-container {
+        display: flex;
         width: 100%;
-        max-width: 700px; /* 최대 너비 */
-        margin: 20px auto; /* 페이지 중앙 정렬 */
+        max-width: 1000px; /* 너비 확장 */
+        margin: 20px auto;
+        height: 80vh; /* 높이 조정 */
+        min-height: 600px;
         border: 1px solid #e0e0e0;
         border-radius: 12px;
-        overflow: hidden; /* 둥근 모서리 적용 */
+        overflow: hidden;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        display: flex;
-        flex-direction: column;
-        height: 70vh; /* 화면 높이의 70% */
-        min-height: 500px;
         background-color: #fff;
     }
 
-    /* 헤더 */
-    .chat-header {
-        padding: 16px 20px;
-        background-color: #f7f7f7;
-        border-bottom: 1px solid #e0e0e0;
+    /* 사용자 목록 (왼쪽) */
+    .chat-user-list {
+        width: 280px;
+        border-right: 1px solid #e0e0e0;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        background-color: #f7f9fa;
     }
+    .user-list-header {
+        padding: 16px 20px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .user-list-header h3 {
+        margin: 0; font-size: 18px; font-weight: 600;
+    }
+    .user-list-items {
+        overflow-y: auto;
+        flex-grow: 1;
+    }
+    .user-item {
+        padding: 15px 20px;
+        cursor: pointer;
+        border-bottom: 1px solid #eef1f3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .user-item:hover {
+        background-color: #f0f2f5;
+    }
+    .user-item.active {
+        background-color: #007bff;
+        color: white;
+    }
+    .user-item .new-message-badge {
+        background-color: #dc3545;
+        color: white;
+        font-size: 11px;
+        font-weight: bold;
+        padding: 3px 8px;
+        border-radius: 12px;
+    }
+
+    /* 채팅창 (오른쪽) */
+    .chat-wrapper {
+        width: 100%;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        /* 기존 스타일 재정의 */
+        margin: 0; border: none; border-radius: 0; box-shadow: none; height: 100%;
+    }
+
+    /* 헤더 */
     .chat-header h3 {
         margin: 0;
         font-size: 18px;
         font-weight: 600;
     }
+
     .chat-status {
         display: flex;
         align-items: center;
@@ -135,22 +180,34 @@
     }
 </style>
 
-<div class="chat-wrapper">
-    <div class="chat-header">
-        <h3>1:1 고객 문의</h3>
-        <div id="chat-status" class="chat-status">
-            <div id="status-indicator" class="status-indicator"></div>
-            <span id="status-text">연결 중...</span>
+<div class="chat-container">
+    <div id="chat-user-list" class="chat-user-list">
+        <div class="user-list-header">
+            <h3>대화 목록</h3>
+        </div>
+        <div id="user-list-items" class="user-list-items">
+            <!-- 동적으로 유저 목록 추가 -->
         </div>
     </div>
+    <div class="chat-wrapper">
+        <div class="chat-header">
+            <h3 id="chat-header-title">1:1 고객 문의</h3>
+            <div id="chat-status" class="chat-status">
+                <div id="status-indicator" class="status-indicator"></div>
+                <span id="status-text">연결 중...</span>
+            </div>
+        </div>
 
-    <div id="chat-messages" class="chat-messages">
-    </div>
+        <div id="chat-messages" class="chat-messages">
+             <div class="no-chat-selected">
+                <p>왼쪽 목록에서 대화를 선택하세요.</p>
+            </div>
+        </div>
 
-    <div class="chat-input-area">
-        <input type="text" id="chat-target-id" value="id07" placeholder="고객 ID" style="flex-grow: 0.5;">
-        <input type="text" id="chat-message-input" placeholder="메시지를 입력하세요...">
-        <button id="chat-send-btn">전송</button>
+        <div id="chat-input-section" class="chat-input-area" style="display: none;">
+            <input type="text" id="chat-message-input" placeholder="메시지를 입력하세요...">
+            <button id="chat-send-btn">전송</button>
+        </div>
     </div>
 </div>
 
@@ -159,21 +216,24 @@
         const chatUI = {
             id: '${sessionScope.admin.adminId}',
             stompClient: null,
+            currentUserList: new Map(), // key: userId, value: { item: element, badge: element }
+            currentTargetId: null,
 
-            // HTML 요소 캐싱
             elements: {
                 statusIndicator: document.getElementById('status-indicator'),
                 statusText: document.getElementById('status-text'),
                 messageArea: document.getElementById('chat-messages'),
-                targetIdInput: document.getElementById('chat-target-id'),
                 messageInput: document.getElementById('chat-message-input'),
-                sendBtn: document.getElementById('chat-send-btn')
+                sendBtn: document.getElementById('chat-send-btn'),
+                userListItems: document.getElementById('user-list-items'),
+                chatHeaderTitle: document.getElementById('chat-header-title'),
+                inputSection: document.getElementById('chat-input-section'),
+                noChatSelected: document.querySelector('.no-chat-selected')
             },
 
             init: function() {
                 if (!this.id) {
                     this.setConnected(false, '로그인 필요');
-                    console.error("Admin ID is not available.");
                     return;
                 }
                 this.addEventListeners();
@@ -183,9 +243,7 @@
             addEventListeners: function() {
                 this.elements.sendBtn.addEventListener('click', () => this.sendMessage());
                 this.elements.messageInput.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') {
-                        this.sendMessage();
-                    }
+                    if (e.key === 'Enter') this.sendMessage();
                 });
             },
 
@@ -197,71 +255,123 @@
                         this.setConnected(true, '연결됨');
                         console.log('Connected: ' + frame);
 
+                        // 1. 개인 메시지 수신 (기존 로직)
                         this.stompClient.subscribe('/adminsend/to/' + this.id, (msg) => {
                             const messageData = JSON.parse(msg.body);
+                            // 메시지가 오면 보낸 사람을 대화 목록에 추가
+                            this.addConversation(messageData.sendid);
                             this.displayMessage(messageData, false);
                         });
+
+                        // 2. 새로운 고객 문의 알림 수신
+                        this.stompClient.subscribe('/topic/admin/inbox', (msg) => {
+                            const messageData = JSON.parse(msg.body);
+                            this.addConversation(messageData.sendid);
+                        });
+
                     }, (error) => {
                         this.setConnected(false, '연결 실패');
-                        console.log('Connection error: ' + error);
-                        setTimeout(() => this.connect(), 5000); // 5초 후 재연결 시도
+                        setTimeout(() => this.connect(), 5000);
                     });
                 } catch (e) {
-                    console.error("SockJS or Stomp not found. Check library loading.", e);
                     this.setConnected(false, '라이브러리 오류');
                 }
             },
 
-            sendMessage: function() {
-                const targetId = this.elements.targetIdInput.value;
-                const content = this.elements.messageInput.value;
+            addConversation: function(userId) {
+                if (!userId || this.currentUserList.has(userId)) {
+                    // 이미 목록에 있거나 userId가 없으면 알림 배지만 업데이트
+                    if(this.currentUserList.has(userId) && userId !== this.currentTargetId){
+                        this.currentUserList.get(userId).badge.style.display = 'block';
+                    }
+                    return;
+                }
 
-                if (content.trim() === '' || targetId.trim() === '') {
+                const userItem = document.createElement('div');
+                userItem.className = 'user-item';
+                userItem.dataset.userId = userId;
+                userItem.textContent = userId;
+
+                const badge = document.createElement('span');
+                badge.className = 'new-message-badge';
+                badge.textContent = 'new';
+                badge.style.display = 'block'; // 처음엔 항상 보이게
+                userItem.appendChild(badge);
+
+                userItem.addEventListener('click', () => this.selectConversation(userId));
+
+                this.elements.userListItems.prepend(userItem); // 새 유저를 맨 위에 추가
+                this.currentUserList.set(userId, { item: userItem, badge: badge });
+            },
+
+            selectConversation: function(userId) {
+                if (this.currentTargetId === userId) return;
+
+                this.currentTargetId = userId;
+
+                // 모든 아이템에서 'active' 클래스 제거
+                this.currentUserList.forEach(user => {
+                    user.item.classList.remove('active');
+                });
+
+                // 현재 선택된 아이템에 'active' 클래스 추가 및 배지 숨김
+                const selectedUser = this.currentUserList.get(userId);
+                selectedUser.item.classList.add('active');
+                selectedUser.badge.style.display = 'none';
+
+                this.elements.messageArea.innerHTML = ''; // 메시지 창 비우기
+                this.elements.chatHeaderTitle.textContent = `${userId}님과의 대화`;
+                this.elements.inputSection.style.display = 'flex';
+                if(this.elements.noChatSelected) this.elements.noChatSelected.style.display = 'none';
+
+                // TODO: 여기에 해당 유저와의 과거 대화 기록을 불러오는 로직 추가
+            },
+
+            sendMessage: function() {
+                const content = this.elements.messageInput.value;
+                if (content.trim() === '' || !this.currentTargetId) {
                     return;
                 }
 
                 const msg = {
                     'sendid': this.id,
-                    'receiveid': targetId,
+                    'receiveid': this.currentTargetId,
                     'content1': content
                 };
 
                 this.stompClient.send('/adminreceiveto', {}, JSON.stringify(msg));
                 this.displayMessage(msg, true);
-                this.elements.messageInput.value = ''; // 입력창 비우기
+                this.elements.messageInput.value = '';
             },
 
             displayMessage: function(msg, isMyMessage) {
+                // 현재 선택된 대화의 메시지만 표시
+                const chatPartnerId = isMyMessage ? msg.receiveid : msg.sendid;
+                if (chatPartnerId !== this.currentTargetId) {
+                    if(!isMyMessage) { // 내가 보낸 메시지가 아닌 경우에만 알림
+                        this.addConversation(msg.sendid);
+                    }
+                    return;
+                }
+
                 const bubble = document.createElement('div');
                 const meta = document.createElement('div');
                 const content = document.createElement('div');
 
-                // 클래스 설정
                 bubble.className = isMyMessage ? 'message-bubble my-message' : 'message-bubble other-message';
                 meta.className = 'message-meta';
-
-                // 내용 설정
                 meta.textContent = isMyMessage ? '나' : msg.sendid;
                 content.textContent = msg.content1;
 
-                // 조립
                 bubble.appendChild(meta);
                 bubble.appendChild(content);
-
-                // 화면에 추가
                 this.elements.messageArea.appendChild(bubble);
-
-                // 스크롤 맨 아래로
                 this.elements.messageArea.scrollTop = this.elements.messageArea.scrollHeight;
             },
 
             setConnected: function(isConnected, statusText) {
                 this.elements.statusText.textContent = statusText;
-                if (isConnected) {
-                    this.elements.statusIndicator.classList.add('connected');
-                } else {
-                    this.elements.statusIndicator.classList.remove('connected');
-                }
+                this.elements.statusIndicator.classList.toggle('connected', isConnected);
             }
         };
 
