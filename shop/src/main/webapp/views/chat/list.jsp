@@ -45,7 +45,7 @@
       </c:when>
       <c:otherwise>
         <c:forEach var="partnerInfo" items="${chatPartners}">
-          <button type="button" class="list-group-item list-group-item-action" 
+          <button type="button" class="list-group-item list-group-item-action"
                   data-toggle="modal" data-target="#chatModal" data-target-id="${partnerInfo.partnerId}">
             <div class="media">
               <div class="avatar-placeholder">

@@ -278,7 +278,7 @@
             throw new Error('Network response was not ok');
           }
           const history = await response.json();
-          
+
           this.elements.messageArea.innerHTML = '';
 
           history.forEach(msg => {
