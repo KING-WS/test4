@@ -76,8 +76,8 @@ public class LoginController {
     }
     @RequestMapping("/loginimpl")
     public String loginimpl(Model model, @RequestParam("id") String id,
-                          @RequestParam("pwd") String pwd,
-                          HttpSession httpSession) throws Exception {
+                            @RequestParam("pwd") String pwd,
+                            HttpSession httpSession) throws Exception {
         Cust dbCust = custService.get(id);
         if(dbCust != null && bCryptPasswordEncoder.matches(pwd, dbCust.getCustPwd())){
             httpSession.setAttribute("cust",dbCust);

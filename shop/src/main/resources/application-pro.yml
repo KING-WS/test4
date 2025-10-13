@@ -19,7 +19,7 @@ spring:
       prefix: /views/
       suffix: .jsp
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/shopdb?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://127.0.0.1:3306/sshopdb?serverTimezone=Asia/Seoul
     username: smuser
     password: ENC(idIWCdznEM3ggslDeTmLJw==)
 

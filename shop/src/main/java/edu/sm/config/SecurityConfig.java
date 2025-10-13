@@ -50,10 +50,10 @@ public class SecurityConfig  {
 
         // <<-- 여기부터 추가 -->>
         // 세션 관리 설정
-        http.sessionManagement(session -> session
-                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) // 세션이 필요할 때만 생성
-                .invalidSessionUrl("/login") // 세션이 유효하지 않을 때 이동할 페이지
-        );
+//        http.sessionManagement(session -> session
+//                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) // 세션이 필요할 때만 생성
+//                .invalidSessionUrl("/login") // 세션이 유효하지 않을 때 이동할 페이지
+//        );
         // <<-- 여기까지 추가 -->>
 
         // 권한 규칙 작성

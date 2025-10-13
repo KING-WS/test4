@@ -77,17 +77,7 @@
                 <a class="nav-link" href="<c:url value="/cust"/>">Cust</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/map"/> ">Map</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/chart"/>">Chart</a>
-            </li>
-            <li>
-                <c:if test = "${sessionScope.cust.custId != null}">
-            <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/chat"/>">Chat</a>
-            </li>
-            </c:if>
             </li>
         </ul>
     </div>

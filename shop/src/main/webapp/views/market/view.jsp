@@ -7,10 +7,12 @@
     <div class="row">
         <div class="col-12 text-center">
             <c:if test="${p.productImg != null and not empty p.productImg}">
-                <img src="<c:url value='/imgs/${p.productImg}'/>" class="img-fluid" style="max-height: 400px;" alt="${p.productName}">
+                <img src="<c:url value='/imgs/${p.productImg}'/>" 
+                     style="width: 100%; max-width: 500px; height: auto; border-radius: 8px;"
+                     alt="${p.productName}">
             </c:if>
             <c:if test="${p.productImg == null or empty p.productImg}">
-                <div style="height: 400px; width: 100%; background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">
+                <div style="height: 600px; width: 100%; max-width: 700px; margin: auto; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
                     <span>No Image</span>
                 </div>
             </c:if>
