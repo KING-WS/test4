@@ -189,13 +189,13 @@
     <h5><strong>판매자:</strong> ${p.custId}</h5>
     <h5><strong>채팅 횟수:</strong> ${p.chatCount}</h5>
 
-    <button id="wishlist-btn" class="btn btn-outline-danger btn-lg my-2">
+    <button id="wishlist-btn" class="btn-custom btn-outline-danger btn-lg my-2">
         <i class="fa fa-heart-o"></i> 찜
     </button>
-    <button type="button" class="btn-custom btn-chat my-2" data-toggle="modal" data-target="#chatModal" data-target-id="${p.custId}" data-product-id="${p.productId}">
+    <button type="button" class="custom-btn btn-16" data-toggle="modal" data-target="#chatModal" data-target-id="${p.custId}" data-product-id="${p.productId}">
         판매자와 채팅하기
     </button>
-    <button type="button" class="btn btn-danger btn-lg my-2" data-toggle="modal" data-target="#reportModal" data-target-id="${p.custId}">신고하기</button>
+    <button type="button" class="btn-custom btn-danger btn-lg my-2" data-toggle="modal" data-target="#reportModal" data-target-id="${p.custId}">신고하기</button>
     <h1><fmt:formatNumber value="${p.productPrice}" pattern="#,###" /> 원</h1>
 
     <hr>
@@ -289,6 +289,8 @@
 
     // Display marker on the map
     marker.setMap(map);
-  });
+        });
   </c:if>
+    });
+
 </script>
