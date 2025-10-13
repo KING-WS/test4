@@ -13,6 +13,9 @@
     <li class="nav-item">
       <a class="nav-link" href="<c:url value="/market/myitems"/>">내 상품 관리</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<c:url value="/chat/list"/>">내 채팅 목록</a>
+    </li>
   </ul>
   <hr class="d-sm-none">
 </div>

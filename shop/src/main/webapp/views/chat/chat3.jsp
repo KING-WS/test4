@@ -179,37 +179,60 @@
     },
 
     init: async function() {
-      // ▼▼▼▼▼ [수정됨] ▼▼▼▼▼
-      // 페이지 로딩 시에는 내 ID만 설정하고, 웹소켓 연결 및 카메라만 켭니다.
-      this.currentUserId = $('#user_id').text();
+      const urlParams = new URLSearchParams(window.location.search);
+      const callerId = urlParams.get('caller');
+      const calleeId = urlParams.get('callee');
+      const sessionUserId = document.getElementById('user_id').textContent.trim();
 
-      $('#startButton').click(() => {
-        this.startCall();
-      });
-      $('#endButton').click(() => {
-        this.endCall();
-      });
+      // Determine who is the current user and who is the other user
+      if (sessionUserId === callerId) {
+        this.currentUserId = callerId;
+        this.otherUserId = calleeId;
+      } else if (sessionUserId === calleeId) {
+        this.currentUserId = calleeId;
+        this.otherUserId = callerId;
+      } else {
+        console.error("Error: Current user is not part of this call.");
+        this.updateConnectionStatus('사용자 인증 실패', false);
+        return;
+      }
+
+      // Update the UI
+      $('#user_id').text(this.currentUserId);
+      $('#other_user_id_display').text(this.otherUserId);
+
+      $('#endButton').click(() => this.endCall());
 
       await this.startCam();
-      this.connect(); // 웹소켓 연결만 미리 해둠
-      // ▲▲▲▲▲ [수정됨] ▲▲▲▲▲
+      this.connect(); // Connect to WebSocket
+
+      // The caller initiates the call
+      if (sessionUserId === callerId) {
+        // Wait a bit for the websocket to be ready before starting the call
+        setTimeout(() => this.startCall(), 1000);
+      }
     },
 
     connect: function() {
-      // ▼▼▼▼▼ [수정됨] ▼▼▼▼▼
-      // 웹소켓 연결만 하고, onopen 시점에 자동으로 join 메시지를 보내지 않습니다.
       try {
         this.websocket = new WebSocket('${websocketurl}signal');
         this.websocket.onopen = () => {
           console.log('WebSocket connected');
           this.updateConnectionStatus('연결됨', true);
+          // Join the room once connected
+          const ids = [this.currentUserId, this.otherUserId].sort();
+          this.roomId = ids.join('_');
+          this.sendSignalingMessage({
+            type: 'join',
+            roomId: this.roomId,
+            userId: this.currentUserId
+          });
         };
         this.setupWebSocketHandlers();
       } catch (error) {
         console.error('Error initializing WebRTC:', error);
         this.updateConnectionStatus('오류: ' + error.message, false);
       }
-      // ▲▲▲▲▲ [수정됨] ▲▲▲▲▲
     },
 
     startCam: async function() {
@@ -223,7 +246,7 @@
         });
         this.localStream = stream;
         document.getElementById('localVideo').srcObject = stream;
-        document.getElementById('startButton').disabled = false;
+        // Don't disable the start button anymore, it's gone
       } catch (error) {
         console.error('카메라 접근 오류:', error);
         this.updateConnectionStatus('카메라에 접근할 수 없습니다', false);
@@ -231,11 +254,9 @@
     },
 
     startCall: async function() {
-      // ▼▼▼▼▼ [수정됨] ▼▼▼▼▼
-      // '통화 시작' 버튼을 누를 때 상대방 ID를 가져와서 roomId를 생성하고 join 메시지를 보냅니다.
-      this.otherUserId = $('#other_user_id_input').val();
+      console.log("Attempting to start a call...");
       if (!this.otherUserId) {
-        alert('상대방 ID를 입력하세요!');
+        alert('상대방 ID가 없습니다!');
         return;
       }
       if (this.currentUserId === this.otherUserId) {
@@ -243,19 +264,8 @@
         return;
       }
 
-      const ids = [this.currentUserId, this.otherUserId].sort();
-      this.roomId = ids.join('_');
-
-      this.sendSignalingMessage({
-        type: 'join',
-        roomId: this.roomId,
-        userId: this.currentUserId
-      });
-      // ▲▲▲▲▲ [수정됨] ▲▲▲▲▲
-
       try {
         if (!this.peerConnection) {
-          // await this.startCam(); // startCam은 init에서 이미 호출했으므로 주석 처리
           await this.createPeerConnection();
         }
 
@@ -433,8 +443,7 @@
     </div>
     <div class="info-item">
       <span>상대방 ID:</span>
-      <%-- 상대방 ID를 직접 입력할 수 있는 창으로 변경 --%>
-      <input type="text" id="other_user_id_input" placeholder="통화할 상대방 ID 입력" style="border:1px solid #ccc; padding: 5px; border-radius: 4px;">
+      <strong id="other_user_id_display" style="color: #333;"></strong>
     </div>
   </div>
 
