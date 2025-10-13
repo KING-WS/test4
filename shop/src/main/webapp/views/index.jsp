@@ -123,5 +123,45 @@
     <p>Footer</p>
 </div>
 
+<!-- Chat Modal -->
+<div class="modal fade" id="chatModal" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="chatModalLabel">1:1 Chat</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        <iframe id="chatFrame" src="about:blank" style="width: 100%; height: 70vh; border: none;"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(function() {
+    const chatModal = $('#chatModal');
+    const chatFrame = $('#chatFrame');
+
+    // Modal이 열릴 때 이벤트
+    chatModal.on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget); // Modal을 트리거한 버튼
+        const targetId = button.data('target-id'); // data-target-id 속성 값 가져오기
+        
+        // iframe의 src를 채팅 페이지 URL로 설정
+        const chatUrl = '<c:url value="/chat/modal_view" />' + '?target=' + targetId;
+        chatFrame.attr('src', chatUrl);
+    });
+
+    // Modal이 닫힐 때 이벤트
+    chatModal.on('hidden.bs.modal', function () {
+        // iframe의 src를 비워서 리소스를 해제
+        chatFrame.attr('src', 'about:blank');
+    });
+});
+</script>
+
 </body>
 </html>

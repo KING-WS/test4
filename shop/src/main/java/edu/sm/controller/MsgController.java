@@ -1,6 +1,8 @@
 package edu.sm.controller;
 
+import edu.sm.app.dto.ChatMessage;
 import edu.sm.app.msg.Msg;
+import edu.sm.app.service.ChatService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -12,6 +14,9 @@ import org.springframework.stereotype.Controller;
 public class MsgController {
     @Autowired
     SimpMessagingTemplate template;
+
+    @Autowired
+    ChatService chatService;
 
     @MessageMapping("/receiveall") // 모두에게 전송
     public void receiveall(Msg msg, SimpMessageHeaderAccessor headerAccessor) {
@@ -29,6 +34,14 @@ public class MsgController {
     public void receiveto(Msg msg, SimpMessageHeaderAccessor headerAccessor) {
         String id = msg.getSendid();
         String target = msg.getReceiveid();
+
+        // Create ChatMessage object and save to database via ChatService
+        ChatMessage chatMessage = new ChatMessage();
+        chatMessage.setSenderId(msg.getSendid());
+        chatMessage.setReceiverId(msg.getReceiveid());
+        chatMessage.setContent(msg.getContent1());
+        chatService.insertMessage(chatMessage);
+
         log.info("-------------------------");
         log.info(target);
 
