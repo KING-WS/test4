@@ -40,9 +40,9 @@ logging:
 # @Value("${}")
 app:
   url:
-    sse: https://192.168.1.7:8444/   # admin
-    mainsse: https://192.168.1.7:8443/   #shop
-    websocketurl: https://192.168.1.7:8443/  #shop
+    sse: https://192.168.1.8:8444/   # admin
+    mainsse: https://192.168.1.8:8443/   #shop
+    websocketurl: https://192.168.1.8:8443/  #shop
   dir:
     imgsdir: file:///C:/test4/imgs/     # 화면 출력 용
     uploadimgsdir: C:/test4/imgs/    # 파일 Write 용
