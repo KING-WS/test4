@@ -29,13 +29,13 @@ public class LoginController {
     @RequestMapping("/updatepwd")
     public String updatepwd(Model model) {
         model.addAttribute("center","updatepwd");
-        model.addAttribute("left","left");
+        model.addAttribute("left","blank");
         return "index";
     }
     @RequestMapping("/register")
     public String main(Model model) {
         model.addAttribute("center","register");
-        model.addAttribute("left","left");
+        model.addAttribute("left","blank");
         return "index";
     }
     @RequestMapping("/registerimpl")
@@ -73,7 +73,7 @@ public class LoginController {
     @RequestMapping("/login")
     public String add(Model model) {
         model.addAttribute("center","login");
-        model.addAttribute("left","left");
+        model.addAttribute("left","blank");
         return "index";
     }
     @RequestMapping("/loginimpl")
