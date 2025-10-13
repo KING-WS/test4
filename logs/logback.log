@@ -21116,3 +21116,8 @@ java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" bec
 [2025-10-13 21:33:00:583556][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
 [2025-10-13 21:33:00:583557][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=38, productName=테스트4, productPrice=12312, productImg=test4.jpg, productRegdate=20 (truncated)...]
 [2025-10-13 21:33:00:583558][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 21:33:10:593556][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 21:33:10:593556][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 21:33:10:593559][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 21:33:10:593559][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 21:33:10:593560][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
