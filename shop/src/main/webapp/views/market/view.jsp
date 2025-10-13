@@ -25,7 +25,12 @@
     <h2>${p.productName}</h2>
     <h4><span class="badge badge-secondary">${p.cateName}</span></h4>
     <h5><strong>판매자:</strong> ${p.custId}</h5>
-    <button type="button" class="btn btn-success btn-lg my-2" data-toggle="modal" data-target="#chatModal" data-target-id="${p.custId}">
+    <h5><strong>채팅 횟수:</strong> ${p.chatCount}</h5>
+
+    <button id="wishlist-btn" class="btn btn-outline-danger btn-lg my-2">
+        <i class="fa fa-heart-o"></i> 찜
+    </button>
+    <button type="button" class="btn btn-success btn-lg my-2" data-toggle="modal" data-target="#chatModal" data-target-id="${p.custId}" data-product-id="${p.productId}">
         판매자와 채팅하기
     </button>
     <button type="button" class="btn btn-danger btn-lg my-2" data-toggle="modal" data-target="#reportModal" data-target-id="${p.custId}">신고하기</button>
@@ -50,7 +55,50 @@
 </div>
 
 <script>
-    // Run this script only if the product has location data
+$(document).ready(function() {
+    const productId = ${p.productId};
+
+    // 찜 상태 확인
+    $.ajax({
+        url: '/api/wishlist/status',
+        type: 'GET',
+        data: { productId: productId },
+        success: function(response) {
+            updateWishlistButton(response.wishlistStatus);
+        }
+    });
+
+    // 찜 버튼 클릭 이벤트
+    $('#wishlist-btn').on('click', function() {
+        $.ajax({
+            url: '/api/wishlist/toggle',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ productId: productId }),
+            success: function(response) {
+                updateWishlistButton(response.wishlistStatus);
+            },
+            error: function(xhr) {
+                if (xhr.status === 401) {
+                    alert('로그인이 필요합니다.');
+                    window.location.href = '/login';
+                }
+            }
+        });
+    });
+
+    function updateWishlistButton(isWishlisted) {
+        const btn = $('#wishlist-btn');
+        if (isWishlisted) {
+            btn.removeClass('btn-outline-danger').addClass('btn-danger');
+            btn.find('i').removeClass('fa-heart-o').addClass('fa-heart');
+        } else {
+            btn.removeClass('btn-danger').addClass('btn-outline-danger');
+            btn.find('i').removeClass('fa-heart').addClass('fa-heart-o');
+        }
+    }
+
+    // 지도 스크립트
     <c:if test="${p.lat != null and p.lng != null}">
     $(function() {
         let lat = ${p.lat};
@@ -59,22 +107,20 @@
         let mapContainer = document.getElementById('static_map');
         let mapOption = {
             center: new kakao.maps.LatLng(lat, lng),
-            level: 4, // Zoom level
-            draggable: false, // Disable drag
-            scrollwheel: false, // Disable zoom
-            keyboardShortcuts: false // Disable keyboard shortcuts
+            level: 4,
+            draggable: false,
+            scrollwheel: false,
+            keyboardShortcuts: false
         };
 
-        // Create map
         let map = new kakao.maps.Map(mapContainer, mapOption);
 
-        // Create marker
         let marker = new kakao.maps.Marker({
             position: new kakao.maps.LatLng(lat, lng)
         });
 
-        // Display marker on the map
         marker.setMap(map);
     });
     </c:if>
+});
 </script>

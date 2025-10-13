@@ -17,4 +17,5 @@ public class ChatMessage {
     private String content;
     private Date sentAt;
     private boolean isRead;
+    private int productId;
 }

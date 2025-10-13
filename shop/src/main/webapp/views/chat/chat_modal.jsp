@@ -216,6 +216,7 @@
 
     const urlParams = new URLSearchParams(window.location.search);
     const targetId = urlParams.get('target');
+    const productId = urlParams.get('productId'); // productId 가져오기
     if (targetId) {
       document.getElementById('chat-target-id').value = targetId;
     }
@@ -334,7 +335,8 @@
         const msg = {
           'sendid': this.id,
           'receiveid': targetId,
-          'content1': content
+          'content1': content,
+          'productId': productId ? parseInt(productId) : 0 // productId 추가
         };
 
         this.stompClient.send('/receiveto', {}, JSON.stringify(msg));

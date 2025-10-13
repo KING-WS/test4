@@ -14,6 +14,10 @@
       <a class="nav-link" href="<c:url value="/market/myitems"/>">내 상품 관리</a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="<c:url value="/market/wishlist"/>">내 찜 목록</a>
+    </li>
+
+    <li class="nav-item">
       <a class="nav-link" href="<c:url value="/chat/list"/>">
         내 채팅 목록
         <c:if test="${unreadChatCount > 0}">
@@ -21,6 +25,7 @@
         </c:if>
       </a>
     </li>
+
   </ul>
   <hr class="d-sm-none">
 </div>
