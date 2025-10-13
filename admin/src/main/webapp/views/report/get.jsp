@@ -12,9 +12,9 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>신고 ID</th>
+                            <th>신고 번호</th>
                             <th>신고자 ID</th>
-                            <th>피신고자 ID</th>
+                            <th>신고 대상 ID</th>
                             <th>신고 내용</th>
                             <th>신고 날짜</th>
                         </tr>
