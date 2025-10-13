@@ -29,7 +29,29 @@ public class MainController {
 
     @RequestMapping("/")
     public String main(Model model) {
-        model.addAttribute("sseUrl", sseUrl);
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // Data for Line Chart
+        List<DailyLoginDTO> dailyLoginStats = chartService.getDailyLoginStats();
+        String lineChartData = "[]";
+        try {
+            lineChartData = objectMapper.writeValueAsString(dailyLoginStats);
+        } catch (JsonProcessingException e) {
+            log.error("Error converting line chart data to JSON", e);
+        }
+
+        // Data for Pie Chart
+        List<CategoryProductCountDTO> productCountByCategory = chartService.getProductCountByCategory();
+        String pieChartData = "[]";
+        try {
+            pieChartData = objectMapper.writeValueAsString(productCountByCategory);
+        } catch (JsonProcessingException e) {
+            log.error("Error converting pie chart data to JSON", e);
+        }
+
+        model.addAttribute("lineChartData", lineChartData);
+        model.addAttribute("pieChartData", pieChartData);
+        model.addAttribute("center","chart");
         return "index";
     }
 

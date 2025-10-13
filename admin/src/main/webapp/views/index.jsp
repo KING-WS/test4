@@ -128,7 +128,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value="/"/>">
                 <div class="sidebar-brand-text mx-3" href="/">
-                    SMU Admin
+                    JJAP GEUN MACAT
                 </div>
             </a>
 
