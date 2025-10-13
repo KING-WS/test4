@@ -16,4 +16,18 @@
             login_day ASC
     </select>
 
+    <select id="selectProductCountByCategory" resultType="edu.sm.app.dto.CategoryProductCountDTO">
+        SELECT
+            c.cate_name AS category_name,
+            COUNT(p.product_id) AS product_count
+        FROM
+            product p
+        INNER JOIN
+            cate c ON p.cate_id = c.cate_id
+        GROUP BY
+            c.cate_name
+        ORDER BY
+            product_count DESC
+    </select>
+
 </mapper>

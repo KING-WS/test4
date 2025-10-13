@@ -1,5 +1,6 @@
 package edu.sm.app.service;
 
+import edu.sm.app.dto.CategoryProductCountDTO;
 import edu.sm.app.dto.DailyLoginDTO;
 import edu.sm.app.repository.ChartRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,5 +16,9 @@ public class ChartService {
 
     public List<DailyLoginDTO> getDailyLoginStats() {
         return chartRepository.selectDailyLoginStats();
+    }
+
+    public List<CategoryProductCountDTO> getProductCountByCategory() {
+        return chartRepository.selectProductCountByCategory();
     }
 }

@@ -3,31 +3,21 @@
 
 <script>
     $(()=>{
-        // Controller에서 전달받은 JSON 데이터를 JavaScript 객체로 파싱
-        const chartData = JSON.parse('${chartData}');
+        // --- 1. 일별 접속자 수 (Line Chart) --- //
+        const lineChartData = JSON.parse('${lineChartData}');
+        const lineCategories = lineChartData.map(item => item.loginDay);
+        const lineData = lineChartData.map(item => item.userCount);
 
-        // Highcharts에 사용할 데이터 형식으로 가공
-        const categories = chartData.map(item => item.loginDay);
-        const data = chartData.map(item => item.userCount);
-
-        Highcharts.chart('container', {
-            chart: {
-                type: 'areaspline' // 채워진 꺾은선 그래프
-            },
-            title: {
-                text: '일별 접속자 수' // 차트 제목
-            },
+        Highcharts.chart('line-chart-container', {
+            chart: { type: 'areaspline' },
+            title: { text: '일별 접속자 수' },
             xAxis: {
-                categories: categories,
-                title: {
-                    text: '날짜'
-                }
+                categories: lineCategories,
+                title: { text: '날짜' }
             },
             yAxis: {
                 min: 0,
-                title: {
-                    text: '접속자 수 (명)'
-                }
+                title: { text: '접속자 수 (명)' }
             },
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
@@ -39,7 +29,7 @@
             },
             plotOptions: {
                 areaspline: {
-                    color: '#4e73df', // 기존 테마와 유사한 파란색 계열로 변경
+                    color: '#4e73df',
                     fillColor: {
                         linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
                         stops: [
@@ -48,16 +38,46 @@
                         ]
                     },
                     threshold: null,
-                    marker: {
-                        lineWidth: 1,
-                        lineColor: null,
-                        fillColor: 'white'
-                    }
+                    marker: { lineWidth: 1, lineColor: null, fillColor: 'white' }
                 }
             },
             series: [{
                 name: '일별 접속자',
-                data: data
+                data: lineData
+            }]
+        });
+
+        // --- 2. 카테고리별 상품 수 (Pie Chart) --- //
+        const pieChartData = JSON.parse('${pieChartData}');
+        const pieData = pieChartData.map(item => ({
+            name: item.categoryName,
+            y: item.productCount
+        }));
+
+        Highcharts.chart('pie-chart-container', {
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: '카테고리별 상품 수'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b> ({point.y}개)'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                name: '상품 수',
+                colorByPoint: true,
+                data: pieData
             }]
         });
     });
@@ -74,20 +94,29 @@
     <!-- Content Row -->
     <div class="row">
 
-        <!-- Daily Login Chart -->
-        <div class="col-xl-12 col-lg-12">
+        <!-- Area Chart -->
+        <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
-                <!-- Card Header -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">일별 접속자 수</h6>
                 </div>
-                <!-- Card Body -->
                 <div class="card-body">
-                    <div id="container" style="width:100%; height:400px;"></div>
+                    <div id="line-chart-container" style="width:100%; height:400px;"></div>
                 </div>
             </div>
         </div>
 
+        <!-- Pie Chart -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">카테고리별 상품 수</h6>
+                </div>
+                <div class="card-body">
+                    <div id="pie-chart-container" style="width:100%; height:400px;"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

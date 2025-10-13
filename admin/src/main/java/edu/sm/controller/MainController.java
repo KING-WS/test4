@@ -3,6 +3,7 @@ package edu.sm.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.sm.app.dto.CategoryProductCountDTO;
 import edu.sm.app.dto.DailyLoginDTO;
 import edu.sm.app.service.ChartService;
 import lombok.RequiredArgsConstructor;
@@ -34,15 +35,28 @@ public class MainController {
 
     @RequestMapping("/chart")
     public String chart(Model model) {
-        List<DailyLoginDTO> dailyLoginStats = chartService.getDailyLoginStats();
         ObjectMapper objectMapper = new ObjectMapper();
-        String chartData = "";
+
+        // Data for Line Chart
+        List<DailyLoginDTO> dailyLoginStats = chartService.getDailyLoginStats();
+        String lineChartData = "[]";
         try {
-            chartData = objectMapper.writeValueAsString(dailyLoginStats);
+            lineChartData = objectMapper.writeValueAsString(dailyLoginStats);
         } catch (JsonProcessingException e) {
-            log.error("Error converting chart data to JSON", e);
+            log.error("Error converting line chart data to JSON", e);
         }
-        model.addAttribute("chartData", chartData);
+
+        // Data for Pie Chart
+        List<CategoryProductCountDTO> productCountByCategory = chartService.getProductCountByCategory();
+        String pieChartData = "[]";
+        try {
+            pieChartData = objectMapper.writeValueAsString(productCountByCategory);
+        } catch (JsonProcessingException e) {
+            log.error("Error converting pie chart data to JSON", e);
+        }
+
+        model.addAttribute("lineChartData", lineChartData);
+        model.addAttribute("pieChartData", pieChartData);
         model.addAttribute("center","chart");
         return "index";
     }
