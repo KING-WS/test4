@@ -275,6 +275,70 @@
     border-color: #dee2e6;
   }
 
+  /* --- Search Form Styles --- */
+  .search-form-container {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  /* 상품명 입력 필드만 너비 조정 */
+  #productName {
+    min-width: 400px; /* 또는 원하는 크기 */
+    min-height: 30px;
+  }
+
+
+  .search-form-container .form-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0; /* Reset margin for flex layout */
+  }
+
+  .search-form-container label {
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+  }
+
+  .search-form-container .form-control {
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+
+  .search-form-container .form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    outline: none;
+  }
+
+  .search-form-container .btn-search {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    color: white;
+    padding: 8px 25px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+  }
+
+  .search-form-container .btn-search:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
+
   /* 반응형 디자인 */
   @media (max-width: 768px) {
     #myitems_table {
@@ -296,6 +360,21 @@
 
 <div class="col-sm-10">
   <h1 class="page-title">내 상품 관리</h1>
+
+  <form id="myitemsSearchForm" action="/market/myitems" method="get" class="search-form-container">
+    <div class="form-group">
+            <input type="text" placeholder="상품명" name="productName" id="productName" class="form-control" value="${ps.productName}">
+    </div>
+    <div class="form-group">
+            <select name="cateId" id="cateId" class="form-control">
+        <option value="">전체</option>
+        <c:forEach var="cate" items="${cateList}">
+          <option value="${cate.cateId}" ${ps.cateId == cate.cateId ? 'selected' : ''}>${cate.cateName}</option>
+        </c:forEach>
+      </select>
+    </div>
+    <button type="button" id="searchBtn" class="btn-search">검색</button>
+  </form>
 
   <table id="myitems_table">
     <thead>
@@ -356,27 +435,56 @@
     <ul class="pagination">
       <c:if test="${pageMaker.hasPreviousPage}">
         <li class="page-item">
-          <a class="page-link" href="<c:url value='/market/myitems?page=${pageMaker.prePage}'/>">이전</a>
+          <a class="page-link" href="<c:url value='/market/myitems?page=${pageMaker.prePage}&productName=${ps.productName}&cateId=${ps.cateId}'/>">이전</a>
         </li>
       </c:if>
       <c:forEach items="${pageMaker.navigatepageNums}" var="pageNum">
         <li class="page-item ${pageMaker.pageNum == pageNum ? 'active' : ''}">
-          <a class="page-link" href="<c:url value='/market/myitems?page=${pageNum}'/>">${pageNum}</a>
+          <a class="page-link" href="<c:url value='/market/myitems?page=${pageNum}&productName=${ps.productName}&cateId=${ps.cateId}'/>">${pageNum}</a>
         </li>
       </c:forEach>
       <c:if test="${pageMaker.hasNextPage}">
         <li class="page-item">
-          <a class="page-link" href="<c:url value='/market/myitems?page=${pageMaker.nextPage}'/>">다음</a>
+          <a class="page-link" href="<c:url value='/market/myitems?page=${pageMaker.nextPage}&productName=${ps.productName}&cateId=${ps.cateId}'/>">다음</a>
         </li>
       </c:if>
     </ul>
   </div>
 
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(function(){
     $('.delete-btn').click(function(){
       return confirm("정말로 삭제하시겠습니까?");
+    });
+
+    // Search button click handler
+    $('#searchBtn').on('click', function() {
+        const form = $('#myitemsSearchForm');
+        const productName = $('#productName').val();
+        const cateId = $('#cateId').val();
+
+        let url = form.attr('action') + '?';
+        const params = [];
+
+        if (productName && productName.trim() !== '') {
+            params.push('productName=' + encodeURIComponent(productName));
+        }
+
+        if (cateId && cateId.trim() !== '') {
+            params.push('cateId=' + encodeURIComponent(cateId));
+        }
+        // When searching, always go to the first page
+        params.push('page=1');
+
+        window.location.href = url + params.join('&');
+    });
+
+    // Handle Enter key press on the form
+    $('#myitemsSearchForm').on('submit', function(event) {
+        event.preventDefault(); // Prevent default submission
+        $('#searchBtn').click(); // Trigger the custom search button click
     });
   });
 </script>

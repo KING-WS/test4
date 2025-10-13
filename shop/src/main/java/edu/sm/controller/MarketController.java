@@ -88,7 +88,7 @@ public class MarketController {
             return "redirect:/login";
         }
         productService.register(product);
-        return "redirect:/market/map5";
+        return "redirect:/market";
     }
 
     @RequestMapping("/detail")
@@ -141,14 +141,32 @@ public class MarketController {
     }
 
     @RequestMapping("/myitems")
-    public String myitems(@RequestParam(value = "page", defaultValue = "1") int page, Model model, HttpSession session) throws Exception {
+    public String myitems(@RequestParam(value = "page", defaultValue = "1") int page,
+                          ProductSearch ps,
+                          Model model,
+                          HttpSession session) throws Exception {
         Cust cust = (Cust) session.getAttribute("cust");
         if (cust == null) {
             return "redirect:/login";
         }
         List<Product> list = productService.getMyItems(cust.getCustId());
 
-        // Manual pagination
+        // Filter list based on search criteria
+        final String productName = ps.getProductName();
+        if (productName != null && !productName.trim().isEmpty()) {
+            list = list.stream()
+                    .filter(p -> p.getProductName().toLowerCase().contains(productName.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
+
+        final Integer cateId = ps.getCateId();
+        if (cateId != null && cateId > 0) { // Assuming cateId > 0 are valid categories
+            list = list.stream()
+                    .filter(p -> p.getCateId() == cateId)
+                    .collect(Collectors.toList());
+        }
+
+        // Manual pagination on the (potentially filtered) list
         int pageSize = 9;
         com.github.pagehelper.Page<Product> pageList = new com.github.pagehelper.Page<>(page, pageSize);
         pageList.setTotal(list.size());
@@ -159,8 +177,11 @@ public class MarketController {
 
         PageInfo<Product> p = new PageInfo<>(pageList, 5);
 
+        List<Cate> cateList = productService.getAllCate();
+        model.addAttribute("cateList", cateList);
         model.addAttribute("plist", p.getList());
         model.addAttribute("pageMaker", p);
+        model.addAttribute("ps", ps); // Pass search criteria back to the view
         model.addAttribute("target", "/market/myitems");
         model.addAttribute("center", dir+"myitems");
         model.addAttribute("left", dir+"left");

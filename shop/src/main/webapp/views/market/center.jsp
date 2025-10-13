@@ -107,8 +107,6 @@
     border-radius: 8px;
     padding: 15px;
     background-color: #f9f9f9;
-    height: 400px; /* 높이 고정 */
-    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 생성 */
   }
   #price-ranking-content ol {
     padding-left: 0; /* ol 태그의 기본 여백과 숫자 제거 */
@@ -142,6 +140,23 @@
     margin-left: 10px; /* 이름과 가격 사이 여백 */
   }
 
+  .rank-change {
+    font-weight: bold;
+    margin-left: 10px;
+    min-width: 40px; /* To align items */
+    text-align: left;
+  }
+  .rank-up {
+    color: red;
+  }
+  .rank-down {
+    color: blue;
+  }
+  .rank-new {
+    color: #ff6b6b;
+    font-weight: bold;
+  }
+
   /* NEW 뱃지 스타일 */
   .new-badge {
     color: #ff6b6b;
@@ -161,13 +176,17 @@
     background: #ffffff;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
-    flex-wrap: wrap;
+  }
+
+  /* 상품명 입력 필드만 너비 조정 */
+  #productName {
+    min-width: 400px; /* 또는 원하는 크기 */
+    min-height: 30px;
   }
 
   .search-form-container .form-group {
@@ -189,10 +208,12 @@
     padding: 8px 15px;
     transition: all 0.3s ease;
     font-size: 14px;
+
   }
 
   .search-form-container .form-control:focus {
     border-color: #667eea;
+    max-width: 200px;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
     outline: none;
   }
@@ -268,17 +289,22 @@
 
 <div class="col-sm-10">
   <div class="welcome-section">
-    <h2>짭근마켓에 오신 것을 환영합니다</h2>
+    <c:choose>
+      <c:when test="${not empty sessionScope.cust.custName}">
+        <h2>${sessionScope.cust.custName}님, 환영합니다</h2>
+      </c:when>
+      <c:otherwise>
+        <h2>짭근마켓에 오신 것을 환영합니다</h2>
+      </c:otherwise>
+    </c:choose>
     <h5>다양한 상품을 만나보세요</h5>
   </div>
 
   <form id="marketSearchForm" action="/market/search" method="get" class="search-form-container">
     <div class="form-group">
-      <label for="productName">상품명:</label>
-      <input type="text" name="productName" id="productName" class="form-control" value="${ps.productName}">
+      <input type="text" name="productName" placeholder="상품명 " id="productName" class="form-control" value="${ps.productName}">
     </div>
     <div class="form-group">
-      <label for="cateId">카테고리:</label>
       <select name="cateId" id="cateId" class="form-control">
         <option value="">전체</option>
         <c:forEach var="cate" items="${cateList}">
@@ -300,6 +326,7 @@
             </div>
           </c:when>
           <c:otherwise>
+            <c:set var="now" value="<%=new java.util.Date()%>" />
             <c:forEach var="product" items="${productList.list}">
               <a href="/market/detail?id=${product.productId}" class="product-card">
                 <c:choose>
@@ -315,12 +342,18 @@
                 <div class="product-info">
                   <div class="product-title">
                       ${product.productName}
+                    <c:if test="${product.productRegdate != null}">
+                      <fmt:parseDate value="${product.productRegdate}" pattern="yyyy-MM-dd HH:mm:ss" var="parsedRegDateForBadge" />
+                      <c:set var="timeDiffInSeconds" value="${(now.time - parsedRegDateForBadge.time) / 1000}" />
+                      <c:if test="${timeDiffInSeconds <= 180}">
+                        <span class="new-badge">NEW</span>
+                      </c:if>
+                    </c:if>
                   </div>
                   <div class="product-price">
                     <fmt:formatNumber type="number" pattern="#,###원" value="${product.productPrice}" />
                   </div>
                   <div class="product-date">
-                    <c:set var="now" value="<%=new java.util.Date()%>" />
                     <c:set var="regDate" value="${product.productRegdate}" />
                     <c:choose>
                       <c:when test="${regDate != null}">
@@ -360,6 +393,7 @@
 <script>
   $(document).ready(function() {
     let showPriceRanking = true; // true: 가격 순위, false: 등록 순위
+    let previousPriceRanking = {}; // Store previous ranks {productId: rank}
 
     // 가격 포맷팅 함수 (만, 억 단위)
     function formatKoreanPrice(price) {
@@ -378,7 +412,7 @@
           return `${억.toLocaleString()}억 ${만.toLocaleString()}만 원`;
         }
       }
-      
+
       // 100만 이상, 1억 미만일 경우
       const 만 = Math.floor(price / 10000);
       return `${만.toLocaleString()}만 원`;
@@ -397,21 +431,51 @@
 
           if (data && data.length > 0) {
             const ol = $('<ol></ol>');
+            const newRanking = {};
+
             data.forEach((product, index) => {
+              const newRank = index + 1;
+              newRanking[product.productId] = newRank;
+
               const li = $('<li></li>').attr('title', product.productName);
-              const rankSpan = $('<span class="ranking-number"></span>').text((index + 1) + '.');
-              
+              const rankSpan = $('<span class="ranking-number"></span>').text(newRank + '.');
+
               let displayName = product.productName;
-              if (displayName.length > 4) {
-                displayName = displayName.substring(0, 4) + '...';
+              if (displayName.length > 7) {
+                displayName = displayName.substring(0, 7) + '...';
               }
               const nameSpan = $('<span class="ranking-name"></span>').text(displayName);
 
-              const priceSpan = $('<span class="ranking-price"></span>').text(formatKoreanPrice(product.productPrice));
-              li.append(rankSpan).append(nameSpan).append(priceSpan);
+              // "new" 뱃지 로직 추가
+              const regDate = new Date(product.productRegdate);
+              const now = new Date();
+              const diffSeconds = (now.getTime() - regDate.getTime()) / 1000;
+
+              if (diffSeconds <= 180) {
+                const newBadge = $('<span class="new-badge">new</span>');
+                nameSpan.append(newBadge);
+              }
+
+              const oldRank = previousPriceRanking[product.productId];
+              let rankChangeSpan = $('<span class="rank-change"></span>');
+
+              // Only show UP/DOWN if it was previously ranked
+              if (Object.keys(previousPriceRanking).length > 0 && oldRank !== undefined && oldRank !== newRank) {
+                if (newRank < oldRank) {
+                  rankChangeSpan.html('UP').addClass('rank-up');
+                } else {
+                  rankChangeSpan.html('DOWN').addClass('rank-down');
+                }
+              }
+
+              li.append(rankSpan).append(nameSpan).append(rankChangeSpan);
               ol.append(li);
             });
             rankingContent.append(ol);
+
+            // Update previous ranking for the next call
+            previousPriceRanking = newRanking;
+
           } else {
             rankingContent.append('<p>랭킹 정보가 없습니다.</p>');
           }
@@ -433,7 +497,7 @@
         success: function(data) {
           const rankingContent = $('#price-ranking-content');
           rankingContent.empty();
-          const title = $('<h4></h4>').text('실시간 상품등록 순위').css('margin-bottom', '15px');
+          const title = $('<h4></h4>').text('실시간 상품 등록').css('margin-bottom', '15px');
           rankingContent.append(title);
 
           if (data && data.length > 0) {
@@ -441,10 +505,10 @@
             data.forEach((product, index) => {
               const li = $('<li></li>').attr('title', product.productName);
               const rankSpan = $('<span class="ranking-number"></span>').text((index + 1) + '.');
-              
+
               let displayName = product.productName;
-              if (displayName.length > 4) {
-                displayName = displayName.substring(0, 4) + '...';
+              if (displayName.length > 7) {
+                displayName = displayName.substring(0, 7) + '...';
               }
               const nameSpan = $('<span class="ranking-name"></span>').text(displayName);
 
@@ -453,7 +517,7 @@
               const now = new Date();
               const diffSeconds = (now.getTime() - regDate.getTime()) / 1000;
 
-              if (diffSeconds <= 30) {
+              if (diffSeconds <= 180) {
                 const newBadge = $('<span class="new-badge">new</span>');
                 nameSpan.append(newBadge);
               }
@@ -493,28 +557,28 @@
 
     // Search button click handler
     $('#searchBtn').on('click', function() {
-        const form = $('#marketSearchForm');
-        const productName = $('#productName').val();
-        const cateId = $('#cateId').val();
+      const form = $('#marketSearchForm');
+      const productName = $('#productName').val();
+      const cateId = $('#cateId').val();
 
-        let url = form.attr('action') + '?';
-        const params = [];
+      let url = form.attr('action') + '?';
+      const params = [];
 
-        if (productName && productName.trim() !== '') {
-            params.push('productName=' + encodeURIComponent(productName));
-        }
+      if (productName && productName.trim() !== '') {
+        params.push('productName=' + encodeURIComponent(productName));
+      }
 
-        if (cateId && cateId.trim() !== '') {
-            params.push('cateId=' + encodeURIComponent(cateId));
-        }
+      if (cateId && cateId.trim() !== '') {
+        params.push('cateId=' + encodeURIComponent(cateId));
+      }
 
-        window.location.href = url + params.join('&');
+      window.location.href = url + params.join('&');
     });
 
     // Handle Enter key press on the form
     $('#marketSearchForm').on('submit', function(event) {
-        event.preventDefault(); // Prevent default submission
-        $('#searchBtn').click(); // Trigger the custom search button click
+      event.preventDefault(); // Prevent default submission
+      $('#searchBtn').click(); // Trigger the custom search button click
     });
   });
 </script>
