@@ -17,17 +17,12 @@ import java.util.List;
 
 @Controller
 @Slf4j
-@RequestMapping("/chat")
+@RequestMapping("/report")
 @RequiredArgsConstructor
-public class ChatController {
+public class ReportController {
 
-    String dir="chat/";
+    String dir="report/";
 
-    @RequestMapping("/report")
-    public String report(Model model) {
-        model.addAttribute("center",dir+"report");
-        return "index";
-    }
 
     @RequestMapping("/get")
     public String get(Model model) {
