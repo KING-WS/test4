@@ -80,6 +80,7 @@ public class ChatController {
 
         model.addAttribute("chatPartners", chatPartners);
         model.addAttribute("center", "chat/list");
+        model.addAttribute("left", "market/left"); // Re-add the market left menu
         return "index";
     }
 
