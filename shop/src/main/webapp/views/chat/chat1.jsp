@@ -65,6 +65,22 @@
     padding: 5px 10px;
   }
 
+
+  .chat-header .video-call-btn {
+    padding: 5px 10px;
+    border-radius: 8px;
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .chat-header .video-call-btn:hover {
+    background-color: #138496;
+  }
+
   .chat-status {
     display: flex;
     align-items: center;
@@ -175,8 +191,9 @@
     </h3>
     <div class="target-input-group">
       <label for="chat-target-id">To:</label>
-      <input type="text" id="chat-target-id" placeholder="상대방 ID 입력">
+      <input type="text" id="chat-target-id" placeholder="상대방 ID 입력" readonly>
     </div>
+    <button id="video-call-btn" class="video-call-btn">영상통화</button>
     <div id="chat-status" class="chat-status">
       <div id="status-indicator" class="status-indicator"></div>
       <span id="status-text">연결 중...</span>
@@ -194,8 +211,17 @@
 </div>
 
 <script>
+  const chat3Url = '<c:url value="/chat/chat3" />';
+
   // 페이지 로드가 완료되면 채팅 기능 초기화
   document.addEventListener("DOMContentLoaded", function() {
+
+    // URL에서 'target' 파라미터 값을 가져와서 'To:' 필드에 설정
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetId = urlParams.get('target');
+    if (targetId) {
+      document.getElementById('chat-target-id').value = targetId;
+    }
 
     const chatClient = {
       // 1. JSP Expression Language를 사용해 현재 사용자 ID를 직접 설정
@@ -209,7 +235,8 @@
         messageArea: document.getElementById('chat-messages'),
         targetIdInput: document.getElementById('chat-target-id'),
         messageInput: document.getElementById('chat-message-input'),
-        sendBtn: document.getElementById('chat-send-btn')
+        sendBtn: document.getElementById('chat-send-btn'),
+        videoCallBtn: document.getElementById('video-call-btn')
       },
 
       // 초기화 함수
@@ -223,6 +250,7 @@
         }
         this.addEventListeners(); // 이벤트 핸들러 등록
         this.connect(); // 웹소켓 자동 연결 시작
+        this.loadHistory(); // 대화 기록 불러오기
       },
 
       // 클릭, 키보드 입력 등 이벤트 관련 설정
@@ -234,6 +262,44 @@
             this.sendMessage();
           }
         });
+
+        this.elements.videoCallBtn.addEventListener('click', () => {
+            const targetId = this.elements.targetIdInput.value;
+            if (!targetId) {
+                alert('상대방 ID가 지정되지 않았습니다.');
+                return;
+            }
+            const url = chat3Url + '?caller=' + this.id + '&callee=' + targetId;
+            window.open(url, '_blank', 'width=1000,height=800');
+        });
+      },
+
+      // 대화 기록 불러오기
+      loadHistory: async function() {
+        const targetId = this.elements.targetIdInput.value;
+        if (!targetId) return;
+
+        try {
+          const response = await fetch('/api/chat/history?user1=' + this.id + '&user2=' + targetId);
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const history = await response.json();
+          
+          this.elements.messageArea.innerHTML = ''; // 기존 메시지 영역 비우기
+
+          history.forEach(msg => {
+            const isMyMessage = msg.senderId === this.id;
+            // DB에서 가져온 content는 content 필드에 있을 수 있으므로 확인
+            const displayMsg = {
+                sendid: msg.senderId,
+                content1: msg.content
+            };
+            this.displayMessage(displayMsg, isMyMessage);
+          });
+        } catch (error) {
+          console.error('Error fetching chat history:', error);
+        }
       },
 
       // 웹소켓 서버에 연결
