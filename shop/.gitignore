@@ -1,2 +1,7 @@
 /.env
 /.gradle/
+/build/
+/bin/
+
+# IDE files
+.idea/
