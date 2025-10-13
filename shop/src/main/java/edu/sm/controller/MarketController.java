@@ -2,6 +2,7 @@ package edu.sm.controller;
 
 import edu.sm.app.dto.Cate;
 import edu.sm.app.dto.Product;
+import edu.sm.app.service.ChatService;
 import edu.sm.app.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import edu.sm.app.dto.Cust;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,7 +23,17 @@ import java.util.List;
 public class MarketController {
 
     final ProductService productService;
+    final ChatService chatService;
     String dir="market/";
+
+    @ModelAttribute("unreadChatCount")
+    public int getUnreadChatCount(HttpSession session) {
+        Cust cust = (Cust) session.getAttribute("cust");
+        if (cust != null) {
+            return chatService.countUnreadMessages(cust.getCustId());
+        }
+        return 0;
+    }
 
     @RequestMapping("")
     public String main(Model model) {

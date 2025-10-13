@@ -20,6 +20,9 @@ public class ChatRestController {
 
     @GetMapping("/history")
     public List<ChatMessage> getHistory(@RequestParam String user1, @RequestParam String user2) {
+        // When a user requests history, it means they have opened the chat.
+        // Mark messages from user2 to user1 as read.
+        chatService.markAsRead(user1, user2);
         return chatService.getChatHistory(user1, user2);
     }
 }

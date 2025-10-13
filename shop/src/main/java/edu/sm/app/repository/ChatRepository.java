@@ -11,4 +11,7 @@ public interface ChatRepository {
     void insertMessage(ChatMessage message);
     List<ChatMessage> getChatHistory(String userId1, String userId2);
     List<String> getChatPartners(String userId);
+    void markAsRead(String receiverId, String senderId);
+    int countUnreadMessages(String userId);
+    List<String> getSendersWithUnreadMessages(String receiverId);
 }
