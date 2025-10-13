@@ -1,149 +1,142 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-    <title>Chat</title>
-    <%-- JQuery, SockJS, Stomp.js 라이브러리 로드 (필수!) --%>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 
-    <style>
-        /* CSS 스타일 (이전과 동일) */
-        body { font-family: sans-serif; }
-        .chat-container { display: flex; height: 80vh; border: 1px solid #ccc; }
-        #chat-list-container { width: 30%; border-right: 1px solid #ccc; display: flex; flex-direction: column; background-color: #f9f9f9; }
-        .chat-list-header { padding: 15px; font-weight: bold; border-bottom: 1px solid #eee; }
-        #chat-list { list-style: none; padding: 0; margin: 0; overflow-y: auto; flex-grow: 1; }
-        #chat-list li { padding: 15px; border-bottom: 1px solid #eee; cursor: pointer; }
-        #chat-list li:hover { background-color: #f0f0f0; }
-        #chat-list li.active { background-color: #a9d9ff; }
-        #chat-list li .last-message { display: block; font-size: 0.8em; color: gray; margin-top: 4px; }
-        #chat-room-container { width: 70%; display: flex; flex-direction: column; }
-        #chat-room-header { padding: 15px; border-bottom: 1px solid #ccc; background-color: #f1f1f1; }
-        #messages { flex-grow: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column-reverse; }
-        .message { padding: 8px 12px; margin-bottom: 5px; border-radius: 18px; max-width: 60%; line-height: 1.4; }
-        .my-message { background-color: #ffeb33; align-self: flex-end; }
-        .other-message { background-color: #f0f0f0; align-self: flex-start; }
-        .message-input { display: flex; padding: 10px; border-top: 1px solid #ccc; }
-        #message-text { flex-grow: 1; border: 1px solid #ccc; border-radius: 15px; padding: 10px; }
-        #send-btn { border: none; background-color: #ffeb33; font-weight: bold; padding: 10px 15px; margin-left: 10px; border-radius: 15px; cursor: pointer; }
-    </style>
-</head>
-<body>
+<%-- 이 파일은 index.jsp에 포함(include)되므로 <html>, <head>, <body> 태그가 필요 없습니다. --%>
 
-<%-- HTML 구조 --%>
-<div class="container">
-    <h2>Chat Center</h2>
-    <h4 style="display: none" id="user_id">${sessionScope.cust.custId}</h4>
-    <p><b>My ID:</b> ${sessionScope.cust.custId}</p>
+<%-- CSS 스타일 --%>
+<style>
+    .chat-container { display: flex; height: 80vh; border: 1px solid #ccc; width: 100%;}
+    #chat-list-container { width: 30%; border-right: 1px solid #ccc; display: flex; flex-direction: column; background-color: #f9f9f9; }
+    .chat-list-header { padding: 15px; font-weight: bold; border-bottom: 1px solid #eee; text-align: center; }
+    .start-chat-area { padding: 10px; border-bottom: 1px solid #ccc; display: flex; }
+    .start-chat-area input { flex-grow: 1; border: 1px solid #ccc; padding: 8px; border-radius: 5px; }
+    .start-chat-area button { border: none; background-color: #007bff; color: white; padding: 8px 12px; margin-left: 5px; border-radius: 5px; cursor: pointer; }
+    #chat-list { list-style: none; padding: 0; margin: 0; overflow-y: auto; flex-grow: 1; }
+    #chat-room-container { width: 70%; display: flex; flex-direction: column; }
+    #chat-room-header { padding: 15px; border-bottom: 1px solid #ccc; background-color: #f1f1f1; text-align: center;}
+    #messages { flex-grow: 1; overflow-y: auto; padding: 10px; }
+    .message { padding: 8px 12px; margin-bottom: 5px; border-radius: 18px; max-width: 70%; line-height: 1.4; }
+    .my-message { background-color: #ffeb33; align-self: flex-end; }
+    .other-message { background-color: #f0f0f0; align-self: flex-start; }
+    .message-input { display: flex; padding: 10px; border-top: 1px solid #ccc; }
+    #message-text { flex-grow: 1; border: 1px solid #ccc; border-radius: 15px; padding: 10px; }
+    #send-btn { border: none; background-color: #ffeb33; font-weight: bold; padding: 10px 15px; margin-left: 10px; border-radius: 15px; cursor: pointer; }
+</style>
 
-    <div class="chat-container">
-        <div id="chat-list-container">
-            <div class="chat-list-header"><h3>채팅 목록</h3></div>
-            <ul id="chat-list"></ul>
+<h4 style="display: none" id="user_id">${sessionScope.cust.custId}</h4>
+
+<div class="chat-container">
+    <div id="chat-list-container">
+        <div class="chat-list-header"><h3>채팅 목록</h3></div>
+        <div class="start-chat-area">
+            <input type="text" id="partner-id-input" placeholder="상대방 ID 입력">
+            <button id="start-chat-btn">시작</button>
         </div>
-        <div id="chat-room-container">
-            <div id="chat-room-header"><h3 id="current-chat-target">상대방을 선택하세요</h3></div>
-            <div id="messages"></div>
-            <div class="message-input">
-                <input type="text" id="message-text" placeholder="메시지를 입력하세요..." disabled>
-                <button id="send-btn" disabled>전송</button>
-            </div>
+        <ul id="chat-list"></ul>
+    </div>
+    <div id="chat-room-container">
+        <div id="chat-room-header"><h3 id="current-chat-target">상대방을 선택하세요</h3></div>
+        <div id="messages" style="display: flex; flex-direction: column;"></div>
+        <div class="message-input">
+            <input type="text" id="message-text" placeholder="메시지를 입력하세요..." disabled>
+            <button id="send-btn" disabled>전송</button>
         </div>
     </div>
 </div>
 
 <script>
-    let chat = {
+    // 스크립트 코드는 JSP와 무관하므로 <c:url> 등을 사용하지 않습니다.
+    const chat = {
         myId: '',
         stompClient: null,
-        chatRooms: {},
-        currentChatTarget: null,
+        currentRoomId: null,
+        currentSubscription: null,
 
         init: function () {
             this.myId = $('#user_id').text();
+            if (!this.myId) {
+                console.error("로그인 ID를 찾을 수 없습니다.");
+                return;
+            }
             this.connect();
 
-            $('#send-btn').click(() => this.sendMessage());
-            $('#message-text').keypress((e) => { if (e.key === 'Enter') this.sendMessage(); });
-            $('#chat-list').on('click', 'li', (e) => {
-                let targetId = $(e.currentTarget).data('id');
-                this.openChatRoom(targetId);
+            $('#send-btn').on('click', () => this.sendMessage());
+            $('#message-text').on('keypress', (e) => { if (e.key === 'Enter') this.sendMessage(); });
+            $('#start-chat-btn').on('click', () => {
+                const partnerId = $('#partner-id-input').val();
+                if (!partnerId || partnerId.trim() === '') {
+                    alert('상대방의 ID를 입력하세요.');
+                    return;
+                }
+                if (partnerId === this.myId) {
+                    alert('자기 자신과는 대화할 수 없습니다.');
+                    return;
+                }
+                this.openChatRoom(partnerId);
+                $('#partner-id-input').val('');
             });
         },
 
         connect: function () {
-            // ★★★ 변경점 1: 접속 주소를 '/chat'으로 수정 ★★★
-            let socket = new SockJS('/chat');
+            const socket = new SockJS('/chat');
             this.stompClient = Stomp.over(socket);
-
             this.stompClient.connect({}, (frame) => {
-                console.log('Connected: ' + frame);
-                // ★★★ 변경점 2: 구독 주소를 '/send/to/'로 수정 ★★★
-                // StomWebSocketConfig의 enableSimpleBroker("/send",...) 설정과 MsgController의 전송 로직을 따름
-                this.stompClient.subscribe('/send/to/' + this.myId, (msg) => {
-                    this.handleIncomingMessage(JSON.parse(msg.body));
-                });
-                this.fetchChatList();
+                console.log('WebSocket Connected: ' + frame);
             });
         },
 
-        fetchChatList: function() {
-            console.log("서버에 기존 채팅 목록을 요청해야 합니다. (백엔드 API 구현 필요)");
-        },
+        openChatRoom: async function (partnerId) {
+            try {
+                const roomId = await $.post('/api/chatroom', { partnerId: partnerId });
+                this.currentRoomId = roomId;
 
-        handleIncomingMessage: function (msg) {
-            let partnerId = msg.sendid === this.myId ? msg.receiveid : msg.sendid;
-            if (!this.chatRooms[partnerId]) this.chatRooms[partnerId] = [];
-            this.chatRooms[partnerId].push(msg);
-            this.updateChatList(partnerId, msg.content1);
-            if (this.currentChatTarget === partnerId) this.displayMessage(msg);
-        },
+                $('#messages').empty();
+                // [정상 코드] JavaScript 변수를 사용하기 위해 백틱(`) 사용
+                const messages = await $.get(`/api/chatroom/${this.currentRoomId}/messages`);
+                messages.forEach(msg => this.displayMessage(msg, true));
 
-        updateChatList: function (partnerId, lastMessage) {
-            let chatRoomEntry = $('#chat-list').find(`li[data-id='${partnerId}']`);
-            if (chatRoomEntry.length === 0) {
-                $('#chat-list').prepend(`<li data-id="${partnerId}">${partnerId}<span class="last-message">${lastMessage}</span></li>`);
-            } else {
-                chatRoomEntry.find('.last-message').text(lastMessage);
-                $('#chat-list').prepend(chatRoomEntry);
+                if (this.currentSubscription) {
+                    this.currentSubscription.unsubscribe();
+                }
+                // [정상 코드] JavaScript 변수를 사용하기 위해 백틱(`) 사용
+                this.currentSubscription = this.stompClient.subscribe(`/topic/room/${this.currentRoomId}`, (msg) => {
+                    this.displayMessage(JSON.parse(msg.body), false);
+                });
+
+                $('#current-chat-target').text(`${partnerId} 님과의 대화`);
+                $('#message-text, #send-btn').prop('disabled', false);
+                $('#message-text').focus();
+
+            } catch (error) {
+                console.error("채팅방 입장에 실패했습니다.", error);
+                alert("채팅방 입장에 실패했습니다. 서버 로그를 확인하세요.");
             }
         },
 
-        openChatRoom: function (targetId) {
-            this.currentChatTarget = targetId;
-            $('#current-chat-target').text(targetId);
-            $('#messages').empty();
-            $('#message-text, #send-btn').prop('disabled', false);
-            $('#chat-list li').removeClass('active');
-            $('#chat-list').find(`li[data-id='${targetId}']`).addClass('active');
-            let messages = this.chatRooms[targetId] || [];
-            messages.forEach(msg => this.displayMessage(msg));
-        },
-
-        displayMessage: function(msg) {
-            let side = msg.sendid === this.myId ? 'my-message' : 'other-message';
-            $('#messages').prepend(`<div class="message ${side}">${msg.content1}</div>`);
-        },
-
         sendMessage: function () {
-            let content = $('#message-text').val();
-            if (content.trim() === '' || !this.currentChatTarget) return;
+            const content = $('#message-text').val();
+            if (content.trim() === '' || !this.currentRoomId) return;
 
-            let msg = { 'sendid': this.myId, 'receiveid': this.currentChatTarget, 'content1': content };
-
-            // ★★★ 변경점 3: 메시지 발행 주소를 '/receiveto'로 유지 ★★★
-            // MsgController의 @MessageMapping("/receiveto")를 호출
-            this.stompClient.send('/receiveto', {}, JSON.stringify(msg));
-
-            this.handleIncomingMessage(msg);
+            const msg = { 'roomId': this.currentRoomId, 'sendid': this.myId, 'content1': content };
+            this.stompClient.send('/chat/message', {}, JSON.stringify(msg));
             $('#message-text').val('');
+        },
+
+        displayMessage: function(msg, isHistory) {
+            const side = msg.sendid === this.myId ? 'my-message' : 'other-message';
+            const messageHtml = `<div class="message ${side}">${msg.content1}</div>`;
+            const messagesContainer = $('#messages');
+
+            if (isHistory) {
+                messagesContainer.prepend(messageHtml);
+            } else {
+                messagesContainer.append(messageHtml);
+                messagesContainer.scrollTop(messagesContainer[0].scrollHeight);
+            }
         }
     };
 
-    $(() => { chat.init(); });
+    $(() => {
+        chat.init();
+    });
 </script>
-
-</body>
-</html>
