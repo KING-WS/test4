@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface ReportRepository extends SmRepository<Report, Integer> {
     int selectCount();
+    String selectMostReportedUser();
 }

@@ -63,6 +63,9 @@ public class MainController {
         int pendingReportCount = reportService.getReportCount();
         model.addAttribute("pendingReportCount", pendingReportCount);
 
+        String mostReportedUser = reportService.getMostReportedUser();
+        model.addAttribute("mostReportedUser", mostReportedUser);
+
         model.addAttribute("center","chart");
         return "index";
     }

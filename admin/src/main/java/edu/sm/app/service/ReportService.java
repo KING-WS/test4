@@ -34,10 +34,30 @@ public class ReportService {
 
 
 
-    public int getReportCount() {
+        public int getReportCount() {
 
-        return reportRepository.selectCount();
 
-    }
+
+            return reportRepository.selectCount();
+
+
+
+        }
+
+
+
+    
+
+
+
+        public String getMostReportedUser() {
+
+
+
+            return reportRepository.selectMostReportedUser();
+
+
+
+        }
 
 }
