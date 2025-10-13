@@ -132,7 +132,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Total Products</div>
+                                물품 총 개수</div>
                             <div id="total-products-count" class="h5 mb-0 font-weight-bold text-gray-800">${totalProducts}</div>
                         </div>
                         <div class="col-auto">

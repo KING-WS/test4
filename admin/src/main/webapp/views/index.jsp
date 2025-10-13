@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>짭근마켓-admin</title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -140,26 +140,15 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="<c:url value="/"/>">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
-                </li>
-               <!-- Menu -->
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="<c:url value="/chat" />">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>chat</span></a>
+                        <span>대시보드</span></a>
                 </li>
 
 
                 <c:if test="${sessionScope.admin.adminRole == 'super'}">
                     <li class="nav-item active">
                         <a class="nav-link" href="<c:url value="/chart" />">
-                            <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span>admin</span></a>
-                    </li>
                 </c:if>
                 <!-- Divider -->
-                <hr class="sidebar-divider">
 
 <%--            <c:if test="${sessionScope.admin != null}">--%>
             <!-- Heading -->
