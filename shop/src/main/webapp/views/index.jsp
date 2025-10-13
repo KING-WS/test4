@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3245c839f7436be8b0c2d5c8e82f9d1b&libraries=services"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9122c6ed65a3629b19d62bab6d93ffaf&libraries=services"></script>
     
     <%-- highchart lib   --%>
     <script src="https://code.highcharts.com/highcharts.js"></script>
