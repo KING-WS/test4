@@ -51,6 +51,13 @@ public class MainController {
 
         model.addAttribute("lineChartData", lineChartData);
         model.addAttribute("pieChartData", pieChartData);
+
+        int todayVisitorCount = 0;
+        if (dailyLoginStats != null && !dailyLoginStats.isEmpty()) {
+            todayVisitorCount = dailyLoginStats.get(dailyLoginStats.size() - 1).getUserCount();
+        }
+        model.addAttribute("todayVisitorCount", todayVisitorCount);
+
         model.addAttribute("center","chart");
         return "index";
     }

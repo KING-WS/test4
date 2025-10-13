@@ -11960,3 +11960,708 @@ Caused by: org.postgresql.util.PSQLException: 오류: "wishlist" 이름의 릴�
 [2025-10-13 19:32:56:742935][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
 [2025-10-13 19:32:56:742935][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
 [2025-10-13 19:32:56:742936][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:24:1971][restartedMain] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Patterns [/chat/**, /adminchat/**] in 'stompWebSocketHandlerMapping'
+[2025-10-13 19:48:24:1979][restartedMain] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Patterns [/signal] in 'webSocketHandlerMapping'
+[2025-10-13 19:48:24:2022][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 67 mappings in 'requestMappingHandlerMapping'
+[2025-10-13 19:48:24:2193][restartedMain] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /imgs/**, /logs/**] in 'resourceHandlerMapping'
+[2025-10-13 19:48:24:2246][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.AdminMsgController:
+	{[MESSAGE],[/adminreceiveto]}: adminreceiveto(Msg,SimpMessageHeaderAccessor)
+[2025-10-13 19:48:24:2248][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ChartController:
+	
+[2025-10-13 19:48:24:2248][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ChartRestController:
+	
+[2025-10-13 19:48:24:2248][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ChatController:
+	
+[2025-10-13 19:48:24:2248][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ChatRestController:
+	
+[2025-10-13 19:48:24:2248][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.CustController:
+	
+[2025-10-13 19:48:24:2248][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.LoginController:
+	
+[2025-10-13 19:48:24:2248][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MainController:
+	
+[2025-10-13 19:48:24:2248][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MainRestController:
+	
+[2025-10-13 19:48:24:2248][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MapRestController:
+	
+[2025-10-13 19:48:24:2249][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MarketController:
+	
+[2025-10-13 19:48:24:2249][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MsgController:
+	{[MESSAGE],[/receiveme]}: receiveme(Msg,SimpMessageHeaderAccessor)
+	{[MESSAGE],[/receiveall]}: receiveall(Msg,SimpMessageHeaderAccessor)
+	{[MESSAGE],[/receiveto]}: receiveto(Msg,SimpMessageHeaderAccessor)
+[2025-10-13 19:48:24:2249][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ProductController:
+	
+[2025-10-13 19:48:24:2249][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.WishlistRestController:
+	
+[2025-10-13 19:48:24:2249][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	o.s.b.a.w.s.e.BasicErrorController:
+	
+[2025-10-13 19:48:24:2279][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2025-10-13 19:48:24:2316][restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+[2025-10-13 19:48:24:2386][restartedMain] DEBUG o.springframework.web.SimpLogging - clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+[2025-10-13 19:48:24:2386][restartedMain] DEBUG o.springframework.web.SimpLogging - clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[]]
+[2025-10-13 19:48:24:2386][restartedMain] DEBUG o.springframework.web.SimpLogging - clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3bf5bc43]
+[2025-10-13 19:48:24:2386][restartedMain] DEBUG o.springframework.web.SimpLogging - brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3bf5bc43]
+[2025-10-13 19:48:24:2387][restartedMain] DEBUG o.springframework.web.SimpLogging - clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2025-10-13 19:48:24:2388][restartedMain] DEBUG o.springframework.web.SimpLogging - brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2025-10-13 19:48:33:11099][https-jsse-nio-8443-exec-10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[2025-10-13 19:48:33:11099][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+[2025-10-13 19:48:33:11099][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+[2025-10-13 19:48:33:11099][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+[2025-10-13 19:48:33:11100][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@dc9ac7b
+[2025-10-13 19:48:33:11101][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@4b55ff07
+[2025-10-13 19:48:33:11101][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[2025-10-13 19:48:33:11101][https-jsse-nio-8443-exec-10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+[2025-10-13 19:48:33:11121][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+[2025-10-13 19:48:33:11122][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MainController#main(Model)
+[2025-10-13 19:48:33:11133][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.view.RedirectView - View name [redirect:], model {}
+[2025-10-13 19:48:33:11134][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 302 FOUND
+[2025-10-13 19:48:33:11142][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market", parameters={}
+[2025-10-13 19:48:33:11142][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#main(int, Model)
+[2025-10-13 19:48:33:11354][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:48:33:11357][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {unreadChatCount=0, cateList=[Cate(cateId=1, cateName=전자기기), Cate(cateId=2, cateName=생활용품), Cate(cateId=3, cateName=가구), Cate(cateId=4, cateName=의류), Cate(cateId=5, cateName=도서), Cate(cateId=6, cateName=스포츠/레저), Cate(cateId=7, cateName=기타)], productList=PageInfo{pageNum=1, pageSize=9, size=9, startRow=1, endRow=9, total=29, pages=4, list=Page{count=true, pageNum=1, pageSize=9, startRow=0, endRow=9, total=29, pages=4, reasonable=false, pageSizeZero=false}[Product(productId=17, productName=갤럭시 z플립플립플립31팔아요 미개봉입니다, productPrice=1300000, productImg=s1.jpg, productRegdate=2025-10-13 02:46:43.063622, productUpdate=2025-10-13 02:46:43.063622, cateId=1, cateName=전자기기, lat=36.80211, lng=127.07088, productDesc= 이번에 나온 zfffff입니다 회사에서 받아서 팔어요 , custId=3, productImgFile=null, chatCount=7, wishlistStatus=false), Product(productId=8, productName=바지 팔아요, productPrice=21000, productImg=p2.jpg, productRegdate=2025-10-13 02:46:42.98346, productUpdate=2025-10-13 02:46:42.98346, cateId=4, cateName=의류, lat=36.79845, lng=127.07981, productDesc=옷 정리중입니다., custId=6, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=10, productName=갈색 청바지 팝니다, productPrice=45000, productImg=p4.jpg, productRegdate=2025-10-13 02:46:43.010718, productUpdate=2025-10-13 02:46:43.010718, cateId=4, cateName=의류, lat=36.80098, lng=127.07024, productDesc=사이즈 미스로 판매해요., custId=3, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=11, productName=네이비색 긴 바지 팔아용~~, productPrice=17000, productImg=p5.jpg, productRegdate=2025-10-13 02:46:43.018877, productUpdate=2025-10-13 02:46:43.018877, cateId=4, cateName=의류, lat=36.79469, lng=127.07886, productDesc=작년에 사고 몇 번 안입었습니다., custId=1, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=12, productName=검은색 바지 팔아요, productPrice=15000, productImg=p6.jpg, productRegdate=2025-10-13 02:46:43.02449, productUpdate=2025-10-13 02:46:43.02449, cateId=4, cateName=의류, lat=36.80257, lng=127.07652, productDesc=깨끗하게 입어서 상태 좋아요., custId=2, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=13, productName=흰색 셔츠팔아요 오피스룩에 좋습니다(명품), productPrice=98000, productImg=sh1.jpg, productRegdate=2025-10-13 02:46:43.032786, productUpdate=2025-10-13 02:46:43.032786, cateId=4, cateName=의류, lat=36.79712, lng=127.08, productDesc=취업할려고 샀다가 복권 당첨되어서 팝니다 ㅎㅎ., custId=5, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=14, productName=여성용 나시 팝니다, productPrice=12000, productImg=tank.jpg, productRegdate=2025-10-13 02:46:43.042868, productUpdate=2025-10-13 02:46:43.042868, cateId=4, cateName=의류, lat=36.80401, lng=127.07439, productDesc=전남친이 사준건데 헤어져서 보기싫어가지고 관련 물품 다 헐값에 정리중입니다 , custId=2, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=15, productName=예쁜 여성용 나시 팔아요, productPrice=22000, productImg=tank2.jpg, productRegdate=2025-10-13 02:46:43.049689, productUpdate=2025-10-13 02:46:43.049689, cateId=4, cateName=의류, lat=36.79633, lng=127.07221, productDesc=인스타에 업로드용으로 사서 1번입고 그뒤로 안입었습니다 인플루언서 인증도 가능해요 ㅎㅎ, custId=3, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=16, productName=남자 머슬핏 나시 팔아요, productPrice=33000, productImg=tank3.jpg, productRegdate=2025-10-13 02:46:43.056855, productUpdate=2025-10-13 02:46:43.056855, cateId=4, cateName=의류, lat=36.79954, lng=127.07955, productDesc=바디프로필 다 찍어서 이제 판매합니다., custId=5, productImgFile=null, chatCount=0, wishlistStatus=false)], prePage=0, nextPage=2, isFirstPage=true, isLastPage=false, hasPreviousPage=false, hasNextPage=true, navigatePages=5, navigateFirstPage=1, navigateLastPage=4, navigatepageNums=[1, 2, 3, 4]}, target=/market, center=market/center, left=market/left, org.springframework.validation.BindingResult.productList=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+[2025-10-13 19:48:33:11360][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:48:34:11994][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:34:12087][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:48:34:12088][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:48:34:12104][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:34:12118][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:48:34:12118][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:48:34:12121][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:34:12136][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/s1.jpg", parameters={}
+[2025-10-13 19:48:34:12136][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p2.jpg", parameters={}
+[2025-10-13 19:48:34:12137][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:48:34:12137][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:48:34:12138][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:34:12138][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:34:12195][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p4.jpg", parameters={}
+[2025-10-13 19:48:34:12196][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:48:34:12197][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p5.jpg", parameters={}
+[2025-10-13 19:48:34:12197][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:48:34:12198][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:34:12198][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p6.jpg", parameters={}
+[2025-10-13 19:48:34:12198][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:48:34:12198][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:34:12199][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:34:12207][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank.jpg", parameters={}
+[2025-10-13 19:48:34:12207][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/sh1.jpg", parameters={}
+[2025-10-13 19:48:34:12207][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank2.jpg", parameters={}
+[2025-10-13 19:48:34:12207][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:48:34:12207][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:48:34:12207][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:48:34:12208][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:34:12208][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:34:12208][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:34:12238][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank3.jpg", parameters={}
+[2025-10-13 19:48:34:12239][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:48:34:12240][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:34:12453][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:48:34:12453][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:48:34:12472][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:48:34:12473][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:48:34:12498][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:36:14211][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/detail?id=17", parameters={masked}
+[2025-10-13 19:48:36:14211][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#detail(Model, int, HttpSession)
+[2025-10-13 19:48:36:14216][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:48:36:14216][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {unreadChatCount=0, p=Product(productId=17, productName=갤럭시 z플립플립플립31팔아요 미개봉입니다, productPrice=1300000, productImg=s1.jpg, productRegdate=2025-10-13 02:46:43.063622, productUpdate=2025-10-13 02:46:43.063622, cateId=1, cateName=전자기기, lat=36.80211, lng=127.07088, productDesc= 이번에 나온 zfffff입니다 회사에서 받아서 팔어요 , custId=3, productImgFile=null, chatCount=7, wishlistStatus=false), left=market/left, center=market/view, org.springframework.validation.BindingResult.p=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+[2025-10-13 19:48:36:14216][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:48:36:14277][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:36:14357][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:48:36:14357][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:48:36:14360][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:36:14370][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:48:36:14370][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:48:36:14371][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:36:14377][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/s1.jpg", parameters={}
+[2025-10-13 19:48:36:14377][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:48:36:14378][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:48:36:14551][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/api/wishlist/status?productId=17", parameters={masked}
+[2025-10-13 19:48:36:14551][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.WishlistRestController#getWishlistStatus(int, HttpSession)
+[2025-10-13 19:48:36:14559][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:48:36:14559][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{wishlistStatus=false}]
+[2025-10-13 19:48:36:14562][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:24:62401][MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+[2025-10-13 19:49:30:67841][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/chat/list", parameters={}
+[2025-10-13 19:49:30:67841][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.ChatController#chatList(Model, HttpServletRequest)
+[2025-10-13 19:49:30:67842][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.view.RedirectView - View name [redirect:], model {}
+[2025-10-13 19:49:30:67842][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 302 FOUND
+[2025-10-13 19:49:30:67848][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+[2025-10-13 19:49:30:67849][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.LoginController#add(Model)
+[2025-10-13 19:49:30:67849][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:49:30:67849][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {center=login, left=blank}
+[2025-10-13 19:49:30:67849][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:49:30:67911][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:30:67948][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:49:30:67948][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:30:67951][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:30:67969][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:49:30:67969][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:30:67970][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:69928][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+[2025-10-13 19:49:32:69929][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.LoginController#add(Model)
+[2025-10-13 19:49:32:69930][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:49:32:69930][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {center=login, left=blank}
+[2025-10-13 19:49:32:69930][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:49:32:69935][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:69959][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:49:32:69959][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:32:69960][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:49:32:69960][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:32:69962][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:69965][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:70655][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - POST "/loginimpl", parameters={masked}
+[2025-10-13 19:49:32:70655][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.LoginController#loginimpl(Model, String, String, HttpSession)
+[2025-10-13 19:49:32:70735][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.view.RedirectView - View name [redirect:], model {}
+[2025-10-13 19:49:32:70735][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 302 FOUND
+[2025-10-13 19:49:32:70743][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+[2025-10-13 19:49:32:70743][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MainController#main(Model)
+[2025-10-13 19:49:32:70744][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.view.RedirectView - View name [redirect:], model {}
+[2025-10-13 19:49:32:70744][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 302 FOUND
+[2025-10-13 19:49:32:70749][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market", parameters={}
+[2025-10-13 19:49:32:70749][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#main(int, Model)
+[2025-10-13 19:49:32:70754][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:49:32:70754][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {unreadChatCount=3, cateList=[Cate(cateId=1, cateName=전자기기), Cate(cateId=2, cateName=생활용품), Cate(cateId=3, cateName=가구), Cate(cateId=4, cateName=의류), Cate(cateId=5, cateName=도서), Cate(cateId=6, cateName=스포츠/레저), Cate(cateId=7, cateName=기타)], productList=PageInfo{pageNum=1, pageSize=9, size=9, startRow=1, endRow=9, total=29, pages=4, list=Page{count=true, pageNum=1, pageSize=9, startRow=0, endRow=9, total=29, pages=4, reasonable=false, pageSizeZero=false}[Product(productId=17, productName=갤럭시 z플립플립플립31팔아요 미개봉입니다, productPrice=1300000, productImg=s1.jpg, productRegdate=2025-10-13 02:46:43.063622, productUpdate=2025-10-13 02:46:43.063622, cateId=1, cateName=전자기기, lat=36.80211, lng=127.07088, productDesc= 이번에 나온 zfffff입니다 회사에서 받아서 팔어요 , custId=3, productImgFile=null, chatCount=7, wishlistStatus=false), Product(productId=8, productName=바지 팔아요, productPrice=21000, productImg=p2.jpg, productRegdate=2025-10-13 02:46:42.98346, productUpdate=2025-10-13 02:46:42.98346, cateId=4, cateName=의류, lat=36.79845, lng=127.07981, productDesc=옷 정리중입니다., custId=6, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=10, productName=갈색 청바지 팝니다, productPrice=45000, productImg=p4.jpg, productRegdate=2025-10-13 02:46:43.010718, productUpdate=2025-10-13 02:46:43.010718, cateId=4, cateName=의류, lat=36.80098, lng=127.07024, productDesc=사이즈 미스로 판매해요., custId=3, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=11, productName=네이비색 긴 바지 팔아용~~, productPrice=17000, productImg=p5.jpg, productRegdate=2025-10-13 02:46:43.018877, productUpdate=2025-10-13 02:46:43.018877, cateId=4, cateName=의류, lat=36.79469, lng=127.07886, productDesc=작년에 사고 몇 번 안입었습니다., custId=1, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=12, productName=검은색 바지 팔아요, productPrice=15000, productImg=p6.jpg, productRegdate=2025-10-13 02:46:43.02449, productUpdate=2025-10-13 02:46:43.02449, cateId=4, cateName=의류, lat=36.80257, lng=127.07652, productDesc=깨끗하게 입어서 상태 좋아요., custId=2, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=13, productName=흰색 셔츠팔아요 오피스룩에 좋습니다(명품), productPrice=98000, productImg=sh1.jpg, productRegdate=2025-10-13 02:46:43.032786, productUpdate=2025-10-13 02:46:43.032786, cateId=4, cateName=의류, lat=36.79712, lng=127.08, productDesc=취업할려고 샀다가 복권 당첨되어서 팝니다 ㅎㅎ., custId=5, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=14, productName=여성용 나시 팝니다, productPrice=12000, productImg=tank.jpg, productRegdate=2025-10-13 02:46:43.042868, productUpdate=2025-10-13 02:46:43.042868, cateId=4, cateName=의류, lat=36.80401, lng=127.07439, productDesc=전남친이 사준건데 헤어져서 보기싫어가지고 관련 물품 다 헐값에 정리중입니다 , custId=2, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=15, productName=예쁜 여성용 나시 팔아요, productPrice=22000, productImg=tank2.jpg, productRegdate=2025-10-13 02:46:43.049689, productUpdate=2025-10-13 02:46:43.049689, cateId=4, cateName=의류, lat=36.79633, lng=127.07221, productDesc=인스타에 업로드용으로 사서 1번입고 그뒤로 안입었습니다 인플루언서 인증도 가능해요 ㅎㅎ, custId=3, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=16, productName=남자 머슬핏 나시 팔아요, productPrice=33000, productImg=tank3.jpg, productRegdate=2025-10-13 02:46:43.056855, productUpdate=2025-10-13 02:46:43.056855, cateId=4, cateName=의류, lat=36.79954, lng=127.07955, productDesc=바디프로필 다 찍어서 이제 판매합니다., custId=5, productImgFile=null, chatCount=0, wishlistStatus=false)], prePage=0, nextPage=2, isFirstPage=true, isLastPage=false, hasPreviousPage=false, hasNextPage=true, navigatePages=5, navigateFirstPage=1, navigateLastPage=4, navigatepageNums=[1, 2, 3, 4]}, target=/market, center=market/center, left=market/left, org.springframework.validation.BindingResult.productList=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+[2025-10-13 19:49:32:70754][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:49:32:70763][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:70784][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:49:32:70784][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:49:32:70785][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:32:70785][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:32:70786][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:70788][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:70797][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/s1.jpg", parameters={}
+[2025-10-13 19:49:32:70797][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:32:70798][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:70800][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p2.jpg", parameters={}
+[2025-10-13 19:49:32:70800][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:32:70800][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:70805][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p4.jpg", parameters={}
+[2025-10-13 19:49:32:70805][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:32:70805][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:70808][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p5.jpg", parameters={}
+[2025-10-13 19:49:32:70808][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:32:70809][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:70811][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p6.jpg", parameters={}
+[2025-10-13 19:49:32:70811][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:32:70812][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:70818][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/sh1.jpg", parameters={}
+[2025-10-13 19:49:32:70818][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:32:70819][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:70821][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank.jpg", parameters={}
+[2025-10-13 19:49:32:70821][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:32:70821][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:32:70828][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank2.jpg", parameters={}
+[2025-10-13 19:49:32:70828][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:32:70829][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:33:70834][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank3.jpg", parameters={}
+[2025-10-13 19:49:33:70834][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:33:70834][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:33:70858][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:49:33:70858][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:49:33:70861][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:49:33:70861][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:49:33:70863][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:33:71751][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/chat/list", parameters={}
+[2025-10-13 19:49:33:71751][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.ChatController#chatList(Model, HttpServletRequest)
+[2025-10-13 19:49:33:71755][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:49:33:71758][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {chatPartners=[ChatDot(partnerId=3, hasUnread=true, productId=17, productName=갤럭시 z플립플립플립31팔아요 미개봉입니다), ChatDot(partnerId=2, hasUnread=false, productId=7, productName=좋은 바지 새거 미개봉입니다)], center=chat/list}
+[2025-10-13 19:49:33:71758][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:49:33:71825][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:34:71851][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:49:34:71851][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:34:71852][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:49:34:71852][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:34:71854][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:34:71855][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:34:72527][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/chat/modal_view?target=3&productId=17&productName=%EA%B0%A4%EB%9F%AD%EC%8B%9C%20z%ED%94%8C%EB%A6%BD%ED%94%8C%EB%A6%BD%ED%94%8C%EB%A6%BD31%ED%8C%94%EC%95%84%EC%9A%94%20%EB%AF%B8%EA%B0%9C%EB%B4%89%EC%9E%85%EB%8B%88%EB%8B%A4", parameters={masked}
+[2025-10-13 19:49:34:72527][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.ChatController#chatModal(Model, Integer)
+[2025-10-13 19:49:34:72528][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:49:34:72528][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.view.JstlView - View name [chat/chat_modal], model {websocketurl=https://192.168.1.8:8443/, productId=17}
+[2025-10-13 19:49:34:72528][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/chat/chat_modal.jsp]
+[2025-10-13 19:49:34:72567][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:34:72604][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/api/chat/history?user1=1&user2=3", parameters={masked}
+[2025-10-13 19:49:34:72604][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.ChatRestController#getHistory(String, String)
+[2025-10-13 19:49:34:72608][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/chat/info?t=1760352575396", parameters={masked}
+[2025-10-13 19:49:34:72608][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@12bf0163
+[2025-10-13 19:49:34:72608][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.s.t.h.DefaultSockJsService - Processing transport request: GET https://192.168.1.8:8443/chat/info?t=1760352575396
+[2025-10-13 19:49:34:72609][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:34:72613][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:49:34:72615][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [[ChatMessage(messageId=8, senderId=1, receiverId=3, content=dddddsdasdas, sentAt=Mon Oct 13 19:28:42 (truncated)...]
+[2025-10-13 19:49:34:72616][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:34:72676][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/chat/890/4erqdyr2/websocket", parameters={}
+[2025-10-13 19:49:34:72677][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@12bf0163
+[2025-10-13 19:49:34:72677][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.s.t.h.DefaultSockJsService - Processing transport request: GET https://192.168.1.8:8443/chat/890/4erqdyr2/websocket
+[2025-10-13 19:49:34:72692][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 101 SWITCHING_PROTOCOLS
+[2025-10-13 19:49:34:72698][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.h.LoggingWebSocketHandlerDecorator - New WebSocketServerSockJsSession[id=4erqdyr2]
+[2025-10-13 19:49:34:72710][clientInboundChannel-2] DEBUG o.springframework.web.SimpLogging - Processing CONNECT session=4erqdyr2
+[2025-10-13 19:49:34:72715][clientInboundChannel-5] DEBUG o.springframework.web.SimpLogging - Processing SUBSCRIBE /send/to/1 id=sub-0 session=4erqdyr2
+[2025-10-13 19:49:34:72715][clientInboundChannel-4] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Searching methods to handle SUBSCRIBE /send/to/1 id=sub-0 session=4erqdyr2, lookupDestination='/send/to/1'
+[2025-10-13 19:49:34:72715][clientInboundChannel-4] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - No matching message handler methods.
+[2025-10-13 19:49:36:74510][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.h.LoggingWebSocketHandlerDecorator - WebSocketServerSockJsSession[id=4erqdyr2] closed with CloseStatus[code=1000, reason=null]
+[2025-10-13 19:49:36:74511][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.SubProtocolWebSocketHandler - Clearing session 4erqdyr2
+[2025-10-13 19:49:36:74513][clientInboundChannel-8] DEBUG o.springframework.web.SimpLogging - Processing DISCONNECT session=4erqdyr2
+[2025-10-13 19:49:36:74515][clientOutboundChannel-2] DEBUG o.s.w.s.m.SubProtocolWebSocketHandler - No session for GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT_ACK, simpDisconnectMessage=GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT, stompCommand=DISCONNECT, simpSessionAttributes={org.springframework.messaging.simp.SimpAttributes.COMPLETED=true}, simpSessionId=4erqdyr2}], simpSessionId=4erqdyr2}]
+[2025-10-13 19:49:36:74517][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/chat/list", parameters={}
+[2025-10-13 19:49:36:74517][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.ChatController#chatList(Model, HttpServletRequest)
+[2025-10-13 19:49:36:74520][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:49:36:74520][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {chatPartners=[ChatDot(partnerId=3, hasUnread=false, productId=17, productName=갤럭시 z플립플립플립31팔아요 미개봉입니다), ChatDot(partnerId=2, hasUnread=false, productId=7, productName=좋은 바지 새거 미개봉입니다)], center=chat/list}
+[2025-10-13 19:49:36:74520][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:49:36:74526][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:36:74552][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:49:36:74552][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:49:36:74552][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:36:74552][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:36:74554][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:36:74558][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75449][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+[2025-10-13 19:49:37:75449][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MainController#main(Model)
+[2025-10-13 19:49:37:75450][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.view.RedirectView - View name [redirect:], model {}
+[2025-10-13 19:49:37:75450][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 302 FOUND
+[2025-10-13 19:49:37:75458][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market", parameters={}
+[2025-10-13 19:49:37:75458][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#main(int, Model)
+[2025-10-13 19:49:37:75464][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:49:37:75464][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {unreadChatCount=0, cateList=[Cate(cateId=1, cateName=전자기기), Cate(cateId=2, cateName=생활용품), Cate(cateId=3, cateName=가구), Cate(cateId=4, cateName=의류), Cate(cateId=5, cateName=도서), Cate(cateId=6, cateName=스포츠/레저), Cate(cateId=7, cateName=기타)], productList=PageInfo{pageNum=1, pageSize=9, size=9, startRow=1, endRow=9, total=29, pages=4, list=Page{count=true, pageNum=1, pageSize=9, startRow=0, endRow=9, total=29, pages=4, reasonable=false, pageSizeZero=false}[Product(productId=17, productName=갤럭시 z플립플립플립31팔아요 미개봉입니다, productPrice=1300000, productImg=s1.jpg, productRegdate=2025-10-13 02:46:43.063622, productUpdate=2025-10-13 02:46:43.063622, cateId=1, cateName=전자기기, lat=36.80211, lng=127.07088, productDesc= 이번에 나온 zfffff입니다 회사에서 받아서 팔어요 , custId=3, productImgFile=null, chatCount=7, wishlistStatus=false), Product(productId=8, productName=바지 팔아요, productPrice=21000, productImg=p2.jpg, productRegdate=2025-10-13 02:46:42.98346, productUpdate=2025-10-13 02:46:42.98346, cateId=4, cateName=의류, lat=36.79845, lng=127.07981, productDesc=옷 정리중입니다., custId=6, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=10, productName=갈색 청바지 팝니다, productPrice=45000, productImg=p4.jpg, productRegdate=2025-10-13 02:46:43.010718, productUpdate=2025-10-13 02:46:43.010718, cateId=4, cateName=의류, lat=36.80098, lng=127.07024, productDesc=사이즈 미스로 판매해요., custId=3, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=11, productName=네이비색 긴 바지 팔아용~~, productPrice=17000, productImg=p5.jpg, productRegdate=2025-10-13 02:46:43.018877, productUpdate=2025-10-13 02:46:43.018877, cateId=4, cateName=의류, lat=36.79469, lng=127.07886, productDesc=작년에 사고 몇 번 안입었습니다., custId=1, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=12, productName=검은색 바지 팔아요, productPrice=15000, productImg=p6.jpg, productRegdate=2025-10-13 02:46:43.02449, productUpdate=2025-10-13 02:46:43.02449, cateId=4, cateName=의류, lat=36.80257, lng=127.07652, productDesc=깨끗하게 입어서 상태 좋아요., custId=2, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=13, productName=흰색 셔츠팔아요 오피스룩에 좋습니다(명품), productPrice=98000, productImg=sh1.jpg, productRegdate=2025-10-13 02:46:43.032786, productUpdate=2025-10-13 02:46:43.032786, cateId=4, cateName=의류, lat=36.79712, lng=127.08, productDesc=취업할려고 샀다가 복권 당첨되어서 팝니다 ㅎㅎ., custId=5, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=14, productName=여성용 나시 팝니다, productPrice=12000, productImg=tank.jpg, productRegdate=2025-10-13 02:46:43.042868, productUpdate=2025-10-13 02:46:43.042868, cateId=4, cateName=의류, lat=36.80401, lng=127.07439, productDesc=전남친이 사준건데 헤어져서 보기싫어가지고 관련 물품 다 헐값에 정리중입니다 , custId=2, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=15, productName=예쁜 여성용 나시 팔아요, productPrice=22000, productImg=tank2.jpg, productRegdate=2025-10-13 02:46:43.049689, productUpdate=2025-10-13 02:46:43.049689, cateId=4, cateName=의류, lat=36.79633, lng=127.07221, productDesc=인스타에 업로드용으로 사서 1번입고 그뒤로 안입었습니다 인플루언서 인증도 가능해요 ㅎㅎ, custId=3, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=16, productName=남자 머슬핏 나시 팔아요, productPrice=33000, productImg=tank3.jpg, productRegdate=2025-10-13 02:46:43.056855, productUpdate=2025-10-13 02:46:43.056855, cateId=4, cateName=의류, lat=36.79954, lng=127.07955, productDesc=바디프로필 다 찍어서 이제 판매합니다., custId=5, productImgFile=null, chatCount=0, wishlistStatus=false)], prePage=0, nextPage=2, isFirstPage=true, isLastPage=false, hasPreviousPage=false, hasNextPage=true, navigatePages=5, navigateFirstPage=1, navigateLastPage=4, navigatepageNums=[1, 2, 3, 4]}, target=/market, center=market/center, left=market/left, org.springframework.validation.BindingResult.productList=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+[2025-10-13 19:49:37:75464][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:49:37:75471][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75491][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:49:37:75491][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:49:37:75491][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:37:75491][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:37:75492][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75494][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75503][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/s1.jpg", parameters={}
+[2025-10-13 19:49:37:75503][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p2.jpg", parameters={}
+[2025-10-13 19:49:37:75503][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:37:75503][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:37:75504][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75504][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75511][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p4.jpg", parameters={}
+[2025-10-13 19:49:37:75511][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p5.jpg", parameters={}
+[2025-10-13 19:49:37:75511][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:37:75511][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:37:75512][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75512][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75520][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p6.jpg", parameters={}
+[2025-10-13 19:49:37:75520][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:37:75521][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75527][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank.jpg", parameters={}
+[2025-10-13 19:49:37:75527][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/sh1.jpg", parameters={}
+[2025-10-13 19:49:37:75527][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:37:75527][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:37:75528][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75528][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75538][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank3.jpg", parameters={}
+[2025-10-13 19:49:37:75538][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank2.jpg", parameters={}
+[2025-10-13 19:49:37:75538][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:37:75538][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:37:75539][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75539][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:37:75546][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:49:37:75546][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:49:37:75548][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:49:37:75548][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:49:37:75549][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:38:76636][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/detail?id=8", parameters={masked}
+[2025-10-13 19:49:38:76637][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#detail(Model, int, HttpSession)
+[2025-10-13 19:49:38:76646][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:49:38:76646][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {unreadChatCount=0, p=Product(productId=8, productName=바지 팔아요, productPrice=21000, productImg=p2.jpg, productRegdate=2025-10-13 02:46:42.98346, productUpdate=2025-10-13 02:46:42.98346, cateId=4, cateName=의류, lat=36.79845, lng=127.07981, productDesc=옷 정리중입니다., custId=6, productImgFile=null, chatCount=0, wishlistStatus=false), left=market/left, center=market/view, org.springframework.validation.BindingResult.p=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+[2025-10-13 19:49:38:76646][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:49:38:76653][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:38:76677][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:49:38:76677][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:49:38:76677][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:38:76677][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:38:76679][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:38:76683][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:38:76690][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p2.jpg", parameters={}
+[2025-10-13 19:49:38:76690][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:38:76690][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:38:76724][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/api/wishlist/status?productId=8", parameters={masked}
+[2025-10-13 19:49:38:76724][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.WishlistRestController#getWishlistStatus(int, HttpSession)
+[2025-10-13 19:49:38:76727][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:49:38:76727][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{wishlistStatus=false}]
+[2025-10-13 19:49:38:76727][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:40:78591][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - POST "/api/wishlist/toggle", parameters={}
+[2025-10-13 19:49:40:78591][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.WishlistRestController#toggleWishlist(Wishlist, HttpSession)
+[2025-10-13 19:49:40:78617][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [edu.sm.app.dto.Wishlist@33b6efdc]
+[2025-10-13 19:49:40:78620][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:49:40:78620][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{wishlistStatus=true}]
+[2025-10-13 19:49:40:78620][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:42:80726][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/wishlist", parameters={}
+[2025-10-13 19:49:42:80726][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#wishlist(Model, HttpSession)
+[2025-10-13 19:49:42:80743][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:49:42:80743][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {unreadChatCount=0, plist=[Product(productId=17, productName=갤럭시 z플립플립플립31팔아요 미개봉입니다, productPrice=1300000, productImg=s1.jpg, productRegdate=2025-10-13 02:46:43.063622, productUpdate=2025-10-13 02:46:43.063622, cateId=1, cateName=전자기기, lat=36.80211, lng=127.07088, productDesc= 이번에 나온 zfffff입니다 회사에서 받아서 팔어요 , custId=3, productImgFile=null, chatCount=7, wishlistStatus=false), Product(productId=9, productName=가을 겨울용 바지 팔아요, productPrice=31000, productImg=p3.jpg, productRegdate=2025-10-13 02:46:42.992174, productUpdate=2025-10-13 02:46:42.992174, cateId=4, cateName=의류, lat=36.80332, lng=127.07115, productDesc=자주 안입어서 팔아요., custId=4, productImgFile=null, chatCount=1, wishlistStatus=false), Product(productId=10, productName=갈색 청바지 팝니다, productPrice=45000, productImg=p4.jpg, productRegdate=2025-10-13 02:46:43.010718, productUpdate=2025-10-13 02:46:43.010718, cateId=4, cateName=의류, lat=36.80098, lng=127.07024, productDesc=사이즈 미스로 판매해요., custId=3, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=8, productName=바지 팔아요, productPrice=21000, productImg=p2.jpg, productRegdate=2025-10-13 02:46:42.98346, productUpdate=2025-10-13 02:46:42.98346, cateId=4, cateName=의류, lat=36.79845, lng=127.07981, productDesc=옷 정리중입니다., custId=6, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=32, productName=SQL관련 책 판매합니다, productPrice=18000, productImg=b2.jpg, productRegdate=2025-10-13 02:46:43.18397, productUpdate=2025-10-13 02:46:43.18397, cateId=5, cateName=도서, lat=36.79888, lng=127.08001, productDesc=노어노문학과러 전과하게되어 팝니다, custId=1, productImgFile=null, chatCount=0, wishlistStatus=false)], center=market/wishlist, left=market/left}
+[2025-10-13 19:49:42:80743][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:49:42:80774][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:42:80794][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:49:42:80794][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:49:42:80794][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:42:80794][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:49:42:80796][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:42:80799][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:42:80802][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/s1.jpg", parameters={}
+[2025-10-13 19:49:42:80802][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:42:80803][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:42:80810][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p3.jpg", parameters={}
+[2025-10-13 19:49:42:80810][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:42:80811][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:42:80812][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p4.jpg", parameters={}
+[2025-10-13 19:49:42:80812][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:42:80813][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:42:80817][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p2.jpg", parameters={}
+[2025-10-13 19:49:42:80817][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:42:80818][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:42:80819][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/b2.jpg", parameters={}
+[2025-10-13 19:49:42:80819][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:49:42:80821][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:49:44:82694][MessageBroker-1] DEBUG o.s.w.s.s.t.h.DefaultSockJsService - Closed 1 sessions: [4erqdyr2]
+[2025-10-13 19:55:30:428291][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/chat/list", parameters={}
+[2025-10-13 19:55:30:428291][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.ChatController#chatList(Model, HttpServletRequest)
+[2025-10-13 19:55:30:428291][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.view.RedirectView - View name [redirect:], model {}
+[2025-10-13 19:55:30:428292][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 302 FOUND
+[2025-10-13 19:55:30:428297][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+[2025-10-13 19:55:30:428297][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.LoginController#add(Model)
+[2025-10-13 19:55:30:428298][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:55:30:428298][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {center=login, left=blank}
+[2025-10-13 19:55:30:428298][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:55:30:428304][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:30:428324][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:55:30:428324][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:55:30:428328][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:30:428329][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:55:30:428330][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:55:30:428331][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430099][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - POST "/loginimpl", parameters={masked}
+[2025-10-13 19:55:32:430100][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.LoginController#loginimpl(Model, String, String, HttpSession)
+[2025-10-13 19:55:32:430180][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.view.RedirectView - View name [redirect:], model {}
+[2025-10-13 19:55:32:430181][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 302 FOUND
+[2025-10-13 19:55:32:430185][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+[2025-10-13 19:55:32:430185][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MainController#main(Model)
+[2025-10-13 19:55:32:430185][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.view.RedirectView - View name [redirect:], model {}
+[2025-10-13 19:55:32:430186][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 302 FOUND
+[2025-10-13 19:55:32:430188][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market", parameters={}
+[2025-10-13 19:55:32:430188][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#main(int, Model)
+[2025-10-13 19:55:32:430193][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:55:32:430193][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {unreadChatCount=0, cateList=[Cate(cateId=1, cateName=전자기기), Cate(cateId=2, cateName=생활용품), Cate(cateId=3, cateName=가구), Cate(cateId=4, cateName=의류), Cate(cateId=5, cateName=도서), Cate(cateId=6, cateName=스포츠/레저), Cate(cateId=7, cateName=기타)], productList=PageInfo{pageNum=1, pageSize=9, size=9, startRow=1, endRow=9, total=29, pages=4, list=Page{count=true, pageNum=1, pageSize=9, startRow=0, endRow=9, total=29, pages=4, reasonable=false, pageSizeZero=false}[Product(productId=17, productName=갤럭시 z플립플립플립31팔아요 미개봉입니다, productPrice=1300000, productImg=s1.jpg, productRegdate=2025-10-13 02:46:43.063622, productUpdate=2025-10-13 02:46:43.063622, cateId=1, cateName=전자기기, lat=36.80211, lng=127.07088, productDesc= 이번에 나온 zfffff입니다 회사에서 받아서 팔어요 , custId=3, productImgFile=null, chatCount=7, wishlistStatus=false), Product(productId=8, productName=바지 팔아요, productPrice=21000, productImg=p2.jpg, productRegdate=2025-10-13 02:46:42.98346, productUpdate=2025-10-13 02:46:42.98346, cateId=4, cateName=의류, lat=36.79845, lng=127.07981, productDesc=옷 정리중입니다., custId=6, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=10, productName=갈색 청바지 팝니다, productPrice=45000, productImg=p4.jpg, productRegdate=2025-10-13 02:46:43.010718, productUpdate=2025-10-13 02:46:43.010718, cateId=4, cateName=의류, lat=36.80098, lng=127.07024, productDesc=사이즈 미스로 판매해요., custId=3, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=11, productName=네이비색 긴 바지 팔아용~~, productPrice=17000, productImg=p5.jpg, productRegdate=2025-10-13 02:46:43.018877, productUpdate=2025-10-13 02:46:43.018877, cateId=4, cateName=의류, lat=36.79469, lng=127.07886, productDesc=작년에 사고 몇 번 안입었습니다., custId=1, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=12, productName=검은색 바지 팔아요, productPrice=15000, productImg=p6.jpg, productRegdate=2025-10-13 02:46:43.02449, productUpdate=2025-10-13 02:46:43.02449, cateId=4, cateName=의류, lat=36.80257, lng=127.07652, productDesc=깨끗하게 입어서 상태 좋아요., custId=2, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=13, productName=흰색 셔츠팔아요 오피스룩에 좋습니다(명품), productPrice=98000, productImg=sh1.jpg, productRegdate=2025-10-13 02:46:43.032786, productUpdate=2025-10-13 02:46:43.032786, cateId=4, cateName=의류, lat=36.79712, lng=127.08, productDesc=취업할려고 샀다가 복권 당첨되어서 팝니다 ㅎㅎ., custId=5, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=14, productName=여성용 나시 팝니다, productPrice=12000, productImg=tank.jpg, productRegdate=2025-10-13 02:46:43.042868, productUpdate=2025-10-13 02:46:43.042868, cateId=4, cateName=의류, lat=36.80401, lng=127.07439, productDesc=전남친이 사준건데 헤어져서 보기싫어가지고 관련 물품 다 헐값에 정리중입니다 , custId=2, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=15, productName=예쁜 여성용 나시 팔아요, productPrice=22000, productImg=tank2.jpg, productRegdate=2025-10-13 02:46:43.049689, productUpdate=2025-10-13 02:46:43.049689, cateId=4, cateName=의류, lat=36.79633, lng=127.07221, productDesc=인스타에 업로드용으로 사서 1번입고 그뒤로 안입었습니다 인플루언서 인증도 가능해요 ㅎㅎ, custId=3, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=16, productName=남자 머슬핏 나시 팔아요, productPrice=33000, productImg=tank3.jpg, productRegdate=2025-10-13 02:46:43.056855, productUpdate=2025-10-13 02:46:43.056855, cateId=4, cateName=의류, lat=36.79954, lng=127.07955, productDesc=바디프로필 다 찍어서 이제 판매합니다., custId=5, productImgFile=null, chatCount=0, wishlistStatus=false)], prePage=0, nextPage=2, isFirstPage=true, isLastPage=false, hasPreviousPage=false, hasNextPage=true, navigatePages=5, navigateFirstPage=1, navigateLastPage=4, navigatepageNums=[1, 2, 3, 4]}, target=/market, center=market/center, left=market/left, org.springframework.validation.BindingResult.productList=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+[2025-10-13 19:55:32:430193][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:55:32:430205][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430221][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:55:32:430221][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:55:32:430223][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430224][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:55:32:430224][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:55:32:430225][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430226][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/s1.jpg", parameters={}
+[2025-10-13 19:55:32:430226][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:55:32:430226][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430227][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p2.jpg", parameters={}
+[2025-10-13 19:55:32:430227][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:55:32:430227][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430229][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p4.jpg", parameters={}
+[2025-10-13 19:55:32:430229][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:55:32:430230][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430230][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p5.jpg", parameters={}
+[2025-10-13 19:55:32:430231][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:55:32:430231][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430232][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p6.jpg", parameters={}
+[2025-10-13 19:55:32:430232][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:55:32:430232][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430234][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/sh1.jpg", parameters={}
+[2025-10-13 19:55:32:430234][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:55:32:430234][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430236][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank.jpg", parameters={}
+[2025-10-13 19:55:32:430236][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:55:32:430237][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430239][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank2.jpg", parameters={}
+[2025-10-13 19:55:32:430239][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:55:32:430239][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430241][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank3.jpg", parameters={}
+[2025-10-13 19:55:32:430241][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:55:32:430242][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:32:430272][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:55:32:430273][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:55:32:430275][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:55:32:430275][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:55:32:430276][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:42:440281][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:55:42:440282][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:55:42:440284][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:55:42:440284][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:55:42:440284][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:55:52:450274][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:55:52:450274][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:55:52:450277][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:55:52:450278][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:55:52:450279][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:02:460279][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:56:02:460280][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:56:02:460283][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:56:02:460283][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:56:02:460284][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:12:470286][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:56:12:470286][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:56:12:470289][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:56:12:470290][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:56:12:470291][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:22:480284][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:56:22:480284][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:56:22:480287][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:56:22:480288][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:56:22:480289][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:32:490293][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:56:32:490293][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:56:32:490296][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:56:32:490297][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:56:32:490298][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:42:500280][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:56:42:500280][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:56:42:500283][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:56:42:500284][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:56:42:500285][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:52:510289][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:56:52:510289][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:56:52:510292][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:56:52:510293][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:56:52:510294][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:53:510877][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login?logout", parameters={masked}
+[2025-10-13 19:56:53:510877][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.LoginController#add(Model)
+[2025-10-13 19:56:53:510878][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:56:53:510878][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {center=login, left=blank}
+[2025-10-13 19:56:53:510878][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:56:53:510883][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:53:510899][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:56:53:510899][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:56:53:510902][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:53:510905][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:56:53:510905][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:56:53:510907][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516253][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - POST "/loginimpl", parameters={masked}
+[2025-10-13 19:56:58:516254][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.LoginController#loginimpl(Model, String, String, HttpSession)
+[2025-10-13 19:56:58:516359][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.view.RedirectView - View name [redirect:], model {}
+[2025-10-13 19:56:58:516360][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 302 FOUND
+[2025-10-13 19:56:58:516364][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+[2025-10-13 19:56:58:516364][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MainController#main(Model)
+[2025-10-13 19:56:58:516364][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.view.RedirectView - View name [redirect:], model {}
+[2025-10-13 19:56:58:516364][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 302 FOUND
+[2025-10-13 19:56:58:516368][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market", parameters={}
+[2025-10-13 19:56:58:516368][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#main(int, Model)
+[2025-10-13 19:56:58:516372][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2025-10-13 19:56:58:516372][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.view.JstlView - View name [index], model {unreadChatCount=0, cateList=[Cate(cateId=1, cateName=전자기기), Cate(cateId=2, cateName=생활용품), Cate(cateId=3, cateName=가구), Cate(cateId=4, cateName=의류), Cate(cateId=5, cateName=도서), Cate(cateId=6, cateName=스포츠/레저), Cate(cateId=7, cateName=기타)], productList=PageInfo{pageNum=1, pageSize=9, size=9, startRow=1, endRow=9, total=29, pages=4, list=Page{count=true, pageNum=1, pageSize=9, startRow=0, endRow=9, total=29, pages=4, reasonable=false, pageSizeZero=false}[Product(productId=17, productName=갤럭시 z플립플립플립31팔아요 미개봉입니다, productPrice=1300000, productImg=s1.jpg, productRegdate=2025-10-13 02:46:43.063622, productUpdate=2025-10-13 02:46:43.063622, cateId=1, cateName=전자기기, lat=36.80211, lng=127.07088, productDesc= 이번에 나온 zfffff입니다 회사에서 받아서 팔어요 , custId=3, productImgFile=null, chatCount=7, wishlistStatus=false), Product(productId=8, productName=바지 팔아요, productPrice=21000, productImg=p2.jpg, productRegdate=2025-10-13 02:46:42.98346, productUpdate=2025-10-13 02:46:42.98346, cateId=4, cateName=의류, lat=36.79845, lng=127.07981, productDesc=옷 정리중입니다., custId=6, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=10, productName=갈색 청바지 팝니다, productPrice=45000, productImg=p4.jpg, productRegdate=2025-10-13 02:46:43.010718, productUpdate=2025-10-13 02:46:43.010718, cateId=4, cateName=의류, lat=36.80098, lng=127.07024, productDesc=사이즈 미스로 판매해요., custId=3, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=11, productName=네이비색 긴 바지 팔아용~~, productPrice=17000, productImg=p5.jpg, productRegdate=2025-10-13 02:46:43.018877, productUpdate=2025-10-13 02:46:43.018877, cateId=4, cateName=의류, lat=36.79469, lng=127.07886, productDesc=작년에 사고 몇 번 안입었습니다., custId=1, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=12, productName=검은색 바지 팔아요, productPrice=15000, productImg=p6.jpg, productRegdate=2025-10-13 02:46:43.02449, productUpdate=2025-10-13 02:46:43.02449, cateId=4, cateName=의류, lat=36.80257, lng=127.07652, productDesc=깨끗하게 입어서 상태 좋아요., custId=2, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=13, productName=흰색 셔츠팔아요 오피스룩에 좋습니다(명품), productPrice=98000, productImg=sh1.jpg, productRegdate=2025-10-13 02:46:43.032786, productUpdate=2025-10-13 02:46:43.032786, cateId=4, cateName=의류, lat=36.79712, lng=127.08, productDesc=취업할려고 샀다가 복권 당첨되어서 팝니다 ㅎㅎ., custId=5, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=14, productName=여성용 나시 팝니다, productPrice=12000, productImg=tank.jpg, productRegdate=2025-10-13 02:46:43.042868, productUpdate=2025-10-13 02:46:43.042868, cateId=4, cateName=의류, lat=36.80401, lng=127.07439, productDesc=전남친이 사준건데 헤어져서 보기싫어가지고 관련 물품 다 헐값에 정리중입니다 , custId=2, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=15, productName=예쁜 여성용 나시 팔아요, productPrice=22000, productImg=tank2.jpg, productRegdate=2025-10-13 02:46:43.049689, productUpdate=2025-10-13 02:46:43.049689, cateId=4, cateName=의류, lat=36.79633, lng=127.07221, productDesc=인스타에 업로드용으로 사서 1번입고 그뒤로 안입었습니다 인플루언서 인증도 가능해요 ㅎㅎ, custId=3, productImgFile=null, chatCount=0, wishlistStatus=false), Product(productId=16, productName=남자 머슬핏 나시 팔아요, productPrice=33000, productImg=tank3.jpg, productRegdate=2025-10-13 02:46:43.056855, productUpdate=2025-10-13 02:46:43.056855, cateId=4, cateName=의류, lat=36.79954, lng=127.07955, productDesc=바디프로필 다 찍어서 이제 판매합니다., custId=5, productImgFile=null, chatCount=0, wishlistStatus=false)], prePage=0, nextPage=2, isFirstPage=true, isLastPage=false, hasPreviousPage=false, hasNextPage=true, navigatePages=5, navigateFirstPage=1, navigateLastPage=4, navigatepageNums=[1, 2, 3, 4]}, target=/market, center=market/center, left=market/left, org.springframework.validation.BindingResult.productList=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
+[2025-10-13 19:56:58:516373][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2025-10-13 19:56:58:516380][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516391][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+[2025-10-13 19:56:58:516392][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:56:58:516394][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516395][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+[2025-10-13 19:56:58:516395][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+[2025-10-13 19:56:58:516396][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516396][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/s1.jpg", parameters={}
+[2025-10-13 19:56:58:516396][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:56:58:516397][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516398][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p2.jpg", parameters={}
+[2025-10-13 19:56:58:516398][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:56:58:516398][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516399][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p4.jpg", parameters={}
+[2025-10-13 19:56:58:516399][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:56:58:516399][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516400][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p5.jpg", parameters={}
+[2025-10-13 19:56:58:516400][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:56:58:516401][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516402][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/p6.jpg", parameters={}
+[2025-10-13 19:56:58:516402][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:56:58:516402][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516403][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/sh1.jpg", parameters={}
+[2025-10-13 19:56:58:516403][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:56:58:516404][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516405][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank.jpg", parameters={}
+[2025-10-13 19:56:58:516405][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:56:58:516406][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516407][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank2.jpg", parameters={}
+[2025-10-13 19:56:58:516407][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:56:58:516407][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516408][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/tank3.jpg", parameters={}
+[2025-10-13 19:56:58:516409][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/C:/test4/imgs/]]
+[2025-10-13 19:56:58:516409][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:56:58:516427][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:56:58:516427][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:56:58:516429][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:56:58:516429][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:56:58:516430][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:57:08:526437][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:57:08:526437][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:57:08:526440][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:57:08:526440][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:57:08:526442][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:57:18:536443][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:57:18:536443][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:57:18:536445][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:57:18:536445][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:57:18:536446][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:57:28:546438][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:57:28:546438][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:57:28:546442][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:57:28:546442][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:57:28:546443][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:57:38:556433][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:57:38:556433][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:57:38:556436][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:57:38:556436][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:57:38:556437][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:57:48:566447][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:57:48:566447][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:57:48:566450][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:57:48:566450][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:57:48:566451][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:57:58:576443][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:57:58:576443][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:57:58:576445][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:57:58:576445][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:57:58:576445][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:58:02:1776][restartedMain] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Patterns [/chat/**, /adminchat/**] in 'stompWebSocketHandlerMapping'
+[2025-10-13 19:58:02:1784][restartedMain] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Patterns [/signal] in 'webSocketHandlerMapping'
+[2025-10-13 19:58:02:1861][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 67 mappings in 'requestMappingHandlerMapping'
+[2025-10-13 19:58:03:2016][restartedMain] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /imgs/**, /logs/**] in 'resourceHandlerMapping'
+[2025-10-13 19:58:03:2069][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.AdminMsgController:
+	{[MESSAGE],[/adminreceiveto]}: adminreceiveto(Msg,SimpMessageHeaderAccessor)
+[2025-10-13 19:58:03:2069][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ChartController:
+	
+[2025-10-13 19:58:03:2069][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ChartRestController:
+	
+[2025-10-13 19:58:03:2069][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ChatController:
+	
+[2025-10-13 19:58:03:2069][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ChatRestController:
+	
+[2025-10-13 19:58:03:2069][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.CustController:
+	
+[2025-10-13 19:58:03:2070][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.LoginController:
+	
+[2025-10-13 19:58:03:2070][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MainController:
+	
+[2025-10-13 19:58:03:2070][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MainRestController:
+	
+[2025-10-13 19:58:03:2070][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MapRestController:
+	
+[2025-10-13 19:58:03:2070][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MarketController:
+	
+[2025-10-13 19:58:03:2070][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MsgController:
+	{[MESSAGE],[/receiveme]}: receiveme(Msg,SimpMessageHeaderAccessor)
+	{[MESSAGE],[/receiveall]}: receiveall(Msg,SimpMessageHeaderAccessor)
+	{[MESSAGE],[/receiveto]}: receiveto(Msg,SimpMessageHeaderAccessor)
+[2025-10-13 19:58:03:2070][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ProductController:
+	
+[2025-10-13 19:58:03:2070][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.WishlistRestController:
+	
+[2025-10-13 19:58:03:2070][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	o.s.b.a.w.s.e.BasicErrorController:
+	
+[2025-10-13 19:58:03:2096][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2025-10-13 19:58:03:2122][restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+[2025-10-13 19:58:03:2191][restartedMain] DEBUG o.springframework.web.SimpLogging - clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+[2025-10-13 19:58:03:2191][restartedMain] DEBUG o.springframework.web.SimpLogging - clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[]]
+[2025-10-13 19:58:03:2192][restartedMain] DEBUG o.springframework.web.SimpLogging - clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7d42c15d]
+[2025-10-13 19:58:03:2192][restartedMain] DEBUG o.springframework.web.SimpLogging - brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7d42c15d]
+[2025-10-13 19:58:03:2193][restartedMain] DEBUG o.springframework.web.SimpLogging - clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2025-10-13 19:58:03:2193][restartedMain] DEBUG o.springframework.web.SimpLogging - brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2025-10-13 19:58:08:7634][https-jsse-nio-8443-exec-10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[2025-10-13 19:58:08:7634][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+[2025-10-13 19:58:08:7634][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+[2025-10-13 19:58:08:7634][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+[2025-10-13 19:58:08:7634][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@482957ec
+[2025-10-13 19:58:08:7634][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@1149230c
+[2025-10-13 19:58:08:7634][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[2025-10-13 19:58:08:7634][https-jsse-nio-8443-exec-10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+[2025-10-13 19:58:08:7647][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:58:08:7648][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:58:08:7836][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:58:08:7840][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:58:08:7866][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:58:18:17573][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:58:18:17573][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:58:18:17580][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:58:18:17580][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:58:18:17585][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:58:28:27560][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:58:28:27561][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:58:28:27565][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:58:28:27565][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:58:28:27567][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:58:38:37566][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:58:38:37566][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:58:38:37570][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:58:38:37570][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:58:38:37571][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:58:48:47578][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:58:48:47579][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:58:48:47583][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:58:48:47584][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:58:48:47586][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:58:58:57575][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:58:58:57575][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:58:58:57581][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:58:58:57581][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:58:58:57583][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:59:03:62198][MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+[2025-10-13 19:59:08:67570][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:59:08:67570][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:59:08:67576][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:59:08:67577][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:59:08:67579][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:59:18:77564][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:59:18:77565][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:59:18:77572][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:59:18:77572][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:59:18:77575][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:59:28:87579][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:59:28:87580][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:59:28:87583][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:59:28:87583][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:59:28:87585][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:59:38:97574][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:59:38:97574][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:59:38:97577][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:59:38:97578][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:59:38:97580][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:59:48:107565][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 19:59:48:107565][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 19:59:48:107568][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:59:48:107569][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 19:59:48:107570][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 19:59:58:117578][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 19:59:58:117578][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 19:59:58:117581][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 19:59:58:117581][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 19:59:58:117583][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:00:08:127573][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 20:00:08:127573][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 20:00:08:127574][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:00:08:127574][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 20:00:08:127575][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
