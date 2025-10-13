@@ -45,8 +45,8 @@
       </c:when>
       <c:otherwise>
         <c:forEach var="convo" items="${chatPartners}">
-          <button type="button" class="list-group-item list-group-item-action" 
-                  data-toggle="modal" data-target="#chatModal" 
+          <button type="button" class="list-group-item list-group-item-action"
+                  data-toggle="modal" data-target="#chatModal"
                   data-target-id="${convo.partnerId}"
                   data-product-id="${convo.productId}"
                   data-product-name="${convo.productName}">

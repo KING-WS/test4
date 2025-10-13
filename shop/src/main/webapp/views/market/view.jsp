@@ -189,10 +189,10 @@
     <h5><strong>판매자:</strong> ${p.custId}</h5>
     <h5><strong>채팅 횟수:</strong> ${p.chatCount}</h5>
 
-    <button id="wishlist-btn" class="btn-custom btn-outline-danger btn-lg my-2">
-        <i class="fa fa-heart-o"></i> 찜
+    <button id="wishlist-btn" class="btn btn-secondary btn-custom btn-lg my-2">
+        <i class="fa fa-heart-o"></i>
     </button>
-    <button type="button" class="custom-btn btn-16" data-toggle="modal" data-target="#chatModal" data-target-id="${p.custId}" data-product-id="${p.productId}">
+    <button type="button" class="btn-custom btn-chat btn-lg my-2" data-toggle="modal" data-target="#chatModal" data-target-id="${p.custId}" data-product-id="${p.productId}" data-product-name="${p.productName}">
         판매자와 채팅하기
     </button>
     <button type="button" class="btn-custom btn-danger btn-lg my-2" data-toggle="modal" data-target="#reportModal" data-target-id="${p.custId}">신고하기</button>
@@ -255,12 +255,13 @@
 
         function updateWishlistButton(isWishlisted) {
             const btn = $('#wishlist-btn');
+            const icon = btn.find('i');
             if (isWishlisted) {
-                btn.removeClass('btn-outline-danger').addClass('btn-danger');
-                btn.find('i').removeClass('fa-heart-o').addClass('fa-heart');
+                btn.removeClass('btn-secondary').addClass('btn-danger');
+                icon.removeClass('fa-heart-o').addClass('fa-heart');
             } else {
-                btn.removeClass('btn-danger').addClass('btn-outline-danger');
-                btn.find('i').removeClass('fa-heart').addClass('fa-heart-o');
+                btn.removeClass('btn-danger').addClass('btn-secondary');
+                icon.removeClass('fa-heart').addClass('fa-heart-o');
             }
         }
 
@@ -289,8 +290,7 @@
 
     // Display marker on the map
     marker.setMap(map);
-        });
+  });
   </c:if>
     });
-
 </script>

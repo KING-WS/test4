@@ -144,21 +144,13 @@
                         <span>Dashboard</span></a>
                 </li>
                <!-- Menu -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="<c:url value="/websocket" />">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Web Socket</span></a>
-                </li>
+
                 <li class="nav-item active">
                     <a class="nav-link" href="<c:url value="/chat" />">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>chat</span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="<c:url value="/chart" />">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>chart</span></a>
-                </li>
+
 
                 <c:if test="${sessionScope.admin.adminRole == 'super'}">
                     <li class="nav-item active">
