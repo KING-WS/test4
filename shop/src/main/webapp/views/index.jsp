@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d22ea3311c2736901f0453c68b914e19&libraries=services"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bcc88354a0c06049623a690be552d3ac&libraries=services"></script>
     
     <%-- highchart lib   --%>
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -77,17 +77,7 @@
                 <a class="nav-link" href="<c:url value="/cust"/>">Cust</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/map"/> ">Map</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/chart"/>">Chart</a>
-            </li>
-            <li>
-                <c:if test = "${sessionScope.cust.custId != null}">
-            <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/chat"/>">Chat</a>
-            </li>
-            </c:if>
             </li>
         </ul>
     </div>

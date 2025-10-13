@@ -1,5 +1,6 @@
 package edu.sm.controller;
 
+import edu.sm.app.dto.ChatDot;
 import edu.sm.app.dto.Cust;
 import edu.sm.app.service.ChatService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -72,8 +73,9 @@ public class ChatController {
         }
 
         log.info("Fetching chat partners for user: {}", currentUserId);
-        List<String> chatPartners = chatService.getChatPartners(currentUserId);
-        log.info("Found {} chat partners for user {}.", chatPartners.size(), currentUserId);
+
+        List<ChatDot> chatPartners = chatService.getChatPartners(currentUserId);
+        log.info("Found {} chat partners.", chatPartners.size());
 
         model.addAttribute("chatPartners", chatPartners);
         model.addAttribute("center", "chat/list");

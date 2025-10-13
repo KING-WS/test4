@@ -85,7 +85,7 @@ public class CustController {
     public String searchpage(@RequestParam(value="pageNo", defaultValue = "1") int pageNo, Model model,
                              CustSearch custSearch) throws Exception {
         PageInfo<Cust> p = null;
-        p = new PageInfo<>(custService.getPageSearch(pageNo, custSearch), 3); // 5:하단 네비게이션 개수
+        p = new PageInfo<>(custService.getPageSearch(pageNo, custSearch), 5); // 5:하단 네비게이션 개수
 
         model.addAttribute("custName", custSearch.getCustName());
         model.addAttribute("startDate", custSearch.getStartDate());

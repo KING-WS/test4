@@ -27,9 +27,5 @@ public class ChatRestController {
         return chatService.getChatHistory(user1, user2);
     }
 
-    @GetMapping("/admin/chat/partners")
-    public List<ChatDot> getAdminChatPartners() {
-        // "admin" is hardcoded as the user for the admin-side chat
-        return chatService.getChatPartners("admin");
-    }
+
 }
