@@ -21,7 +21,7 @@
   });
 </script>
 
-<div class="col-sm-10">
+<div class="col-sm-12">
   <h2>Login Page</h2>
   <div class="row">
     <div class="col-sm-6">
@@ -43,7 +43,7 @@
           <h3>${msg}</h3>
         </c:when>
         <c:otherwise>
-          <h3>로그인 해 주세요 !</h3>
+          <h3>로그인이 필요한 서비스입니다.</h3>
         </c:otherwise>
       </c:choose>
     </div>

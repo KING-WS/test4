@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import edu.sm.app.dto.Cate;
 import edu.sm.app.dto.Product;
+import edu.sm.app.service.ChatService;
 import edu.sm.app.dto.ProductSearch;
 import edu.sm.app.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import edu.sm.app.dto.Cust;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,7 +32,17 @@ import java.util.stream.Collectors;
 public class MarketController {
 
     final ProductService productService;
+    final ChatService chatService;
     String dir="market/";
+
+    @ModelAttribute("unreadChatCount")
+    public int getUnreadChatCount(HttpSession session) {
+        Cust cust = (Cust) session.getAttribute("cust");
+        if (cust != null) {
+            return chatService.countUnreadMessages(cust.getCustId());
+        }
+        return 0;
+    }
 
     @RequestMapping("")
     public String main(@RequestParam(value="pageNo", defaultValue = "1") int pageNo, Model model) throws Exception {
@@ -72,6 +84,7 @@ public class MarketController {
         if (cust != null) {
             product.setCustId(cust.getCustId());
         } else {
+            // Optional: Handle case where user is not logged in, maybe redirect to login
             return "redirect:/login";
         }
         productService.register(product);
@@ -115,6 +128,7 @@ public class MarketController {
     public ResponseEntity<List<Product>> getRegDateRanking() {
         try {
             List<Product> productList = productService.get();
+            // 등록일을 기준으로 내림차순 정렬 후 상위 10개만 선택
             List<Product> sortedList = productList.stream()
                 .sorted(Comparator.comparing(Product::getProductRegdate).reversed())
                 .limit(10)

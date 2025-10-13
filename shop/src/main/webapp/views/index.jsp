@@ -46,12 +46,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/login"/>">Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
         </c:when>
         <c:otherwise>
             <li class="nav-item">
@@ -64,15 +58,12 @@
     </c:choose>
 </ul>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="<c:url value="/"/>">Home</a>
+    <a class="navbar-brand" href="<c:url value="/"/>">홈으로</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/market"/>">짭근마켓</a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/cust"/>">Cust</a>
             </li>
@@ -87,7 +78,7 @@
         <%-- Left Menu Start ........  --%>
         <c:choose>
             <c:when test="${left == null}">
-                <jsp:include page="left.jsp"/>
+                <jsp:include page="blank.jsp"/>
             </c:when>
             <c:otherwise>
                 <jsp:include page="${left}.jsp"/>
