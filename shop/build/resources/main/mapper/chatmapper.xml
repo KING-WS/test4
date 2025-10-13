@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.sm.common.frame.ChatMapper">
+
+    <select id="findRoomByParticipants" resultType="edu.sm.app.dto.ChatRoom">
+        SELECT room_id as roomId, user1_id as user1Id, user2_id as user2Id
+        FROM chat_room
+        WHERE (user1_id = #{user1Id} AND user2_id = #{user2Id})
+           OR (user1_id = #{user2Id} AND user2_id = #{user1Id})
+    </select>
+
+    <insert id="createRoom" parameterType="edu.sm.app.dto.ChatRoom"
+            useGeneratedKeys="true" keyProperty="roomId">
+        INSERT INTO chat_room (user1_id, user2_id)
+        VALUES (#{user1Id}, #{user2Id})
+    </insert>
+
+    <insert id="saveMessage" parameterType="edu.sm.app.msg.Msg">
+        INSERT INTO chat_message (room_id, send_id, content)
+        VALUES (#{roomId}, #{sendid}, #{content1})
+    </insert>
+
+    <select id="findMessagesByRoomId" parameterType="long" resultType="edu.sm.app.msg.Msg">
+        SELECT message_id as messageId, room_id as roomId, send_id as sendid, content as content1
+        FROM chat_message
+        WHERE room_id = #{roomId}
+        ORDER BY sent_at ASC
+    </select>
+
+</mapper>
