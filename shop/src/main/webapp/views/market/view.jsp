@@ -181,9 +181,14 @@
       <div class="product-category">${p.cateName}</div>
       <h2 class="product-name">${p.productName}</h2>
       <div class="seller-info"><strong>판매자:</strong> ${p.custId}</div>
-      <button type="button" class="btn-custom btn-chat my-2" data-toggle="modal" data-target="#chatModal" data-target-id="${p.custId}">
+    <button type="button" class="btn-custom btn-chat my-2" 
+            data-toggle="modal" 
+            data-target="#chatModal" 
+            data-target-id="${p.custId}"
+            data-product-id="${p.productId}"
+            data-product-name="${p.productName}">
         판매자와 채팅하기
-      </button>
+    </button>
       <div class="product-price"><fmt:formatNumber value="${p.productPrice}" pattern="#,###" /> 원</div>
     </div>
 

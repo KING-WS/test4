@@ -3,8 +3,8 @@
 <mapper namespace="edu.sm.app.repository.ChatRepository">
 
     <insert id="insertMessage" parameterType="edu.sm.app.dto.ChatMessage">
-        INSERT INTO chat_message (sender_id, receiver_id, content, is_read)
-        VALUES (#{senderId}, #{receiverId}, #{content}, FALSE)
+        INSERT INTO chat_message (sender_id, receiver_id, content, is_read, product_id)
+        VALUES (#{senderId}, #{receiverId}, #{content}, FALSE, #{productId})
     </insert>
 
     <select id="getChatHistory" resultType="edu.sm.app.dto.ChatMessage">
@@ -15,12 +15,30 @@
         ORDER BY sent_at ASC
     </select>
 
-    <select id="getChatPartners" resultType="java.lang.String">
-        SELECT DISTINCT partner FROM (
-            SELECT receiver_id AS partner FROM chat_message WHERE sender_id = #{userId}
-            UNION
-            SELECT sender_id AS partner FROM chat_message WHERE receiver_id = #{userId}
-        ) AS partners
+    <select id="getChatPartners" resultType="edu.sm.app.dto.ChatDot">
+        WITH conversations AS (
+            SELECT
+                CASE
+                    WHEN sender_id = #{userId} THEN receiver_id
+                    ELSE sender_id
+                END AS partnerId,
+                p.product_id as productId,
+                p.product_name as productName,
+                c.is_read,
+                c.receiver_id,
+                c.sent_at
+            FROM chat_message c
+            LEFT JOIN product p ON c.product_id = p.product_id
+            WHERE c.sender_id = #{userId} OR c.receiver_id = #{userId}
+        )
+        SELECT
+            partnerId,
+            productId,
+            productName,
+            (MAX(CASE WHEN receiver_id = #{userId} AND is_read = FALSE THEN 1 ELSE 0 END)) > 0 AS hasUnread
+        FROM conversations
+        GROUP BY partnerId, productId, productName
+        ORDER BY MAX(sent_at) DESC
     </select>
 
     <update id="markAsRead">
@@ -33,12 +51,6 @@
         SELECT COUNT(*)
         FROM chat_message
         WHERE receiver_id = #{userId} AND is_read = FALSE
-    </select>
-
-    <select id="getSendersWithUnreadMessages" resultType="java.lang.String">
-        SELECT DISTINCT sender_id
-        FROM chat_message
-        WHERE receiver_id = #{receiverId} AND is_read = FALSE
     </select>
 
 </mapper>
