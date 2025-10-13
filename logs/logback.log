@@ -12665,3 +12665,166 @@ Caused by: org.postgresql.util.PSQLException: 오류: "wishlist" 이름의 릴�
 [2025-10-13 20:00:08:127574][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
 [2025-10-13 20:00:08:127574][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
 [2025-10-13 20:00:08:127575][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:00:18:137568][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 20:00:18:137568][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 20:00:18:137570][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:00:18:137570][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 20:00:18:137571][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:00:28:147570][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 20:00:28:147570][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 20:00:28:147573][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:00:28:147573][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 20:00:28:147574][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:00:38:157567][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 20:00:38:157567][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 20:00:38:157572][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:00:38:157572][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 20:00:38:157573][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:00:49:1676][restartedMain] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Patterns [/chat/**, /adminchat/**] in 'stompWebSocketHandlerMapping'
+[2025-10-13 20:00:49:1682][restartedMain] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Patterns [/signal] in 'webSocketHandlerMapping'
+[2025-10-13 20:00:49:1718][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 67 mappings in 'requestMappingHandlerMapping'
+[2025-10-13 20:00:49:1879][restartedMain] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /imgs/**, /logs/**] in 'resourceHandlerMapping'
+[2025-10-13 20:00:49:1937][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.AdminMsgController:
+	{[MESSAGE],[/adminreceiveto]}: adminreceiveto(Msg,SimpMessageHeaderAccessor)
+[2025-10-13 20:00:49:1937][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ChartController:
+	
+[2025-10-13 20:00:49:1938][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ChartRestController:
+	
+[2025-10-13 20:00:49:1938][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ChatController:
+	
+[2025-10-13 20:00:49:1938][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ChatRestController:
+	
+[2025-10-13 20:00:49:1938][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.CustController:
+	
+[2025-10-13 20:00:49:1938][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.LoginController:
+	
+[2025-10-13 20:00:49:1938][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MainController:
+	
+[2025-10-13 20:00:49:1938][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MainRestController:
+	
+[2025-10-13 20:00:49:1938][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MapRestController:
+	
+[2025-10-13 20:00:49:1938][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MarketController:
+	
+[2025-10-13 20:00:49:1938][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.MsgController:
+	{[MESSAGE],[/receiveall]}: receiveall(Msg,SimpMessageHeaderAccessor)
+	{[MESSAGE],[/receiveto]}: receiveto(Msg,SimpMessageHeaderAccessor)
+	{[MESSAGE],[/receiveme]}: receiveme(Msg,SimpMessageHeaderAccessor)
+[2025-10-13 20:00:49:1938][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.ProductController:
+	
+[2025-10-13 20:00:49:1938][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	e.s.c.WishlistRestController:
+	
+[2025-10-13 20:00:49:1939][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	o.s.b.a.w.s.e.BasicErrorController:
+	
+[2025-10-13 20:00:49:1964][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2025-10-13 20:00:49:1989][restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+[2025-10-13 20:00:49:2063][restartedMain] DEBUG o.springframework.web.SimpLogging - clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+[2025-10-13 20:00:49:2063][restartedMain] DEBUG o.springframework.web.SimpLogging - clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[]]
+[2025-10-13 20:00:49:2063][restartedMain] DEBUG o.springframework.web.SimpLogging - clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@76166099]
+[2025-10-13 20:00:49:2063][restartedMain] DEBUG o.springframework.web.SimpLogging - brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@76166099]
+[2025-10-13 20:00:49:2064][restartedMain] DEBUG o.springframework.web.SimpLogging - clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2025-10-13 20:00:49:2064][restartedMain] DEBUG o.springframework.web.SimpLogging - brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2025-10-13 20:00:49:2233][https-jsse-nio-8443-exec-9] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[2025-10-13 20:00:49:2233][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+[2025-10-13 20:00:49:2233][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+[2025-10-13 20:00:49:2233][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+[2025-10-13 20:00:49:2233][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@10fec5a0
+[2025-10-13 20:00:49:2234][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@636be721
+[2025-10-13 20:00:49:2234][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[2025-10-13 20:00:49:2234][https-jsse-nio-8443-exec-9] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+[2025-10-13 20:00:49:2245][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 20:00:49:2246][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 20:00:49:2426][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:00:49:2431][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 20:00:49:2454][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:00:58:11059][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 20:00:58:11059][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 20:00:58:11064][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:00:58:11065][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 20:00:58:11070][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:01:08:21058][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 20:01:08:21058][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 20:01:08:21062][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:01:08:21062][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 20:01:08:21064][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:01:18:31070][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 20:01:18:31070][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 20:01:18:31074][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:01:18:31075][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 20:01:18:31077][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:01:28:41061][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 20:01:28:41061][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 20:01:28:41063][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:01:28:41063][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 20:01:28:41064][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:01:38:51063][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 20:01:38:51063][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 20:01:38:51068][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:01:38:51068][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 20:01:38:51070][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:01:48:61071][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 20:01:48:61071][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 20:01:48:61075][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:01:48:61075][https-jsse-nio-8443-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 20:01:48:61077][https-jsse-nio-8443-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:01:49:62072][MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+[2025-10-13 20:01:58:71068][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 20:01:58:71068][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 20:01:58:71072][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:01:58:71072][https-jsse-nio-8443-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 20:01:58:71074][https-jsse-nio-8443-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:02:08:81060][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 20:02:08:81060][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 20:02:08:81064][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:02:08:81064][https-jsse-nio-8443-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 20:02:08:81066][https-jsse-nio-8443-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:02:18:91056][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 20:02:18:91056][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 20:02:18:91058][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:02:18:91058][https-jsse-nio-8443-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 20:02:18:91059][https-jsse-nio-8443-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:02:28:101069][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 20:02:28:101069][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 20:02:28:101074][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:02:28:101074][https-jsse-nio-8443-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 20:02:28:101075][https-jsse-nio-8443-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:02:38:111056][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 20:02:38:111056][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 20:02:38:111059][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:02:38:111059][https-jsse-nio-8443-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 20:02:38:111060][https-jsse-nio-8443-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:02:48:121072][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 20:02:48:121072][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 20:02:48:121075][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:02:48:121075][https-jsse-nio-8443-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 20:02:48:121077][https-jsse-nio-8443-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:02:58:131067][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 20:02:58:131067][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 20:02:58:131070][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:02:58:131070][https-jsse-nio-8443-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 20:02:58:131072][https-jsse-nio-8443-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:03:08:141065][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/regdate-ranking", parameters={}
+[2025-10-13 20:03:08:141066][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getRegDateRanking()
+[2025-10-13 20:03:08:141069][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:03:08:141069][https-jsse-nio-8443-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=35, productName=수능특강책 전권 팔아요, productPrice=30000, productImg=b5.jpg, productRegda (truncated)...]
+[2025-10-13 20:03:08:141071][https-jsse-nio-8443-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2025-10-13 20:03:18:151065][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/market/api/products/price-ranking", parameters={}
+[2025-10-13 20:03:18:151065][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to edu.sm.controller.MarketController#getPriceRanking()
+[2025-10-13 20:03:18:151070][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[2025-10-13 20:03:18:151070][https-jsse-nio-8443-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[Product(productId=25, productName=아버지가 생일선물로 준 요트 팔아요, productPrice=23000000, productImg=w5.jpg, pr (truncated)...]
+[2025-10-13 20:03:18:151071][https-jsse-nio-8443-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
