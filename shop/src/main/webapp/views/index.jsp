@@ -139,9 +139,13 @@ $(function() {
     chatModal.on('show.bs.modal', function (event) {
         const button = $(event.relatedTarget); // Modal을 트리거한 버튼
         const targetId = button.data('target-id'); // data-target-id 속성 값 가져오기
-        
+        const productId = button.data('product-id'); // data-product-id 속성 값 가져오기
+
         // iframe의 src를 채팅 페이지 URL로 설정
-        const chatUrl = '<c:url value="/chat/modal_view" />' + '?target=' + targetId;
+        let chatUrl = '<c:url value="/chat/modal_view" />' + '?target=' + targetId;
+        if (productId) {
+            chatUrl += '&productId=' + productId;
+        }
         chatFrame.attr('src', chatUrl);
     });
 
@@ -149,6 +153,7 @@ $(function() {
     chatModal.on('hidden.bs.modal', function () {
         // iframe의 src를 비워서 리소스를 해제
         chatFrame.attr('src', 'about:blank');
+        location.reload(); // 페이지 새로고침
     });
 });
 </script>

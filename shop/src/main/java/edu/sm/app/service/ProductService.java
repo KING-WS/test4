@@ -1,10 +1,13 @@
 package edu.sm.app.service;
 
-
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import edu.sm.app.dto.*;
+import edu.sm.app.dto.Cate;
+import edu.sm.app.dto.Product;
+import edu.sm.app.dto.ProductSearch;
+import edu.sm.app.dto.Wishlist;
 import edu.sm.app.repository.ProductRepository;
+import edu.sm.app.repository.WishlistRepository;
 import edu.sm.common.frame.SmService;
 import edu.sm.util.FileUploadUtil;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +20,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductService implements SmService<Product, Integer> {
 
-    final ProductRepository productRepository;
-
     @Value("${app.dir.uploadimgsdir}")
     String imgDir;
+    private final ProductRepository productRepository;
+    private final WishlistService wishlistService;
 
     @Override
     public void register(Product product) throws Exception {
@@ -69,14 +72,24 @@ public class ProductService implements SmService<Product, Integer> {
         productRepository.delete(s);
     }
 
+
     @Override
-    public List<Product> get() throws Exception {
-        return productRepository.selectAll();
+    public Product get(Integer integer) throws Exception {
+        return productRepository.select(integer);
+    }
+
+    public Product get(Integer integer, String custId) throws Exception {
+        Product product = productRepository.select(integer);
+        if (custId != null && !custId.isEmpty()) {
+            boolean isWishlisted = wishlistService.isWishlisted(custId, integer);
+            product.setWishlistStatus(isWishlisted);
+        }
+        return product;
     }
 
     @Override
-    public Product get(Integer s) throws Exception {
-        return productRepository.select(s);
+    public List<Product> get() throws Exception {
+        return productRepository.selectAll();
     }
     public List<Product> searchProductList(ProductSearch productSearch) throws Exception {
         return productRepository.searchProductList(productSearch);
@@ -90,5 +103,18 @@ public class ProductService implements SmService<Product, Integer> {
     }
     public List<Product> getMyItems(String custId) throws Exception {
         return productRepository.findByCustId(custId);
+    }
+
+    public void updateChatCount(int productId) {
+        productRepository.updateChatCount(productId);
+    }
+
+    public List<Product> getWishlistProducts(String custId) {
+        List<Wishlist> wishlist = wishlistService.getWishlistByCustId(custId);
+        if (wishlist.isEmpty()) {
+            return new java.util.ArrayList<>();
+        }
+        List<Integer> productIds = wishlist.stream().map(Wishlist::getProductId).collect(java.util.stream.Collectors.toList());
+        return productRepository.selectByIds(productIds);
     }
 }

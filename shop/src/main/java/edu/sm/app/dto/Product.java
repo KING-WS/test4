@@ -24,4 +24,6 @@ public class Product {
     private String productDesc;
     private String custId;
     private MultipartFile productImgFile;
+    private int chatCount;
+    private boolean wishlistStatus;
 }
