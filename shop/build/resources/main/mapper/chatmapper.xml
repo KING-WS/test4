@@ -23,4 +23,22 @@
         ) AS partners
     </select>
 
+    <update id="markAsRead">
+        UPDATE chat_message
+        SET is_read = TRUE
+        WHERE receiver_id = #{param1} AND sender_id = #{param2} AND is_read = FALSE
+    </update>
+
+    <select id="countUnreadMessages" resultType="int">
+        SELECT COUNT(*)
+        FROM chat_message
+        WHERE receiver_id = #{userId} AND is_read = FALSE
+    </select>
+
+    <select id="getSendersWithUnreadMessages" resultType="java.lang.String">
+        SELECT DISTINCT sender_id
+        FROM chat_message
+        WHERE receiver_id = #{receiverId} AND is_read = FALSE
+    </select>
+
 </mapper>

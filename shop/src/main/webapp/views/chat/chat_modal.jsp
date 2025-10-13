@@ -288,6 +288,9 @@
             };
             this.displayMessage(displayMsg, isMyMessage);
           });
+
+          // Scroll to the bottom after history is loaded
+          this.elements.messageArea.scrollTop = this.elements.messageArea.scrollHeight;
         } catch (error) {
           console.error('Error fetching chat history:', error);
         }
