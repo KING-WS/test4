@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import edu.sm.app.dto.Cust;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,7 +40,14 @@ public class MarketController {
     }
 
     @RequestMapping("/registerimpl")
-    public String registerimpl(Model model, Product product) throws Exception {
+    public String registerimpl(Model model, Product product, HttpSession session) throws Exception {
+        Cust cust = (Cust) session.getAttribute("cust");
+        if (cust != null) {
+            product.setCustId(cust.getCustId());
+        } else {
+            // Optional: Handle case where user is not logged in, maybe redirect to login
+            return "redirect:/login";
+        }
         productService.register(product);
         return "redirect:/market/map5";
     }
@@ -57,5 +66,41 @@ public class MarketController {
         model.addAttribute("center",dir+"map5");
         model.addAttribute("left",dir+"left");
         return "index";
+    }
+
+    @RequestMapping("/myitems")
+    public String myitems(Model model, HttpSession session) throws Exception {
+        Cust cust = (Cust) session.getAttribute("cust");
+        if (cust == null) {
+            return "redirect:/login";
+        }
+        List<Product> list = productService.getMyItems(cust.getCustId());
+        model.addAttribute("plist", list);
+        model.addAttribute("center", dir+"myitems");
+        model.addAttribute("left", dir+"left");
+        return "index";
+    }
+
+    @RequestMapping("/edit")
+    public String edit(Model model, @RequestParam("id") int id) throws Exception {
+        Product product = productService.get(id);
+        List<Cate> cateList = productService.getAllCate();
+        model.addAttribute("p", product);
+        model.addAttribute("cateList", cateList);
+        model.addAttribute("left", dir+"left");
+        model.addAttribute("center", dir+"edit");
+        return "index";
+    }
+
+    @RequestMapping("/updateimpl")
+    public String updateimpl(Model model, Product product) throws Exception {
+        productService.modify(product);
+        return "redirect:/market/detail?id="+product.getProductId();
+    }
+
+    @RequestMapping("/delete")
+    public String delete(Model model, @RequestParam("id") int id) throws Exception {
+        productService.remove(id);
+        return "redirect:/market/myitems";
     }
 }

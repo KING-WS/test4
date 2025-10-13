@@ -69,11 +69,20 @@
                           inner join cate c on p.cate_id = c.cate_id
     </select>
     <insert id="insert" parameterType="Product">
-        INSERT INTO product (product_id, product_name, product_price, product_img, product_regdate, product_update, cate_id, lat, lng, product_desc)
-        VALUES (DEFAULT, #{productName}, #{productPrice}, #{productImg}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{cateId}, #{lat}, #{lng}, #{productDesc})
+        INSERT INTO product (product_id, product_name, product_price, product_img, product_regdate, product_update, cate_id, lat, lng, product_desc, cust_id)
+        VALUES (DEFAULT, #{productName}, #{productPrice}, #{productImg}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{cateId}, #{lat}, #{lng}, #{productDesc}, #{custId})
     </insert>
     <update id="update" parameterType="Product">
-        UPDATE product SET product_name=#{productName},product_price=#{productPrice},discount_rate=#{discountRate},product_img=#{productImg}, product_update=NOW() WHERE product_id=#{productId}
+        UPDATE product
+        SET
+            product_name = #{productName},
+            product_price = #{productPrice},
+            product_img = #{productImg},
+            product_desc = #{productDesc},
+            cate_id = #{cateId},
+            product_update = CURRENT_TIMESTAMP
+        WHERE
+            product_id = #{productId}
     </update>
     <delete id="delete" parameterType="Integer">
         DELETE FROM product WHERE product_id=#{productId}
@@ -81,5 +90,12 @@
 
     <select id="getAllCate" resultType="edu.sm.app.dto.Cate">
         SELECT * FROM cate
+    </select>
+
+    <select id="findByCustId" parameterType="String" resultType="Product">
+        SELECT * FROM product p
+        INNER JOIN cate c ON p.cate_id = c.cate_id
+        WHERE p.cust_id = #{custId}
+        ORDER BY p.product_regdate DESC
     </select>
 </mapper>
