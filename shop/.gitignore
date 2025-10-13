@@ -1,8 +1,12 @@
 /.env
 <<<<<<< HEAD
+<<<<<<< HEAD
 /.gradle
 /build
 /gradle
+=======
+/.gradle/
+>>>>>>> origin/minwoo
 =======
 /.gradle/
 >>>>>>> origin/minwoo

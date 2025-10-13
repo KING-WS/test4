@@ -81,8 +81,11 @@
       await this.startCam();
       await this.connect();
 <<<<<<< HEAD
+<<<<<<< HEAD
       document.getElementById('userArea').style.display = 'none';
 
+=======
+>>>>>>> origin/minwoo
 =======
 >>>>>>> origin/minwoo
     },
@@ -143,8 +146,11 @@
         document.getElementById('startButton').style.display = 'none';
         document.getElementById('endButton').style.display = 'block';
 <<<<<<< HEAD
+<<<<<<< HEAD
         document.getElementById('userArea').style.display = 'block';
 
+=======
+>>>>>>> origin/minwoo
 =======
 >>>>>>> origin/minwoo
       } catch (error) {
@@ -163,7 +169,10 @@
       }
       document.getElementById('remoteVideo').srcObject = null;
 <<<<<<< HEAD
+<<<<<<< HEAD
       document.getElementById('userArea').style.display = 'none';
+=======
+>>>>>>> origin/minwoo
 =======
 >>>>>>> origin/minwoo
       document.getElementById('startButton').style.display = 'block';
@@ -210,8 +219,11 @@
             case 'join':
               $('#user').html("사용자가 방문 하였습니다.  Start Call 버튼을 누르세요");
 <<<<<<< HEAD
+<<<<<<< HEAD
               document.getElementById('userArea').style.display = 'block';
 
+=======
+>>>>>>> origin/minwoo
 =======
 >>>>>>> origin/minwoo
               break;
@@ -219,8 +231,11 @@
               $('#user').html("접속이 끊어 졌습니다.");
               document.getElementById('remoteVideo').srcObject = null;
 <<<<<<< HEAD
+<<<<<<< HEAD
               document.getElementById('userArea').style.display = 'none';
 
+=======
+>>>>>>> origin/minwoo
 =======
 >>>>>>> origin/minwoo
               break;
@@ -261,7 +276,10 @@
 
       this.peerConnection.ontrack = (event) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
         console.log('Event Size ==========================> '+event.streams.length);
+=======
+>>>>>>> origin/minwoo
 =======
 >>>>>>> origin/minwoo
         if (document.getElementById('remoteVideo') && event.streams[0]) {
@@ -314,7 +332,11 @@
         <div class="video-label">Admin Stream</div>
       </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div class="video-wrapper" id="userArea" style="display: none">
+=======
+      <div class="video-wrapper">
+>>>>>>> origin/minwoo
 =======
       <div class="video-wrapper">
 >>>>>>> origin/minwoo

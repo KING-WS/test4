@@ -3,7 +3,10 @@
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="postgres@localhost" uuid="99bbcff2-475d-409f-b782-3f91c1937f84">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/minwoo
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
@@ -16,6 +19,9 @@
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="postgres@localhost [2]" uuid="320b8ef7-32a7-405e-9f8c-f6af90755846">
+<<<<<<< HEAD
+>>>>>>> origin/minwoo
+=======
 >>>>>>> origin/minwoo
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
