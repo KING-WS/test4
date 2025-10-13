@@ -20,7 +20,7 @@
 </script>
 
 
-<div class="col-sm-10">
+<div class="col-sm-12">
   <h2>PWD Update Page</h2>
   <div class="row">
     <div class="col-sm-6">

@@ -272,7 +272,7 @@
     <h5>다양한 상품을 만나보세요</h5>
   </div>
 
-  <form action="/market/search" method="get" class="search-form-container">
+  <form id="marketSearchForm" action="/market/search" method="get" class="search-form-container">
     <div class="form-group">
       <label for="productName">상품명:</label>
       <input type="text" name="productName" id="productName" class="form-control" value="${ps.productName}">
@@ -286,7 +286,7 @@
         </c:forEach>
       </select>
     </div>
-    <button type="submit" class="btn-search">검색</button>
+    <button type="button" id="searchBtn" class="btn-search">검색</button>
   </form>
 
   <div class="main-content-wrapper">
@@ -490,5 +490,31 @@
 
     // 10초마다 순위를 자동으로 전환합니다.
     setInterval(switchRanking, 10000); // 10000ms = 10초
+
+    // Search button click handler
+    $('#searchBtn').on('click', function() {
+        const form = $('#marketSearchForm');
+        const productName = $('#productName').val();
+        const cateId = $('#cateId').val();
+
+        let url = form.attr('action') + '?';
+        const params = [];
+
+        if (productName && productName.trim() !== '') {
+            params.push('productName=' + encodeURIComponent(productName));
+        }
+
+        if (cateId && cateId.trim() !== '') {
+            params.push('cateId=' + encodeURIComponent(cateId));
+        }
+
+        window.location.href = url + params.join('&');
+    });
+
+    // Handle Enter key press on the form
+    $('#marketSearchForm').on('submit', function(event) {
+        event.preventDefault(); // Prevent default submission
+        $('#searchBtn').click(); // Trigger the custom search button click
+    });
   });
 </script>
