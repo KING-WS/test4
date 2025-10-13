@@ -416,7 +416,7 @@
     <div class="slider-wrapper">
       <div class="slider-track">
         <div class="slide active">
-          <img src="/imgs/banner3.jpg" alt="배너 1">
+          <img src="/imgs/banner.jpg" alt="배너 1">
         </div>
         <div class="slide">
           <img src="/imgs/banner2.jpg" alt="배너 2">
