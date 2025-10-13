@@ -216,6 +216,10 @@
               const messageData = JSON.parse(msg.body);
               this.displayMessage(messageData, false); // 받은 메시지이므로 isMyMessage=false
             });
+
+            // 대화 기록 불러오기 함수 호출
+            this.loadHistory();
+
           }, (error) => {
             this.setConnected(false, '연결 실패');
             console.log('Connection error: ' + error);
@@ -224,6 +228,24 @@
         } catch (e) {
           console.error("SockJS or Stomp library not found.", e);
           this.setConnected(false, '라이브러리 오류');
+        }
+      },
+
+      // 과거 대화 기록을 불러오는 함수
+      loadHistory: async function() {
+        const targetId = this.elements.targetIdInput.value;
+        try {
+          const response = await fetch('/api/chat/history?user1=' + this.id + '&user2=' + targetId);
+          if (!response.ok) {
+            throw new Error('Failed to fetch chat history.');
+          }
+          const history = await response.json();
+          // 각 메시지를 화면에 표시
+          history.forEach(msg => {
+            this.displayMessage(msg, msg.senderId === this.id);
+          });
+        } catch (error) {
+          console.error('Error fetching chat history:', error);
         }
       },
 
@@ -246,7 +268,7 @@
 
         // 4. 서버의 '/adminreceiveto' 경로로 메시지 전송 (기존 로직과 동일)
         this.stompClient.send('/adminreceiveto', {}, JSON.stringify(msg));
-        this.displayMessage(msg, true); // 내가 보낸 메시지를 화면에 바로 표시 (isMyMessage=true)
+        this.displayMessage({ ...msg, senderId: this.id, content: msg.content1 }, true);
         this.elements.messageInput.value = ''; // 입력창 비우기
         this.elements.messageInput.focus(); // 다시 입력창에 포커스
       },
@@ -255,17 +277,17 @@
       displayMessage: function(msg, isMyMessage) {
         const bubble = document.createElement('div');
         const meta = document.createElement('div');
-        const content = document.createElement('div');
+        const contentDiv = document.createElement('div');
 
         // 내가 보낸 메시지인지, 상대가 보낸 메시지인지에 따라 CSS 클래스 적용
         bubble.className = isMyMessage ? 'message-bubble my-message' : 'message-bubble other-message';
         meta.className = 'message-meta';
 
-        meta.textContent = msg.sendid; // 보낸 사람 ID 표시
-        content.textContent = msg.content1; // 메시지 내용 표시
+        meta.textContent = msg.senderId || msg.sendid; // 보낸 사람 ID 표시 (과거기록 || 실시간)
+        contentDiv.textContent = msg.content || msg.content1; // 메시지 내용 표시 (과거기록 || 실시간)
 
         bubble.appendChild(meta);
-        bubble.appendChild(content);
+        bubble.appendChild(contentDiv);
 
         this.elements.messageArea.appendChild(bubble);
 
