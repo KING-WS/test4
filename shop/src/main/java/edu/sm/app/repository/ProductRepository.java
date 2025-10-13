@@ -13,6 +13,7 @@ import java.util.List;
 @Mapper
 public interface ProductRepository extends SmRepository<Product, Integer> {
     Page<Product> getpage() throws Exception;
+    Page<Product> getpageSearch(ProductSearch productSearch) throws Exception;
     List<Product> searchProductList(ProductSearch productSearch) throws Exception;
     List<Cate> getAllCate() throws Exception;
     List<Product> findByCustId(String custId) throws Exception;
