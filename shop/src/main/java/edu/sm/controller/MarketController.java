@@ -1,7 +1,10 @@
 package edu.sm.controller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import edu.sm.app.dto.Cate;
 import edu.sm.app.dto.Product;
+import edu.sm.app.dto.ProductSearch;
 import edu.sm.app.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +33,25 @@ public class MarketController {
     String dir="market/";
 
     @RequestMapping("")
-    public String main(Model model) throws Exception {
-        List<Product> productList = productService.get();
-        model.addAttribute("productList", productList);
+    public String main(@RequestParam(value="pageNo", defaultValue = "1") int pageNo, Model model) throws Exception {
+        PageInfo<Product> p = new PageInfo<>(productService.getPage(pageNo, 9), 5);
+        List<Cate> cateList = productService.getAllCate();
+        model.addAttribute("cateList", cateList);
+        model.addAttribute("productList", p);
+        model.addAttribute("target", "/market");
+        model.addAttribute("center",dir+"center");
+        model.addAttribute("left",dir+"left");
+        return "index";
+    }
+
+    @RequestMapping("/search")
+    public String search(@RequestParam(value="pageNo", defaultValue = "1") int pageNo, ProductSearch ps, Model model) throws Exception {
+        PageInfo<Product> p = new PageInfo<>(productService.getSearchPage(pageNo, 9, ps), 5);
+        List<Cate> cateList = productService.getAllCate();
+        model.addAttribute("cateList", cateList);
+        model.addAttribute("productList", p);
+        model.addAttribute("ps", ps);
+        model.addAttribute("target", "/market/search");
         model.addAttribute("center",dir+"center");
         model.addAttribute("left",dir+"left");
         return "index";
@@ -53,7 +72,6 @@ public class MarketController {
         if (cust != null) {
             product.setCustId(cust.getCustId());
         } else {
-            // Optional: Handle case where user is not logged in, maybe redirect to login
             return "redirect:/login";
         }
         productService.register(product);
@@ -97,7 +115,6 @@ public class MarketController {
     public ResponseEntity<List<Product>> getRegDateRanking() {
         try {
             List<Product> productList = productService.get();
-            // 등록일을 기준으로 내림차순 정렬 후 상위 10개만 선택
             List<Product> sortedList = productList.stream()
                 .sorted(Comparator.comparing(Product::getProductRegdate).reversed())
                 .limit(10)
@@ -110,13 +127,27 @@ public class MarketController {
     }
 
     @RequestMapping("/myitems")
-    public String myitems(Model model, HttpSession session) throws Exception {
+    public String myitems(@RequestParam(value = "page", defaultValue = "1") int page, Model model, HttpSession session) throws Exception {
         Cust cust = (Cust) session.getAttribute("cust");
         if (cust == null) {
             return "redirect:/login";
         }
         List<Product> list = productService.getMyItems(cust.getCustId());
-        model.addAttribute("plist", list);
+
+        // Manual pagination
+        int pageSize = 9;
+        com.github.pagehelper.Page<Product> pageList = new com.github.pagehelper.Page<>(page, pageSize);
+        pageList.setTotal(list.size());
+        pageList.addAll(list.stream()
+                .skip((long)(page - 1) * pageSize)
+                .limit(pageSize)
+                .collect(Collectors.toList()));
+
+        PageInfo<Product> p = new PageInfo<>(pageList, 5);
+
+        model.addAttribute("plist", p.getList());
+        model.addAttribute("pageMaker", p);
+        model.addAttribute("target", "/market/myitems");
         model.addAttribute("center", dir+"myitems");
         model.addAttribute("left", dir+"left");
         return "index";

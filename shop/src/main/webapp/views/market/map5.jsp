@@ -12,7 +12,7 @@
     border: 3px solid #d6d6d6;
     transition: all 0.3s ease;
   }
-  
+
   /* 지도에 마우스를 올렸을 때의 스타일 */
   #map:hover {
     transform: translateY(-2px);
@@ -271,17 +271,17 @@
       flex-direction: column;
       align-items: center;
     }
-    
+
     .category-btn {
       width: 200px;
     }
-    
+
     .product-item {
       flex-direction: column;
       text-align: center;
       padding: 15px;
     }
-    
+
     .product-item img {
       margin-right: 0;
       margin-bottom: 15px;
@@ -291,7 +291,7 @@
 
 <div class="col-sm-10">
   <h1 class="page-title">주변 상품 탐색</h1>
-  
+
   <div class="category-buttons">
     <button id="cate_all_btn" class="category-btn active">전체</button>
     <button id="cate_1_btn" class="category-btn">전자기기</button>
@@ -333,7 +333,7 @@
         $('.category-btn').removeClass('active');
         // 클릭된 버튼에 active 클래스 추가
         $(e.target).addClass('active');
-        
+
         // 카테고리 ID 추출 및 설정
         const btnId = e.target.id;
         if (btnId === 'cate_all_btn') {
@@ -341,7 +341,7 @@
         } else {
           this.category = parseInt(btnId.replace('cate_', '').replace('_btn', ''));
         }
-        
+
         this.getData();
       });
     },
@@ -394,12 +394,12 @@
             <div class="info-window">
               <h3>\${item.productName}</h3>
               <div class="price">\${item.productPrice.toLocaleString()}원</div>`;
-              
+
           if(item.productImg) {
             iwContent += `
               <img src="<c:url value='/imgs/\${item.productImg}'/>" width="100" alt="\${item.productName}">`;
           }
-          
+
           iwContent += `
               <div class="click-hint">
                 클릭하여 자세히 보기

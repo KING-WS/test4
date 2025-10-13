@@ -231,17 +231,61 @@
     display: block;
   }
 
+  /* 페이지네이션 스타일 */
+  .pagination {
+    justify-content: center;
+    margin-top: 30px;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+  }
+
+  .page-item .page-link {
+    color: #667eea;
+    border: 1px solid #dee2e6;
+    margin: 0 2px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    background-color: #fff;
+  }
+
+  .page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-color: #667eea;
+  }
+
+  .page-item .page-link:hover {
+    background-color: #f8f9fa;
+    color: #764ba2;
+    text-decoration: none;
+  }
+
+  .page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #dee2e6;
+  }
+
   /* 반응형 디자인 */
   @media (max-width: 768px) {
     #myitems_table {
       min-width: 600px;
     }
-    
+
     .btn-container {
       flex-direction: column;
       gap: 5px;
     }
-    
+
     .btn-edit, .btn-delete {
       width: 100%;
       font-size: 11px;
@@ -252,60 +296,82 @@
 
 <div class="col-sm-10">
   <h1 class="page-title">내 상품 관리</h1>
-  
+
   <table id="myitems_table">
     <thead>
-      <tr>
-        <th>이미지</th>
-        <th>상품명</th>
-        <th>가격</th>
-        <th>카테고리</th>
-        <th>등록일</th>
-        <th>관리</th>
-      </tr>
+    <tr>
+      <th>이미지</th>
+      <th>상품명</th>
+      <th>가격</th>
+      <th>카테고리</th>
+      <th>등록일</th>
+      <th>관리</th>
+    </tr>
     </thead>
     <tbody>
-      <c:choose>
-        <c:when test="${empty plist}">
+    <c:choose>
+      <c:when test="${empty plist}">
+        <tr>
+          <td colspan="6" class="empty-message">
+            등록한 상품이 없습니다
+          </td>
+        </tr>
+      </c:when>
+      <c:otherwise>
+        <c:forEach var="p" items="${plist}">
           <tr>
-            <td colspan="6" class="empty-message">
-              등록한 상품이 없습니다
+            <td>
+              <c:if test="${p.productImg != null and not empty p.productImg}">
+                <img src="<c:url value='/imgs/${p.productImg}'/>" alt="${p.productName}">
+              </c:if>
+            </td>
+            <td>
+              <a href="<c:url value="/market/detail?id=${p.productId}"/>">${p.productName}</a>
+            </td>
+            <td class="price-cell">
+              <fmt:formatNumber type="number" pattern="###,###원" value="${p.productPrice}" />
+            </td>
+            <td>
+              <span class="category-cell">${p.cateName}</span>
+            </td>
+            <td class="date-cell">
+              <fmt:parseDate value="${p.productRegdate}" pattern="yyyy-MM-dd HH:mm:ss" var="parsedDateTime" type="both" />
+              <fmt:formatDate pattern="yyyy-MM-dd" value="${parsedDateTime}" />
+            </td>
+            <td>
+              <div class="btn-container">
+                <a href="<c:url value='/market/edit?id=${p.productId}'/>" class="btn-edit">수정</a>
+                <a href="<c:url value='/market/delete?id=${p.productId}'/>" class="btn-delete delete-btn">삭제</a>
+              </div>
             </td>
           </tr>
-        </c:when>
-        <c:otherwise>
-          <c:forEach var="p" items="${plist}">
-            <tr>
-              <td>
-                <c:if test="${p.productImg != null and not empty p.productImg}">
-                  <img src="<c:url value='/imgs/${p.productImg}'/>" alt="${p.productName}">
-                </c:if>
-              </td>
-              <td>
-                <a href="<c:url value="/market/detail?id=${p.productId}"/>">${p.productName}</a>
-              </td>
-              <td class="price-cell">
-                <fmt:formatNumber type="number" pattern="###,###원" value="${p.productPrice}" />
-              </td>
-              <td>
-                <span class="category-cell">${p.cateName}</span>
-              </td>
-              <td class="date-cell">
-                <fmt:parseDate value="${p.productRegdate}" pattern="yyyy-MM-dd HH:mm:ss" var="parsedDateTime" type="both" />
-                <fmt:formatDate pattern="yyyy-MM-dd" value="${parsedDateTime}" />
-              </td>
-              <td>
-                <div class="btn-container">
-                  <a href="<c:url value='/market/edit?id=${p.productId}'/>" class="btn-edit">수정</a>
-                  <a href="<c:url value='/market/delete?id=${p.productId}'/>" class="btn-delete delete-btn">삭제</a>
-                </div>
-              </td>
-            </tr>
-          </c:forEach>
-        </c:otherwise>
-      </c:choose>
+        </c:forEach>
+      </c:otherwise>
+    </c:choose>
     </tbody>
   </table>
+
+  <!-- 페이지네이션 -->
+  <div class="text-center">
+    <ul class="pagination">
+      <c:if test="${pageMaker.hasPreviousPage}">
+        <li class="page-item">
+          <a class="page-link" href="<c:url value='/market/myitems?page=${pageMaker.prePage}'/>">이전</a>
+        </li>
+      </c:if>
+      <c:forEach items="${pageMaker.navigatepageNums}" var="pageNum">
+        <li class="page-item ${pageMaker.pageNum == pageNum ? 'active' : ''}">
+          <a class="page-link" href="<c:url value='/market/myitems?page=${pageNum}'/>">${pageNum}</a>
+        </li>
+      </c:forEach>
+      <c:if test="${pageMaker.hasNextPage}">
+        <li class="page-item">
+          <a class="page-link" href="<c:url value='/market/myitems?page=${pageMaker.nextPage}'/>">다음</a>
+        </li>
+      </c:if>
+    </ul>
+  </div>
+
 </div>
 <script>
   $(function(){
