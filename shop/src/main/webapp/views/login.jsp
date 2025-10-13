@@ -22,20 +22,20 @@
 </script>
 
 <div class="col-sm-12">
-  <h2>Login Page</h2>
+  <h2>로그인을 해주세요!</h2>
   <div class="row">
     <div class="col-sm-6">
       <form id="login_form">
         <div class="form-group">
-          <label for="id">Id:</label>
+          <label for="id">아이디 입력:</label>
           <input type="text" value="1" name="id" class="form-control" placeholder="Enter id" id="id">
         </div>
         <div class="form-group">
-          <label for="pwd">Password:</label>
+          <label for="pwd">비밀번호 입력:</label>
           <input type="password" value="1" name="pwd" class="form-control" placeholder="Enter password" id="pwd">
         </div>
       </form>
-      <button id="login_btn" class="btn btn-primary">LOGIN</button>
+      <button id="login_btn" class="btn btn-primary">로그인</button>
     </div>
     <div class="col-sm-6">
       <c:choose>

@@ -41,18 +41,18 @@
     <c:choose>
         <c:when test="${sessionScope.cust.custId == null}">
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/register"/> ">Register</a>
+                <a class="nav-link" href="<c:url value="/register"/> ">회원가입</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/login"/>">Login</a>
+                <a class="nav-link" href="<c:url value="/login"/>">로그인</a>
             </li>
         </c:when>
         <c:otherwise>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/custinfo?id=${sessionScope.cust.custId}"/> ">${sessionScope.cust.custId}</a>
+                <a class="nav-link" href="<c:url value="/custinfo?id=${sessionScope.cust.custId}"/> ">${sessionScope.cust.custId} 님</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/logout"/> ">Logout</a>
+                <a class="nav-link" href="<c:url value="/logout"/> ">로그아웃</a>
             </li>
         </c:otherwise>
     </c:choose>

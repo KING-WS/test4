@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <style>
   .unread-dot {
     display: inline-block;
@@ -9,6 +11,26 @@
     height: 8px;
     background-color: #dc3545; /* Bootstrap danger color */
     border-radius: 50%;
+  }
+  .avatar-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #667eea;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+    text-transform: uppercase;
+  }
+  .media-body h6 {
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  .list-group-item-action {
+    padding: 15px;
   }
 </style>
 
@@ -23,14 +45,21 @@
       </c:when>
       <c:otherwise>
         <c:forEach var="partnerInfo" items="${chatPartners}">
-          <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
+          <button type="button" class="list-group-item list-group-item-action" 
                   data-toggle="modal" data-target="#chatModal" data-target-id="${partnerInfo.partnerId}">
-            <span>
-              <strong>${partnerInfo.partnerId}</strong> 님과의 대화
-            </span>
-            <c:if test="${partnerInfo.hasUnread}">
-              <span class="unread-dot"></span>
-            </c:if>
+            <div class="media">
+              <div class="avatar-placeholder">
+                <span>${fn:substring(partnerInfo.partnerId, 0, 1)}</span>
+              </div>
+              <div class="media-body">
+                <div class="d-flex justify-content-between">
+                  <h6 class="mt-0 mb-1">${partnerInfo.partnerId}</h6>
+                  <c:if test="${partnerInfo.hasUnread}">
+                    <span class="unread-dot"></span>
+                  </c:if>
+                </div>
+              </div>
+            </div>
           </button>
         </c:forEach>
       </c:otherwise>
