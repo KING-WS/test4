@@ -1,77 +1,66 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<style>
-    #container{
-        width:auto;
-        border: 2px solid red;
-    }
-</style>
 <script>
-    let chart={
-        url:'https://192.168.1.8:8443/logs/maininfo.log',
-        // url:'http://127.0.0.1:8088/logs/maininfo.log',
-        // url:'https://demo-live-data.highcharts.com/time-data.csv',
-        init:function(){
-            this.createChart();
-        },
-        createChart:function(){
-            Highcharts.chart('container', {
-                chart: {
-                    type: 'areaspline'
-                },
-                lang: {
-                    locale: 'en-GB'
-                },
-                title: {
-                    text: 'Live Data'
-                },
-                accessibility: {
-                    announceNewData: {
-                        enabled: true,
-                        minAnnounceInterval: 15000,
-                        announcementFormatter: function (
-                            allSeries,
-                            newSeries,
-                            newPoint
-                        ) {
-                            if (newPoint) {
-                                return 'New point added. Value: ' + newPoint.y;
-                            }
-                            return false;
-                        }
-                    }
-                },
-                plotOptions: {
-                    areaspline: {
-                        color: '#32CD32',
-                        fillColor: {
-                            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-                            stops: [
-                                [0, '#32CD32'],
-                                [1, '#32CD3200']
-                            ]
-                        },
-                        threshold: null,
-                        marker: {
-                            lineWidth: 1,
-                            lineColor: null,
-                            fillColor: 'white'
-                        }
-                    }
-                },
-                data: {
-                    csvURL: this.url,
-                    enablePolling: true,
-                    dataRefreshRate: parseInt(2, 10)
-                }
-            });
-        }
-    }
     $(()=>{
-        chart.init();
-    })
+        // Controller에서 전달받은 JSON 데이터를 JavaScript 객체로 파싱
+        const chartData = JSON.parse('${chartData}');
+
+        // Highcharts에 사용할 데이터 형식으로 가공
+        const categories = chartData.map(item => item.loginDay);
+        const data = chartData.map(item => item.userCount);
+
+        Highcharts.chart('container', {
+            chart: {
+                type: 'areaspline' // 채워진 꺾은선 그래프
+            },
+            title: {
+                text: '일별 접속자 수' // 차트 제목
+            },
+            xAxis: {
+                categories: categories,
+                title: {
+                    text: '날짜'
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '접속자 수 (명)'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y} 명</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                areaspline: {
+                    color: '#4e73df', // 기존 테마와 유사한 파란색 계열로 변경
+                    fillColor: {
+                        linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+                        stops: [
+                            [0, '#4e73df'],
+                            [1, 'rgba(78, 115, 223, 0)']
+                        ]
+                    },
+                    threshold: null,
+                    marker: {
+                        lineWidth: 1,
+                        lineColor: null,
+                        fillColor: 'white'
+                    }
+                }
+            },
+            series: [{
+                name: '일별 접속자',
+                data: data
+            }]
+        });
+    });
 </script>
 
 <!-- Begin Page Content -->
@@ -79,46 +68,26 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Chart</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        <h1 class="h3 mb-0 text-gray-800">통계 대시보드</h1>
     </div>
 
     <!-- Content Row -->
-
     <div class="row">
 
-        <!-- Line Chart -->
-        <div class="col-xl-8 col-lg-7">
+        <!-- Daily Login Chart -->
+        <div class="col-xl-12 col-lg-12">
             <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
+                <!-- Card Header -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">일별 접속자 수</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div id="container"></div>
+                    <div id="container" style="width:100%; height:400px;"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Pie Chart -->
-        <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-
-                </div>
-            </div>
-        </div>
     </div>
-
-
-
-
 
 </div>
