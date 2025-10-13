@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sm.app.repository.WishlistRepository">
+
+    <insert id="insert" parameterType="Wishlist">
+        INSERT INTO wishlist (cust_id, product_id) VALUES (#{custId}, #{productId})
+    </insert>
+
+    <delete id="delete" parameterType="Wishlist">
+        DELETE FROM wishlist WHERE cust_id = #{custId} AND product_id = #{productId}
+    </delete>
+
+    <select id="get" parameterType="Wishlist" resultType="int">
+        SELECT COUNT(*) FROM wishlist WHERE cust_id = #{custId} AND product_id = #{productId}
+    </select>
+
+    <select id="getByCustId" parameterType="String" resultType="Wishlist">
+        SELECT * FROM wishlist WHERE cust_id = #{custId}
+    </select>
+
+</mapper>
