@@ -46,10 +46,10 @@ app:
   url:
     websocketurl: https://192.168.1.8:8443/
   dir:
-    imgsdir: file:///C:/smjava/test4/imgs/     # 화면 출력 용
-    uploadimgsdir: C:/smjava/test4/imgs/    # 파일 Write 용
-    logsdir: file:///C:/smjava/test4/logs/     # 화면 출력 용
-    logsdirRead: C:/smjava/test4/logs/  #  Read 용
+    imgsdir: file:///C:/test4/imgs/     # 화면 출력 용
+    uploadimgsdir: C:/test4/imgs/    # 파일 Write 용
+    logsdir: file:///C:/test4/logs/     # 화면 출력 용
+    logsdirRead: C:/test4/logs/  #  Read 용
   key:
     skey: ${MY_KEY}
     algo: PBEWithMD5AndDES
