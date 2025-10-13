@@ -214,9 +214,9 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const chatUI = {
-            id: '${sessionScope.admin.adminId}',
+            id: '${sessionScope.admin.adminId}' || 'admin',
             stompClient: null,
-            currentUserList: new Map(), // key: userId, value: { item: element, badge: element }
+            currentUserList: new Map(),
             currentTargetId: null,
 
             elements: {
@@ -238,6 +238,19 @@
                 }
                 this.addEventListeners();
                 this.connect();
+                this.loadInitialData(); // <<-- 추가된 부분
+            },
+
+            // 페이지 로딩 시 전체 대화 목록을 불러오는 함수
+            loadInitialData: async function() {
+                try {
+                    const response = await fetch('/api/admin/chat/partners');
+                    if (!response.ok) throw new Error('Failed to fetch chat partners.');
+                    const partners = await response.json();
+                    partners.forEach(partnerInfo => this.addConversation(partnerInfo, false));
+                } catch (error) {
+                    console.error('Error loading initial chat data:', error);
+                }
             },
 
             addEventListeners: function() {
@@ -253,22 +266,18 @@
                     this.stompClient = Stomp.over(socket);
                     this.stompClient.connect({}, (frame) => {
                         this.setConnected(true, '연결됨');
-                        console.log('Connected: ' + frame);
-
-                        // 1. 개인 메시지 수신 (기존 로직)
                         this.stompClient.subscribe('/adminsend/to/' + this.id, (msg) => {
                             const messageData = JSON.parse(msg.body);
-                            // 메시지가 오면 보낸 사람을 대화 목록에 추가
-                            this.addConversation(messageData.sendid);
-                            this.displayMessage(messageData, false);
-                        });
+                            const senderId = messageData.sendid;
 
-                        // 2. 새로운 고객 문의 알림 수신
-                        this.stompClient.subscribe('/topic/admin/inbox', (msg) => {
-                            const messageData = JSON.parse(msg.body);
-                            this.addConversation(messageData.sendid);
-                        });
+                            // 대화 목록에 사용자를 추가/업데이트하고, 현재 대화 상대가 아닐 경우 'new' 뱃지를 표시합니다.
+                            this.addConversation({ partnerId: senderId, hasUnread: true }, true);
 
+                            // 현재 보고 있는 대화창의 사용자가 보낸 메시지일 경우에만 화면에 표시합니다.
+                            if (senderId === this.currentTargetId) {
+                                this.displayMessage(messageData, false);
+                            }
+                        });
                     }, (error) => {
                         this.setConnected(false, '연결 실패');
                         setTimeout(() => this.connect(), 5000);
@@ -278,10 +287,12 @@
                 }
             },
 
-            addConversation: function(userId) {
-                if (!userId || this.currentUserList.has(userId)) {
-                    // 이미 목록에 있거나 userId가 없으면 알림 배지만 업데이트
-                    if(this.currentUserList.has(userId) && userId !== this.currentTargetId){
+            addConversation: function(partnerInfo, isNewMessage) {
+                const userId = partnerInfo.partnerId;
+                if (!userId) return;
+
+                if (this.currentUserList.has(userId)) {
+                    if (isNewMessage && userId !== this.currentTargetId) {
                         this.currentUserList.get(userId).badge.style.display = 'block';
                     }
                     return;
@@ -295,43 +306,44 @@
                 const badge = document.createElement('span');
                 badge.className = 'new-message-badge';
                 badge.textContent = 'new';
-                badge.style.display = 'block'; // 처음엔 항상 보이게
+                badge.style.display = partnerInfo.hasUnread ? 'block' : 'none';
                 userItem.appendChild(badge);
 
                 userItem.addEventListener('click', () => this.selectConversation(userId));
 
-                this.elements.userListItems.prepend(userItem); // 새 유저를 맨 위에 추가
+                this.elements.userListItems.prepend(userItem);
                 this.currentUserList.set(userId, { item: userItem, badge: badge });
             },
 
-            selectConversation: function(userId) {
+            selectConversation: async function(userId) {
                 if (this.currentTargetId === userId) return;
-
                 this.currentTargetId = userId;
 
-                // 모든 아이템에서 'active' 클래스 제거
-                this.currentUserList.forEach(user => {
-                    user.item.classList.remove('active');
-                });
+                this.currentUserList.forEach(user => user.item.classList.remove('active'));
 
-                // 현재 선택된 아이템에 'active' 클래스 추가 및 배지 숨김
                 const selectedUser = this.currentUserList.get(userId);
                 selectedUser.item.classList.add('active');
                 selectedUser.badge.style.display = 'none';
 
-                this.elements.messageArea.innerHTML = ''; // 메시지 창 비우기
+                this.elements.messageArea.innerHTML = '';
                 this.elements.chatHeaderTitle.textContent = `${userId}님과의 대화`;
                 this.elements.inputSection.style.display = 'flex';
                 if(this.elements.noChatSelected) this.elements.noChatSelected.style.display = 'none';
 
-                // TODO: 여기에 해당 유저와의 과거 대화 기록을 불러오는 로직 추가
+                // 과거 대화 기록 불러오기
+                try {
+                    const response = await fetch('/api/chat/history?user1=' + this.id + '&user2=' + userId);
+                    if (!response.ok) throw new Error('Failed to fetch chat history.');
+                    const history = await response.json();
+                    history.forEach(msg => this.displayMessage(msg, msg.senderId === this.id));
+                } catch (error) {
+                    console.error('Error fetching chat history:', error);
+                }
             },
 
             sendMessage: function() {
                 const content = this.elements.messageInput.value;
-                if (content.trim() === '' || !this.currentTargetId) {
-                    return;
-                }
+                if (content.trim() === '' || !this.currentTargetId) return;
 
                 const msg = {
                     'sendid': this.id,
@@ -340,31 +352,26 @@
                 };
 
                 this.stompClient.send('/adminreceiveto', {}, JSON.stringify(msg));
-                this.displayMessage(msg, true);
+                this.displayMessage({ ...msg, content: msg.content1, senderId: msg.sendid }, true);
                 this.elements.messageInput.value = '';
             },
 
             displayMessage: function(msg, isMyMessage) {
-                // 현재 선택된 대화의 메시지만 표시
-                const chatPartnerId = isMyMessage ? msg.receiveid : msg.sendid;
-                if (chatPartnerId !== this.currentTargetId) {
-                    if(!isMyMessage) { // 내가 보낸 메시지가 아닌 경우에만 알림
-                        this.addConversation(msg.sendid);
-                    }
-                    return;
-                }
+                // 실시간 메시지(sendid, content1)와 히스토리 메시지(senderId, content)의 속성 이름 차이를 모두 처리합니다.
+                const sender = msg.senderId || msg.sendid;
+                const content = msg.content || msg.content1;
 
                 const bubble = document.createElement('div');
                 const meta = document.createElement('div');
-                const content = document.createElement('div');
+                const contentDiv = document.createElement('div');
 
                 bubble.className = isMyMessage ? 'message-bubble my-message' : 'message-bubble other-message';
                 meta.className = 'message-meta';
-                meta.textContent = isMyMessage ? '나' : msg.sendid;
-                content.textContent = msg.content1;
+                meta.textContent = isMyMessage ? '나' : sender; // 보낸 사람 ID 표시
+                contentDiv.textContent = content; // 메시지 내용 표시
 
                 bubble.appendChild(meta);
-                bubble.appendChild(content);
+                bubble.appendChild(contentDiv);
                 this.elements.messageArea.appendChild(bubble);
                 this.elements.messageArea.scrollTop = this.elements.messageArea.scrollHeight;
             },

@@ -2,6 +2,7 @@
 package edu.sm.controller;
 
 import edu.sm.app.dto.ChatMessage;
+import edu.sm.app.dto.ChatDot;
 import edu.sm.app.service.ChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,5 +25,11 @@ public class ChatRestController {
         // Mark messages from user2 to user1 as read.
         chatService.markAsRead(user1, user2);
         return chatService.getChatHistory(user1, user2);
+    }
+
+    @GetMapping("/admin/chat/partners")
+    public List<ChatDot> getAdminChatPartners() {
+        // "admin" is hardcoded as the user for the admin-side chat
+        return chatService.getChatPartners("admin");
     }
 }
