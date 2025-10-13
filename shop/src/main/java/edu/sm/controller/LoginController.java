@@ -3,6 +3,7 @@ package edu.sm.controller;
 import com.github.pagehelper.PageInfo;
 import edu.sm.app.dto.Cust;
 import edu.sm.app.service.CustService;
+import edu.sm.app.service.LoginHistoryService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,7 @@ public class LoginController {
     final CustService custService;
     final BCryptPasswordEncoder bCryptPasswordEncoder;
     final StandardPBEStringEncryptor standardPBEStringEncryptor;
+    final LoginHistoryService loginHistoryService;
 
     @RequestMapping("/updatepwd")
     public String updatepwd(Model model) {
@@ -82,6 +84,7 @@ public class LoginController {
         if(dbCust != null && bCryptPasswordEncoder.matches(pwd, dbCust.getCustPwd())){
             httpSession.setAttribute("cust",dbCust);
             log.info(dbCust.getCustId()+","+dbCust.getCustName());
+            loginHistoryService.addLoginHistory(dbCust.getCustId());
             return "redirect:/";
         }
         model.addAttribute("center","login");

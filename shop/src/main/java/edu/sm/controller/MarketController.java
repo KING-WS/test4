@@ -92,8 +92,11 @@ public class MarketController {
     }
 
     @RequestMapping("/detail")
-    public String detail(Model model, @RequestParam("id") int id) throws Exception {
-        Product product = productService.get(id);
+    public String detail(Model model, @RequestParam("id") int id, HttpSession session) throws Exception {
+        Cust cust = (Cust) session.getAttribute("cust");
+        String custId = (cust != null) ? cust.getCustId() : null;
+
+        Product product = productService.get(id, custId);
         model.addAttribute("p", product);
         model.addAttribute("left", dir+"left");
         model.addAttribute("center", dir+"view");
@@ -209,5 +212,18 @@ public class MarketController {
     public String delete(Model model, @RequestParam("id") int id) throws Exception {
         productService.remove(id);
         return "redirect:/market/myitems";
+    }
+
+    @RequestMapping("/wishlist")
+    public String wishlist(Model model, HttpSession session) throws Exception {
+        Cust cust = (Cust) session.getAttribute("cust");
+        if (cust == null) {
+            return "redirect:/login";
+        }
+        List<Product> list = productService.getWishlistProducts(cust.getCustId());
+        model.addAttribute("plist", list);
+        model.addAttribute("center", dir + "wishlist");
+        model.addAttribute("left", dir + "left");
+        return "index";
     }
 }

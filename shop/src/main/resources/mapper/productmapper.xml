@@ -75,7 +75,7 @@
         ORDER BY p.product_regdate DESC
     </select>
     <select id="select" parameterType="Integer" resultType="Product">
-        SELECT * FROM product p
+        SELECT *, p.chat_count FROM product p
                           INNER JOIN cate c ON p.cate_id=c.cate_id WHERE p.product_id=#{productId}
     </select>
     <select id="selectAll" resultType="Product">
@@ -102,6 +102,10 @@
         DELETE FROM product WHERE product_id=#{productId}
     </delete>
 
+    <update id="updateChatCount" parameterType="Integer">
+        UPDATE product SET chat_count = chat_count + 1 WHERE product_id = #{productId}
+    </update>
+
     <select id="getAllCate" resultType="edu.sm.app.dto.Cate">
         SELECT * FROM cate
     </select>
@@ -111,5 +115,14 @@
         INNER JOIN cate c ON p.cate_id = c.cate_id
         WHERE p.cust_id = #{custId}
         ORDER BY p.product_regdate DESC
+    </select>
+
+    <select id="selectByIds" parameterType="list" resultType="Product">
+        SELECT * FROM product p
+        INNER JOIN cate c ON p.cate_id = c.cate_id
+        WHERE p.product_id IN
+        <foreach item="id" collection="list" open="(" separator="," close=")">
+            #{id}
+        </foreach>
     </select>
 </mapper>

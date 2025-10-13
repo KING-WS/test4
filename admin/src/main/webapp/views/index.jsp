@@ -128,7 +128,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value="/"/>">
                 <div class="sidebar-brand-text mx-3" href="/">
-                    SMU Admin
+                    JJAP GEUN MACAT
                 </div>
             </a>
 
@@ -144,21 +144,13 @@
                         <span>Dashboard</span></a>
                 </li>
                <!-- Menu -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="<c:url value="/websocket" />">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Web Socket</span></a>
-                </li>
+
                 <li class="nav-item active">
                     <a class="nav-link" href="<c:url value="/chat" />">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>chat</span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="<c:url value="/chart" />">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>chart</span></a>
-                </li>
+
 
                 <c:if test="${sessionScope.admin.adminRole == 'super'}">
                     <li class="nav-item active">
@@ -210,6 +202,21 @@
                     </div>
                 </li>
 
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                   aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Report</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header"></h6>
+                        <a class="collapse-item" href="<c:url value="/report/get"/>">Get</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">

@@ -9,10 +9,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d22ea3311c2736901f0453c68b914e19&libraries=services"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bcc88354a0c06049623a690be552d3ac&libraries=services"></script>
     
     <%-- highchart lib   --%>
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -34,24 +35,24 @@
 <body>
 
 <div class="jumbotron text-center" style="margin-bottom:0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0;">
-    <h1 style="color: white ">짭근마켓</h1>
+    <h1 style="color: white ">🥕짭근마켓</h1>
 </div>
 <ul class="nav justify-content-end">
     <c:choose>
         <c:when test="${sessionScope.cust.custId == null}">
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/register"/> ">Register</a>
+                <a class="nav-link" href="<c:url value="/register"/> ">회원가입</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/login"/>">Login</a>
+                <a class="nav-link" href="<c:url value="/login"/>">로그인</a>
             </li>
         </c:when>
         <c:otherwise>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/custinfo?id=${sessionScope.cust.custId}"/> ">${sessionScope.cust.custId}</a>
+                <a class="nav-link" href="<c:url value="/custinfo?id=${sessionScope.cust.custId}"/> ">${sessionScope.cust.custId} 님</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/logout"/> ">Logout</a>
+                <a class="nav-link" href="<c:url value="/logout"/> ">로그아웃</a>
             </li>
         </c:otherwise>
     </c:choose>
@@ -129,9 +130,14 @@ $(function() {
     chatModal.on('show.bs.modal', function (event) {
         const button = $(event.relatedTarget); // Modal을 트리거한 버튼
         const targetId = button.data('target-id'); // data-target-id 속성 값 가져오기
-        
+        const productId = button.data('product-id');
+        const productName = button.data('product-name');
+
         // iframe의 src를 채팅 페이지 URL로 설정
-        const chatUrl = '<c:url value="/chat/modal_view" />' + '?target=' + targetId;
+        let chatUrl = '<c:url value="/chat/modal_view" />' + '?target=' + targetId;
+        if (productId) {
+            chatUrl += '&productId=' + productId + '&productName=' + encodeURIComponent(productName);
+        }
         chatFrame.attr('src', chatUrl);
     });
 
@@ -139,8 +145,94 @@ $(function() {
     chatModal.on('hidden.bs.modal', function () {
         // iframe의 src를 비워서 리소스를 해제
         chatFrame.attr('src', 'about:blank');
+        location.reload(); // 페이지 새로고침
     });
 });
+</script>
+
+<%-- ReportModal --%>
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reportModalLabel">신고하기</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm">
+                    <input type="hidden" id="reportCustId" name="reportedCustId">
+                    <div class="form-group">
+                        <label for="reportReason">신고 사유</label>
+                        <textarea class="form-control" id="reportReason" name="reason" rows="4" placeholder="신고 사유를 입력해주세요."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-danger" id="submitReportBtn">신고 제출</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // jQuery를 사용하는 경우
+    $(document).ready(function() {
+        $('#reportModal').on('show.bs.modal', function (event) {
+            // 모달을 연 버튼을 가져옴
+            var button = $(event.relatedTarget);
+
+            // 버튼의 data-target-id 값을 가져옴
+            var custId = button.data('target-id');
+
+            // 모달을 가져옴
+            var modal = $(this);
+
+            // 모달 안의 숨겨진 input 필드에 custId 값을 설정
+            modal.find('#reportCustId').val(custId);
+        });
+
+        // '신고 제출' 버튼 클릭 시 동작
+        $('#submitReportBtn').on('click', function() {
+            var reportedId = $('#reportCustId').val();
+            var reportContent = $('#reportReason').val();
+
+            if (!reportContent) {
+                alert('신고 사유를 입력해주세요.');
+                return;
+            }
+
+            // 서버로 신고 데이터를 전송하는 Ajax 코드
+            $.ajax({
+                url: '<c:url value="/cust/addReport"/>', // 요청을 보낼 URL
+                type: 'POST', // HTTP 메소드
+                data: {
+                    reportedId: reportedId,
+                    reportContent: reportContent
+                },
+                success: function(response) {
+                    // 서버로부터 응답을 성공적으로 받았을 때
+                    if (response === 'success') {
+                        alert('신고가 성공적으로 접수되었습니다.');
+                    } else if (response === 'fail_login') {
+                        alert('로그인이 필요합니다.');
+                    } else {
+                        alert('신고 접수 중 오류가 발생했습니다.');
+                    }
+                    // 모달 닫기 및 내용 초기화
+                    $('#reportModal').modal('hide');
+                    $('#reportReason').val('');
+                },
+                error: function(xhr, status, error) {
+                    // 서버 요청 실패 시
+                    alert('서버와 통신 중 오류가 발생했습니다.');
+                    console.error("AJAX Error: ", status, error);
+                }
+            });
+        });
+    });
 </script>
 
 </body>

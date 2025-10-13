@@ -199,6 +199,10 @@
     </div>
   </div>
 
+  <div id="product-info" style="padding: 10px 15px; background-color: #e9ecef; font-size: 14px; text-align: center; display: none;">
+    <!-- Product name will be inserted here -->
+  </div>
+
   <div id="chat-messages" class="chat-messages">
     <%-- Messages will be dynamically added here --%>
   </div>
@@ -216,12 +220,22 @@
 
     const urlParams = new URLSearchParams(window.location.search);
     const targetId = urlParams.get('target');
+    const productId = urlParams.get('productId');
+    const productName = urlParams.get('productName');
+
     if (targetId) {
       document.getElementById('chat-target-id').value = targetId;
     }
 
+    if (productName) {
+        const productInfoDiv = document.getElementById('product-info');
+        productInfoDiv.style.display = 'block';
+        productInfoDiv.innerHTML = '<strong>문의 상품:</strong> ' + decodeURIComponent(productName);
+    }
+
     const chatClient = {
       id: '${sessionScope.cust.custId}',
+      productId: productId, // Store productId
       stompClient: null,
       elements: {
         statusIndicator: document.getElementById('status-indicator'),
@@ -334,7 +348,8 @@
         const msg = {
           'sendid': this.id,
           'receiveid': targetId,
-          'content1': content
+          'content1': content,
+          'productId': this.productId
         };
 
         this.stompClient.send('/receiveto', {}, JSON.stringify(msg));

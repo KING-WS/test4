@@ -40,6 +40,7 @@ public class MsgController {
         chatMessage.setSenderId(msg.getSendid());
         chatMessage.setReceiverId(msg.getReceiveid());
         chatMessage.setContent(msg.getContent1());
+        chatMessage.setProductId(msg.getProductId());
         chatService.insertMessage(chatMessage);
 
         log.info("-------------------------");

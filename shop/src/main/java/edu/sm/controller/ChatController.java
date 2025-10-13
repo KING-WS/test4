@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collections;
 import java.util.List;
@@ -79,13 +80,16 @@ public class ChatController {
 
         model.addAttribute("chatPartners", chatPartners);
         model.addAttribute("center", "chat/list");
-        model.addAttribute("left", "blank"); // Set to a blank view
+        model.addAttribute("left", "market/left"); // Re-add the market left menu
         return "index";
     }
 
     @GetMapping("/modal_view")
-    public String chatModal(Model model) {
+    public String chatModal(Model model, @RequestParam(required = false) Integer productId) {
         model.addAttribute("websocketurl", webSocketUrl);
+        if (productId != null) {
+            model.addAttribute("productId", productId);
+        }
         return "chat/chat_modal";
     }
 }
