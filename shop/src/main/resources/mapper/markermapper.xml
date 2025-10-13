@@ -12,9 +12,9 @@
     <select id="selectAll" resultType="Marker">
         SELECT * FROM marker
     </select>
-<!--    <insert id="insert" parameterType="Marker">-->
-<!--        INSERT INTO marker VALUES (#{target},#{title},#{img}, #{lat}, #{lng}, #{loc})-->
-<!--    </insert>-->
+    <insert id="insert" parameterType="Marker">
+        INSERT INTO marker VALUES (#{target},#{title},#{img}, #{lat}, #{lng}, #{loc})
+    </insert>
 <!--    <update id="update" parameterType="Marker">-->
 <!--        UPDATE marker SET title=#{title},img=#{img}, lat=#{lat}, lng=#{lng}, loc=#{loc} WHERE target=#{target}-->
 <!--    </update>-->
