@@ -3,7 +3,10 @@
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$/../../shop/build/generated/sources/annotationProcessor/java/test">
       <sourceFolder url="file://$MODULE_DIR$/../../shop/build/generated/sources/annotationProcessor/java/test" isTestSource="true" generated="true" />
+<<<<<<< HEAD
       <sourceFolder url="file://$MODULE_DIR$/../../shop/build/generated/sources/annotationProcessor/java/test" isTestSource="true" generated="true" />
+=======
+>>>>>>> origin/minwoo
     </content>
   </component>
 </module>
