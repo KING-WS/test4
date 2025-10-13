@@ -11,5 +11,5 @@ public class Msg {
     private String sendid;
     private String receiveid;
     private String content1;
-    private int productId;
+    private Integer productId;
 }

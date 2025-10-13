@@ -11,4 +11,6 @@ import lombok.NoArgsConstructor;
 public class ChatDot {
     private String partnerId;
     private boolean hasUnread;
+    private Integer productId;
+    private String productName;
 }

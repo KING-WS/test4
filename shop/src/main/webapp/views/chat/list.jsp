@@ -44,20 +44,24 @@
         <a href="#" class="list-group-item">아직 받은 메시지가 없습니다.</a>
       </c:when>
       <c:otherwise>
-        <c:forEach var="partnerInfo" items="${chatPartners}">
+        <c:forEach var="convo" items="${chatPartners}">
           <button type="button" class="list-group-item list-group-item-action"
-                  data-toggle="modal" data-target="#chatModal" data-target-id="${partnerInfo.partnerId}">
+                  data-toggle="modal" data-target="#chatModal"
+                  data-target-id="${convo.partnerId}"
+                  data-product-id="${convo.productId}"
+                  data-product-name="${convo.productName}">
             <div class="media">
               <div class="avatar-placeholder">
-                <span>${fn:substring(partnerInfo.partnerId, 0, 1)}</span>
+                <span>${fn:substring(convo.partnerId, 0, 1)}</span>
               </div>
               <div class="media-body">
                 <div class="d-flex justify-content-between">
-                  <h6 class="mt-0 mb-1">${partnerInfo.partnerId}</h6>
-                  <c:if test="${partnerInfo.hasUnread}">
+                  <h6 class="mt-0 mb-1">${convo.partnerId}</h6>
+                  <c:if test="${convo.hasUnread}">
                     <span class="unread-dot"></span>
                   </c:if>
                 </div>
+                <p class="mb-0 small text-muted">문의 상품: ${convo.productName}</p>
               </div>
             </div>
           </button>
