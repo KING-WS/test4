@@ -101,6 +101,105 @@
     font-weight: 300;
   }
 
+  /* 이미지 슬라이더 스타일 */
+  .image-slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .slider-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 이미지가 잘리지 않고 모두 보이도록 변경 */
+  }
+
+  /* 이전/다음 버튼 */
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 16px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .slider-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .prev-btn {
+    left: 20px;
+  }
+
+  .next-btn {
+    right: 20px;
+  }
+
+  /* 인디케이터 (점) */
+  .slider-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .indicator.active {
+    background-color: white;
+    width: 30px;
+    border-radius: 6px;
+  }
+
+  .indicator:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
   /* Price Ranking Styles */
   #price-ranking-content {
     border: 1px solid #e0e0e0;
@@ -183,12 +282,6 @@
     gap: 15px;
   }
 
-  /* 상품명 입력 필드만 너비 조정 */
-  #productName {
-    min-width: 400px; /* 또는 원하는 크기 */
-    min-height: 30px;
-  }
-
   .search-form-container .form-group {
     display: flex;
     align-items: center;
@@ -208,12 +301,15 @@
     padding: 8px 15px;
     transition: all 0.3s ease;
     font-size: 14px;
+  }
 
+  /* 상품명 입력 필드 너비 조정 */
+  #productName {
+    min-width: 300px;
   }
 
   .search-form-container .form-control:focus {
     border-color: #667eea;
-    max-width: 200px;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
     outline: none;
   }
@@ -288,17 +384,17 @@
 </style>
 
 <div class="col-sm-10">
-  <div class="welcome-section">
-    <c:choose>
-      <c:when test="${not empty sessionScope.cust.custName}">
-        <h2>${sessionScope.cust.custName}님, 환영합니다</h2>
-      </c:when>
-      <c:otherwise>
-        <h2>짭근마켓에 오신 것을 환영합니다</h2>
-      </c:otherwise>
-    </c:choose>
-    <h5>다양한 상품을 만나보세요</h5>
-  </div>
+<%--  <div class="welcome-section">--%>
+<%--    <c:choose>--%>
+<%--      <c:when test="${not empty sessionScope.cust.custName}">--%>
+<%--        <h2>${sessionScope.cust.custName}님, 환영합니다</h2>--%>
+<%--      </c:when>--%>
+<%--      <c:otherwise>--%>
+<%--        <h2>짭근마켓에 오신 것을 환영합니다</h2>--%>
+<%--      </c:otherwise>--%>
+<%--    </c:choose>--%>
+<%--    <h5>다양한 상품을 만나보세요</h5>--%>
+<%--  </div>--%>
 
   <form id="marketSearchForm" action="/market/search" method="get" class="search-form-container">
     <div class="form-group">
@@ -314,6 +410,36 @@
     </div>
     <button type="button" id="searchBtn" class="btn-search">검색</button>
   </form>
+
+  <!-- 이미지 슬라이더 추가 -->
+  <div class="image-slider-container">
+    <div class="slider-wrapper">
+      <div class="slider-track">
+        <div class="slide active">
+          <img src="/imgs/banner3.jpg" alt="배너 1">
+        </div>
+        <div class="slide">
+          <img src="/imgs/banner2.jpg" alt="배너 2">
+        </div>
+        <div class="slide">
+          <img src="/imgs/banner3.jpg" alt="배너 3">
+        </div>
+      </div>
+    </div>
+
+    <!-- 이전/다음 버튼 -->
+    <button class="slider-btn prev-btn">&#10094;</button>
+    <button class="slider-btn next-btn">&#10095;</button>
+
+    <!-- 인디케이터 (점) -->
+    <div class="slider-indicators">
+      <span class="indicator active" data-slide="0"></span>
+      <span class="indicator" data-slide="1"></span>
+      <span class="indicator" data-slide="2"></span>
+    </div>
+  </div>
+
+
 
   <div class="main-content-wrapper">
     <div class="product-grid-container">
@@ -394,6 +520,76 @@
   $(document).ready(function() {
     let showPriceRanking = true; // true: 가격 순위, false: 등록 순위
     let previousPriceRanking = {}; // Store previous ranks {productId: rank}
+
+    // ========== 이미지 슬라이더 코드 ==========
+    let currentSlide = 0;
+    const slides = $('.slide');
+    const totalSlides = slides.length;
+    let autoSlideInterval;
+
+    // 슬라이드 이동 함수
+    function goToSlide(slideIndex) {
+      currentSlide = slideIndex;
+      const offset = -slideIndex * 100;
+      $('.slider-track').css('transform', `translateX(${offset}%)`);
+
+      // 인디케이터 업데이트
+      $('.indicator').removeClass('active');
+      $(`.indicator[data-slide="${slideIndex}"]`).addClass('active');
+    }
+
+    // 다음 슬라이드
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      goToSlide(currentSlide);
+    }
+
+    // 이전 슬라이드
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      goToSlide(currentSlide);
+    }
+
+    // 자동 슬라이드 시작
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextSlide, 5000); // 5초마다 변경
+    }
+
+    // 자동 슬라이드 정지
+    function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+
+    // 버튼 클릭 이벤트
+    $('.next-btn').on('click', function() {
+      stopAutoSlide();
+      nextSlide();
+      startAutoSlide(); // 다시 시작
+    });
+
+    $('.prev-btn').on('click', function() {
+      stopAutoSlide();
+      prevSlide();
+      startAutoSlide(); // 다시 시작
+    });
+
+    // 인디케이터 클릭 이벤트
+    $('.indicator').on('click', function() {
+      stopAutoSlide();
+      const slideIndex = parseInt($(this).data('slide'));
+      goToSlide(slideIndex);
+      startAutoSlide(); // 다시 시작
+    });
+
+    // 마우스 호버 시 자동 슬라이드 정지
+    $('.image-slider-container').hover(
+            function() { stopAutoSlide(); },
+            function() { startAutoSlide(); }
+    );
+
+    // 자동 슬라이드 시작
+    startAutoSlide();
+    // ========== 이미지 슬라이더 코드 끝 ==========
 
     // 가격 포맷팅 함수 (만, 억 단위)
     function formatKoreanPrice(price) {

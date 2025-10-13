@@ -113,9 +113,9 @@ public class MarketController {
         try {
             List<Product> productList = productService.get();
             List<Product> sortedList = productList.stream()
-                .sorted(Comparator.comparing(Product::getProductPrice).reversed())
-                .limit(10)
-                .collect(Collectors.toList());
+                    .sorted(Comparator.comparing(Product::getProductPrice).reversed())
+                    .limit(10)
+                    .collect(Collectors.toList());
             return new ResponseEntity<>(sortedList, HttpStatus.OK);
         } catch (Exception e) {
             log.error("Error getting price ranking", e);
@@ -130,9 +130,9 @@ public class MarketController {
             List<Product> productList = productService.get();
             // 등록일을 기준으로 내림차순 정렬 후 상위 10개만 선택
             List<Product> sortedList = productList.stream()
-                .sorted(Comparator.comparing(Product::getProductRegdate).reversed())
-                .limit(10)
-                .collect(Collectors.toList());
+                    .sorted(Comparator.comparing(Product::getProductRegdate).reversed())
+                    .limit(10)
+                    .collect(Collectors.toList());
             return new ResponseEntity<>(sortedList, HttpStatus.OK);
         } catch (Exception e) {
             log.error("Error getting regdate ranking", e);
