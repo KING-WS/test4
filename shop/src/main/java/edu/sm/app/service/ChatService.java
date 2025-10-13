@@ -42,18 +42,6 @@ public class ChatService {
     }
 
     public List<ChatDot> getChatPartners(String userId) {
-        // 1. Get all unique chat partners
-        List<String> allPartners = chatRepository.getChatPartners(userId);
-
-        // 2. Get the list of partners who have sent unread messages to the user
-        List<String> unreadSenders = chatRepository.getSendersWithUnreadMessages(userId);
-
-        // 3. Create the final list of ChatDot DTOs
-        return allPartners.stream()
-                .map(partnerId -> {
-                    boolean hasUnread = unreadSenders.contains(partnerId);
-                    return new ChatDot(partnerId, hasUnread);
-                })
-                .collect(Collectors.toList());
+        return chatRepository.getChatPartners(userId);
     }
 }
