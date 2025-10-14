@@ -199,7 +199,7 @@
         </div>
 
         <div id="chat-messages" class="chat-messages">
-             <div class="no-chat-selected">
+            <div class="no-chat-selected">
                 <p>왼쪽 목록에서 대화를 선택하세요.</p>
             </div>
         </div>

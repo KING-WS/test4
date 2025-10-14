@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>짭근마켓-admin</title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -135,34 +135,22 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <c:if test="${sessionScope.admin != null}">
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
                     <a class="nav-link" href="<c:url value="/"/>">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
-                </li>
-               <!-- Menu -->
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="<c:url value="/chat" />">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>chat</span></a>
+                        <span>대시보드</span></a>
                 </li>
 
 
                 <c:if test="${sessionScope.admin.adminRole == 'super'}">
                     <li class="nav-item active">
                         <a class="nav-link" href="<c:url value="/chart" />">
-                            <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span>admin</span></a>
-                    </li>
                 </c:if>
                 <!-- Divider -->
-                <hr class="sidebar-divider">
 
-            </c:if>
+<%--            <c:if test="${sessionScope.admin != null}">--%>
             <!-- Heading -->
             <div class="sidebar-heading">
                 Admin Menu
@@ -201,7 +189,7 @@
                         </div>
                     </div>
                 </li>
-
+<%--             </c:if>--%>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
