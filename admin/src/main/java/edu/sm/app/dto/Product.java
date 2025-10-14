@@ -19,6 +19,7 @@ public class Product {
     private Timestamp productRegdate;
     private Timestamp productUpdate;
     private int cateId;
+    private int custId;
     private String cateName;
     private MultipartFile productImgFile;
 }

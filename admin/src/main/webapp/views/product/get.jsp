@@ -34,7 +34,7 @@
                         <th>ID</th>
                         <th>NAME</th>
                         <th>PRICE</th>
-                        <th>RATE</th>
+                        <th>CUST ID</th>
                         <th>CATE</th>
                         <th>Register Date</th>
                         <th>Update Date</th>
@@ -60,7 +60,7 @@
 
                             <td>${p.productName}</td>
                             <td><fmt:formatNumber type="number" pattern="###,###원" value="${p.productPrice}" /></td>
-                            <td>${p.discountRate}</td>
+                            <td>${p.custId}</td>
                             <td>${p.cateName}</td>
                             <td>
                                 <fmt:parseDate value="${ p.productRegdate }"

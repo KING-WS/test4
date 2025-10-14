@@ -16,5 +16,7 @@ public class Report {
     private String reportedId;
     private String reportContent;
     private Timestamp reportDate;
+    private int productId;
+    private String productName;
 }
 

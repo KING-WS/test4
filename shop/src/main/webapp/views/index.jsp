@@ -64,9 +64,7 @@
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/cust"/>">Cust</a>
-            </li>
+
         </ul>
     </div>
 </nav>
@@ -160,6 +158,7 @@ $(function() {
             <div class="modal-body">
                 <form id="reportForm">
                     <input type="hidden" id="reportCustId" name="reportedCustId">
+                    <input type="hidden" id="reportProductId" name="reportedProductId">
                     <div class="form-group">
                         <label for="reportReason">신고 사유</label>
                         <textarea class="form-control" id="reportReason" name="reason" rows="4" placeholder="신고 사유를 입력해주세요."></textarea>
@@ -183,18 +182,21 @@ $(function() {
 
             // 버튼의 data-target-id 값을 가져옴
             var custId = button.data('target-id');
+            var productId = button.data('product-id'); // productId 가져오기
 
             // 모달을 가져옴
             var modal = $(this);
 
-            // 모달 안의 숨겨진 input 필드에 custId 값을 설정
+            // 모달 안의 숨겨진 input 필드에 custId와 productId 값을 설정
             modal.find('#reportCustId').val(custId);
+            modal.find('#reportProductId').val(productId); // productId 설정
         });
 
         // '신고 제출' 버튼 클릭 시 동작
         $('#submitReportBtn').on('click', function() {
             var reportedId = $('#reportCustId').val();
             var reportContent = $('#reportReason').val();
+            var productId = $('#reportProductId').val(); // productId 가져오기
 
             if (!reportContent) {
                 alert('신고 사유를 입력해주세요.');
@@ -207,7 +209,8 @@ $(function() {
                 type: 'POST', // HTTP 메소드
                 data: {
                     reportedId: reportedId,
-                    reportContent: reportContent
+                    reportContent: reportContent,
+                    productId: productId // productId 추가
                 },
                 success: function(response) {
                     // 서버로부터 응답을 성공적으로 받았을 때
