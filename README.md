@@ -38,3 +38,13 @@
 | **Deployment** | 배포 및 운영 환경 | **AWS (EC2, S3 등)** 또는 **Docker** |
 
 ***
+
+### 👥 개발 팀 및 기여 (Team & Contributors)
+
+| 역할 | 이름 |
+| :--- | :--- |
+| **Project Lead** | [구민우] |
+| **TEAM 1** | [김우성] |
+| **TEAM 2** | [신창영] |
+| **TEAM 3** | [정승혁] |
+
