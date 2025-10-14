@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sm.app.repository.ReportRepository">
+
+    <insert id="insert" parameterType="edu.sm.app.dto.Report">
+        INSERT INTO report (reporter_id, reported_id, report_content, report_date)
+        VALUES (#{reporterId}, #{reportedId}, #{reportContent}, NOW())
+    </insert>
+
+</mapper>

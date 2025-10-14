@@ -1,0 +1,124 @@
+package edu.sm.app.service;
+
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import edu.sm.app.dto.Cate;
+import edu.sm.app.dto.Product;
+import edu.sm.app.dto.ProductSearch;
+import edu.sm.app.dto.Wishlist;
+import edu.sm.app.repository.ProductRepository;
+import edu.sm.app.repository.WishlistRepository;
+import edu.sm.common.frame.SmService;
+import edu.sm.util.FileUploadUtil;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class ProductService implements SmService<Product, Integer> {
+
+    @Value("${app.dir.uploadimgsdir}")
+    String imgDir;
+    private final ProductRepository productRepository;
+    private final WishlistService wishlistService;
+
+    @Override
+    public void register(Product product) throws Exception {
+        if(product.getProductImgFile() != null){
+            product.setProductImg(product.getProductImgFile().getOriginalFilename());
+            FileUploadUtil.saveFile(product.getProductImgFile(), imgDir);
+        }
+
+        // Add random offset to lat/lng to make the map look more natural
+        if (product.getLat() != null && product.getLng() != null) {
+            double lat = product.getLat();
+            double lng = product.getLng();
+
+            // Random offset within approx. +/- 500m
+            // 0.01 degrees is roughly 1.11km
+            double latOffset = (Math.random() - 0.5) * 0.01; // approx -0.005 to +0.005
+            double lngOffset = (Math.random() - 0.5) * 0.01;
+
+            product.setLat(lat + latOffset);
+            product.setLng(lng + lngOffset);
+        }
+
+        productRepository.insert(product);
+    }
+
+    @Override
+    public void modify(Product product) throws Exception {
+        // 새로운 이미지기 있는지 검사
+        if(product.getProductImgFile().isEmpty()){
+            productRepository.update(product);
+        }
+        // 신규 이미지 사용
+        else{
+            FileUploadUtil.deleteFile(product.getProductImg(), imgDir);
+            FileUploadUtil.saveFile(product.getProductImgFile(), imgDir);
+            product.setProductImg(product.getProductImgFile().getOriginalFilename());
+            productRepository.update(product);
+        }
+
+    }
+
+    @Override
+    public void remove(Integer s) throws Exception {
+        Product product = this.get(s);
+        // FileUploadUtil.deleteFile(product.getProductImg(), imgDir);
+        productRepository.delete(s);
+    }
+
+
+    @Override
+    public Product get(Integer integer) throws Exception {
+        return productRepository.select(integer);
+    }
+
+    public Product get(Integer integer, String custId) throws Exception {
+        Product product = productRepository.select(integer);
+        if (custId != null && !custId.isEmpty()) {
+            boolean isWishlisted = wishlistService.isWishlisted(custId, integer);
+            product.setWishlistStatus(isWishlisted);
+        }
+        return product;
+    }
+
+    @Override
+    public List<Product> get() throws Exception {
+        return productRepository.selectAll();
+    }
+    public List<Product> searchProductList(ProductSearch productSearch) throws Exception {
+        return productRepository.searchProductList(productSearch);
+    }
+    public Page<Product> getPage(int pageNo, int pageSize) throws Exception {
+        PageHelper.startPage(pageNo, pageSize);
+        return productRepository.getpage();
+    }
+    public Page<Product> getSearchPage(int pageNo, int pageSize, ProductSearch productSearch) throws Exception {
+        PageHelper.startPage(pageNo, pageSize);
+        return productRepository.getpageSearch(productSearch);
+    }
+    public List<Cate> getAllCate() throws Exception {
+        return productRepository.getAllCate();
+    }
+    public List<Product> getMyItems(String custId) throws Exception {
+        return productRepository.findByCustId(custId);
+    }
+
+    public void updateChatCount(int productId) {
+        productRepository.updateChatCount(productId);
+    }
+
+    public List<Product> getWishlistProducts(String custId) {
+        List<Wishlist> wishlist = wishlistService.getWishlistByCustId(custId);
+        if (wishlist.isEmpty()) {
+            return new java.util.ArrayList<>();
+        }
+        List<Integer> productIds = wishlist.stream().map(Wishlist::getProductId).collect(java.util.stream.Collectors.toList());
+        return productRepository.selectByIds(productIds);
+    }
+}
