@@ -56,12 +56,26 @@
             </if>
         </where>
     </select>
+    <select id="getMyItemsSearchPage"  parameterType="ProductSearch" resultType="Product">
+        select * from product p inner join cate c on p.cate_id = c.cate_id
+        <where>
+            p.cust_id = #{custId}
+            <if test="productName != null and !productName.equals('')">
+                AND p.product_name like concat('%',#{productName},'%')
+            </if>
+            <if test="cateId != null and cateId != 0">
+                AND c.cate_id  =  #{cateId}
+            </if>
+        </where>
+        ORDER BY p.product_regdate DESC
+    </select>
     <select id="getpage" resultType="Product">
         select * from product p
                           inner join cate c on p.cate_id = c.cate_id
+        ORDER BY p.product_regdate DESC
     </select>
     <select id="select" parameterType="Integer" resultType="Product">
-        SELECT * FROM product p
+        SELECT *, p.chat_count FROM product p
                           INNER JOIN cate c ON p.cate_id=c.cate_id WHERE p.product_id=#{productId}
     </select>
     <select id="selectAll" resultType="Product">
@@ -69,13 +83,46 @@
                           inner join cate c on p.cate_id = c.cate_id
     </select>
     <insert id="insert" parameterType="Product">
-        INSERT INTO product VALUES (0,#{productName},#{productPrice},#{discountRate}, #{productImg}, NOW(), NOW(), #{cateId})
+        INSERT INTO product (product_id, product_name, product_price, product_img, product_regdate, product_update, cate_id, lat, lng, product_desc, cust_id)
+        VALUES (DEFAULT, #{productName}, #{productPrice}, #{productImg}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{cateId}, #{lat}, #{lng}, #{productDesc}, #{custId})
     </insert>
     <update id="update" parameterType="Product">
-        UPDATE product SET product_name=#{productName},product_price=#{productPrice},discount_rate=#{discountRate},product_img=#{productImg}, product_update=NOW() WHERE product_id=#{productId}
+        UPDATE product
+        SET
+            product_name = #{productName},
+            product_price = #{productPrice},
+            product_img = #{productImg},
+            product_desc = #{productDesc},
+            cate_id = #{cateId},
+            product_update = CURRENT_TIMESTAMP
+        WHERE
+            product_id = #{productId}
     </update>
     <delete id="delete" parameterType="Integer">
         DELETE FROM product WHERE product_id=#{productId}
     </delete>
 
+    <update id="updateChatCount" parameterType="Integer">
+        UPDATE product SET chat_count = chat_count + 1 WHERE product_id = #{productId}
+    </update>
+
+    <select id="getAllCate" resultType="edu.sm.app.dto.Cate">
+        SELECT * FROM cate
+    </select>
+
+    <select id="findByCustId" parameterType="String" resultType="Product">
+        SELECT * FROM product p
+        INNER JOIN cate c ON p.cate_id = c.cate_id
+        WHERE p.cust_id = #{custId}
+        ORDER BY p.product_regdate DESC
+    </select>
+
+    <select id="selectByIds" parameterType="list" resultType="Product">
+        SELECT * FROM product p
+        INNER JOIN cate c ON p.cate_id = c.cate_id
+        WHERE p.product_id IN
+        <foreach item="id" collection="list" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

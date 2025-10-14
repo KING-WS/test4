@@ -25,6 +25,7 @@
       this.getdata1();
       this.getdata2();
       this.getdata3();
+      this.getdata4();
     },
     getdata1:function(){
       $.ajax({
@@ -45,8 +46,16 @@
     getdata3:function(){
       $.ajax({
         url:'/chart2_3',
+        success:(text)=>{
+          this.chart3(text);
+        }
+      });
+    },
+    getdata4:function(){
+      $.ajax({
+        url:'/chart2_4',
         success:(data)=>{
-          this.chart3(data);
+          this.chart4(data);
         }
       });
     },
@@ -187,6 +196,75 @@
         }
       });
 
+    },
+    chart4:function(data) {
+      Highcharts.chart('container4', {
+        chart: {
+          type: 'pie'
+        },
+        title: {
+          text: 'Browser market shares. January, 2022'
+        },
+        subtitle: {
+          text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+        },
+
+        accessibility: {
+          announceNewData: {
+            enabled: true
+          },
+          point: {
+            valueSuffix: '%'
+          }
+        },
+
+        plotOptions: {
+          pie: {
+            borderRadius: 5,
+            dataLabels: [{
+              enabled: true,
+              distance: 15,
+              format: '{point.name}'
+            }, {
+              enabled: true,
+              distance: '-30%',
+              filter: {
+                property: 'percentage',
+                operator: '>',
+                value: 5
+              },
+              format: '{point.y:.1f}%',
+              style: {
+                fontSize: '0.9em',
+                textOutline: 'none'
+              }
+            }]
+          }
+        },
+
+        tooltip: {
+          headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+          pointFormat: '<span style="color:{point.color}">{point.name}</span>: ' +
+                  '<b>{point.y:.2f}%</b> of total<br/>'
+        },
+
+        // 컨트롤러에서 받은 데이터 사용
+        series: data.series,
+
+        drilldown: {
+          series: data.drilldown
+        },
+
+        navigation: {
+          breadcrumbs: {
+            buttonTheme: {
+              style: {
+                color: 'var(--highcharts-highlight-color-100)'
+              }
+            }
+          }
+        }
+      });
     }
   }
   $(()=>{

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sm.app.repository.ChartRepository">
+
+    <select id="selectDailyLoginStats" resultType="edu.sm.app.dto.DailyLoginDTO">
+        SELECT
+            TO_CHAR(login_time, 'YYYY-MM-DD') AS login_day,
+            COUNT(DISTINCT cust_id) AS user_count
+        FROM
+            login_history
+        GROUP BY
+            TO_CHAR(login_time, 'YYYY-MM-DD')
+        ORDER BY
+            login_day ASC
+    </select>
+
+    <select id="selectProductCountByCategory" resultType="edu.sm.app.dto.CategoryProductCountDTO">
+        SELECT
+            c.cate_name AS category_name,
+            COUNT(p.product_id) AS product_count
+        FROM
+            product p
+        INNER JOIN
+            cate c ON p.cate_id = c.cate_id
+        GROUP BY
+            c.cate_name
+        ORDER BY
+            product_count DESC
+    </select>
+
+</mapper>

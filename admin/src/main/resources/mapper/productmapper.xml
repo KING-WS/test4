@@ -11,10 +11,10 @@
                 p.product_name like concat('%',#{productName},'%')
             </if>
             <if test="startPrice != null and startPrice != 0">
-                <!--and cust_regdate &gt;= #{startDate} -->
-                <![CDATA[
-                  and p.product_price  >=  #{startPrice}
-                 ]]>
+                and cust_regdate &gt;= #{startDate}
+<!--                <![CDATA[-->
+<!--                  and p.product_price  >=  #{startPrice}-->
+<!--                 ]]>-->
             </if>
             <if test="endPrice != null and endPrice != 0">
                 <!--and date(cust_regdate) &lt;= #{endDate} -->
@@ -77,5 +77,8 @@
     <delete id="delete" parameterType="Integer">
         DELETE FROM product WHERE product_id=#{productId}
     </delete>
+    <select id="countAll" resultType="int">
+        SELECT COUNT(*) FROM product
+    </select>
 
 </mapper>

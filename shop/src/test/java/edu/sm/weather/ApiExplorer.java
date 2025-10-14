@@ -1,6 +1,5 @@
 package edu.sm.weather;
 
-
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -11,7 +10,7 @@ import java.io.IOException;
 public class ApiExplorer {
     public static void main(String[] args) throws IOException {
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1360000/MidFcstInfoService/getMidFcst"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=C2YXvxKurZ%2FmXrbnFlyub5B89GCCWUmYncj4wvNqlWzyP0IwmeP%2FAVl1mU3Tz7Kzk8mfT3f6Wm2wJJ9Z6yNjgw%3D%3D"); /*Service Key*/
+        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=mA8wMHYNbVXd9OjspdUOCiZQEccIrwJXkw41AMU54ypCYLPHqI95IVzq3dtu%2FCOKDpu15RmJTVW2uiuEHvbBNg%3D%3D"); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
         urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
         urlBuilder.append("&" + URLEncoder.encode("dataType","UTF-8") + "=" + URLEncoder.encode("JSON", "UTF-8")); /*요청자료형식(XML/JSON)Default: XML*/
@@ -36,7 +35,5 @@ public class ApiExplorer {
         rd.close();
         conn.disconnect();
         System.out.println(sb.toString());
-        String result = sb.toString();
-
     }
 }

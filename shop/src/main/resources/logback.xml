@@ -31,9 +31,52 @@
             <pattern>%d{yyyy-MM-dd HH:mm:ss}, %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOGS_DIR}/custinfo.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <fileNamePattern>${LOGS_DIR}/maininfo.log%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>5MB</maxFileSize>
+                <maxFileSize>1KB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+
+    <appender name="FILE3" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_DIR}/maininfo1.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}, %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_DIR}/maininfo1.log%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1KB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="FILE4" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_DIR}/maininfo2.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}, %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_DIR}/maininfo2.log%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1KB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="FILE5" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_DIR}/maininfo3.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}, %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_DIR}/maininfo3.log%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1KB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -72,8 +115,17 @@
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </logger>
-    <logger name="edu.sm.controller.MainController" level="INFO">
+    <logger name="edu.sm.app.service.LoggerService" level="INFO">
         <appender-ref ref="FILE2" />
+    </logger>
+    <logger name="edu.sm.app.service.LoggerService1" level="INFO">
+        <appender-ref ref="FILE3" />
+    </logger>
+    <logger name="edu.sm.app.service.LoggerService2" level="INFO">
+        <appender-ref ref="FILE4" />
+    </logger>
+    <logger name="edu.sm.app.service.LoggerService3" level="INFO">
+        <appender-ref ref="FILE5" />
     </logger>
     <logger name="edu.sm.controller.LoginController" level="INFO">
         <appender-ref ref="LOGIN" />

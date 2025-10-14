@@ -8,20 +8,33 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
+import edu.sm.app.dto.Product;
+import edu.sm.app.dto.ProductSearch;
+import edu.sm.app.service.ProductService;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @RestController
 @RequiredArgsConstructor
 @Slf4j
 public class MapRestController {
     final MarkerService markerService;
+    final ProductService productService;
     double lat;
     double lng;
+
+    @RequestMapping("/getitems")
+    public Object getItems(@RequestParam(value = "category", required = false) Integer category) throws Exception {
+        ProductSearch productSearch = new ProductSearch();
+        if (category != null) {
+            productSearch.setCateId(category);
+        }
+        return productService.searchProductList(productSearch);
+    }
+
     @RequestMapping("/getaddrshop")
     public Object getaddrshop(@RequestParam("addr") String addr, @RequestParam("type") int type) throws Exception {
         log.info(addr+" : "+type);
@@ -113,7 +126,6 @@ public class MapRestController {
         return contents;
     }
 }
-
 
 
 

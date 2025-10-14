@@ -3,16 +3,21 @@ package edu.sm.controller;
 import com.github.pagehelper.PageInfo;
 import edu.sm.app.dto.Cust;
 import edu.sm.app.dto.CustSearch;
+import edu.sm.app.dto.Report;
 import edu.sm.app.service.CustService;
+import edu.sm.app.service.ReportService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -22,6 +27,7 @@ import java.util.List;
 public class CustController {
 
     final CustService custService;
+    final ReportService reportService; // ReportService 주입
     final BCryptPasswordEncoder bCryptPasswordEncoder;
     final StandardPBEStringEncryptor standardPBEStringEncryptor;
 
@@ -71,21 +77,11 @@ public class CustController {
 
         return "index";
     }
-//    @RequestMapping("/getpage")
-//    public String getpage(@RequestParam(value="pageNo", defaultValue = "1") int pageNo, Model model) throws Exception {
-//        PageInfo<Cust> p = null;
-//        p = new PageInfo<>(custService.getPage(pageNo), 3); // 5:하단 네비게이션 개수
-//        model.addAttribute("target","/cust");
-//        model.addAttribute("clist",p);
-//        model.addAttribute("left", dir+"left");
-//        model.addAttribute("center", dir+"getpage");
-//        return "index";
-//    }
     @RequestMapping("/searchpage")
     public String searchpage(@RequestParam(value="pageNo", defaultValue = "1") int pageNo, Model model,
-                          CustSearch custSearch) throws Exception {
+                             CustSearch custSearch) throws Exception {
         PageInfo<Cust> p = null;
-        p = new PageInfo<>(custService.getPageSearch(pageNo, custSearch), 3); // 5:하단 네비게이션 개수
+        p = new PageInfo<>(custService.getPageSearch(pageNo, custSearch), 5); // 5:하단 네비게이션 개수
 
         model.addAttribute("custName", custSearch.getCustName());
         model.addAttribute("startDate", custSearch.getStartDate());
@@ -98,4 +94,35 @@ public class CustController {
         return "index";
     }
 
+    // 신고 추가 메소드
+    @PostMapping("/addReport")
+    @ResponseBody
+    public String addReport(@RequestParam("reportedId") String reportedId,
+                            @RequestParam("reportContent") String reportContent,
+                            @RequestParam("productId") int productId, // productId 파라미터 추가
+                            HttpSession session) {
+        try {
+            // 세션에서 로그인 정보 가져오기
+            Cust loginCust = (Cust) session.getAttribute("cust");
+            if (loginCust == null) {
+                return "fail_login"; // 로그인되지 않은 경우
+            }
+            String reporterId = loginCust.getCustId();
+
+            // Report 객체에 정보 담기
+            Report report = new Report();
+            report.setReporterId(reporterId);
+            report.setReportedId(reportedId);
+            report.setReportContent(reportContent);
+            report.setProductId(productId); // productId 설정
+
+            // 서비스 호출
+            reportService.register(report);
+
+            return "success";
+        } catch (Exception e) {
+            log.error("Error submitting report", e);
+            return "fail_error";
+        }
+    }
 }

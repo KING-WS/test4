@@ -1,6 +1,7 @@
 package edu.sm.controller;
 
 import edu.sm.app.dto.Admin;
+import edu.sm.app.dto.Cust;
 import edu.sm.app.service.AdminService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -20,24 +21,23 @@ public class LoginController {
     final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @RequestMapping("/loginimpl")
-    public String loginimpl(Model model, @RequestParam("id") String id,
-                            @RequestParam("pwd") String pwd,
-                            HttpSession httpSession) throws Exception {
-        Admin dbAdmin = adminService.get(id);
-        if (dbAdmin != null && bCryptPasswordEncoder.matches(pwd, dbAdmin.getAdminPwd())) {
-            httpSession.setAttribute("admin", dbAdmin);
+    public String loginimpl(Model model, @RequestParam("id") String adminId,
+                            @RequestParam("pwd") String adminPwd, HttpSession httpSession) throws Exception {
+        Admin dbadmin =  adminService.get(adminId);
+        if(dbadmin != null && bCryptPasswordEncoder.matches(adminPwd, dbadmin.getAdminPwd())){
+            httpSession.setAttribute("admin",dbadmin);
             return "redirect:/";
         }
-        // You can add an attribute to the model to show a login failure message.
-        // model.addAttribute("loginError", "Invalid credentials");
-        return "redirect:/";
+        model.addAttribute("loginfail","fail");
+        model.addAttribute("msg","로그인 실패!!!");
+        return "index";
     }
-
     @RequestMapping("/logoutimpl")
-    public String logout(HttpSession httpSession) {
-        if (httpSession != null) {
+    public String logout(Model model, HttpSession httpSession) throws Exception {
+        if(httpSession != null){
             httpSession.invalidate();
         }
         return "redirect:/";
     }
+
 }

@@ -55,12 +55,12 @@
         <td>${c.custName}</td>
         <td>
           <fmt:parseDate value="${ c.custRegdate }"
-                           pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+                         pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
           <fmt:formatDate pattern="yyyy년MM월dd일 HH:mm" value="${ parsedDateTime }" />
         </td>
         <td>
           <fmt:parseDate value="${c.custUpdate}"
-                           pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+                         pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
           <fmt:formatDate pattern="yyyy년MM월dd일 HH:mm" value="${ parsedDateTime }" />
         </td>
       </tr>

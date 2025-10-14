@@ -1,22 +1,21 @@
+
 package edu.sm.app.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import java.util.Date;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
 public class ChatMessage {
     private int messageId;
-    private String sendId;
-    private String receiveId;
-    private String content1;
-    private Date sendTime;
+    private String senderId;
+    private String receiverId;
+    private String content;
+    private Date sentAt;
+    private boolean isRead;
 }
+

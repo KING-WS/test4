@@ -3,6 +3,7 @@ package edu.sm.controller;
 import com.github.pagehelper.PageInfo;
 import edu.sm.app.dto.Cust;
 import edu.sm.app.service.CustService;
+import edu.sm.app.service.LoginHistoryService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,17 +24,18 @@ public class LoginController {
     final CustService custService;
     final BCryptPasswordEncoder bCryptPasswordEncoder;
     final StandardPBEStringEncryptor standardPBEStringEncryptor;
+    final LoginHistoryService loginHistoryService;
 
     @RequestMapping("/updatepwd")
     public String updatepwd(Model model) {
         model.addAttribute("center","updatepwd");
-        model.addAttribute("left","left");
+        model.addAttribute("left","blank");
         return "index";
     }
     @RequestMapping("/register")
     public String main(Model model) {
         model.addAttribute("center","register");
-        model.addAttribute("left","left");
+        model.addAttribute("left","blank");
         return "index";
     }
     @RequestMapping("/registerimpl")
@@ -71,17 +73,18 @@ public class LoginController {
     @RequestMapping("/login")
     public String add(Model model) {
         model.addAttribute("center","login");
-        model.addAttribute("left","left");
+        model.addAttribute("left","blank");
         return "index";
     }
     @RequestMapping("/loginimpl")
     public String loginimpl(Model model, @RequestParam("id") String id,
-                          @RequestParam("pwd") String pwd,
-                          HttpSession httpSession) throws Exception {
+                            @RequestParam("pwd") String pwd,
+                            HttpSession httpSession) throws Exception {
         Cust dbCust = custService.get(id);
         if(dbCust != null && bCryptPasswordEncoder.matches(pwd, dbCust.getCustPwd())){
             httpSession.setAttribute("cust",dbCust);
             log.info(dbCust.getCustId()+","+dbCust.getCustName());
+            loginHistoryService.addLoginHistory(dbCust.getCustId());
             return "redirect:/";
         }
         model.addAttribute("center","login");
