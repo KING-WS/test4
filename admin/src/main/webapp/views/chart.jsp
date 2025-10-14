@@ -135,7 +135,7 @@
                                 물품 총 개수</div>
                             <div id="total-products-count" class="h5 mb-0 font-weight-bold text-gray-800">${totalProducts}</div>
                         </div>
-                        <div class="col-auto">ㄹ
+                        <div class="col-auto">
                             <i class="fas fa-box fa-2x text-gray-300"></i>
                         </div>
                     </div>

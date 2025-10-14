@@ -195,7 +195,7 @@
     <button type="button" class="btn-custom btn-chat btn-lg my-2" data-toggle="modal" data-target="#chatModal" data-target-id="${p.custId}" data-product-id="${p.productId}" data-product-name="${p.productName}">
         판매자와 채팅하기
     </button>
-    <button type="button" class="btn-custom btn-danger btn-lg my-2" data-toggle="modal" data-target="#reportModal" data-target-id="${p.custId}">신고하기</button>
+    <button type="button" class="btn-custom btn-danger btn-lg my-2" data-toggle="modal" data-target="#reportModal" data-target-id="${p.custId}" data-product-id="${p.productId}">신고하기</button>
     <h1><fmt:formatNumber value="${p.productPrice}" pattern="#,###" /> 원</h1>
 
     <hr>

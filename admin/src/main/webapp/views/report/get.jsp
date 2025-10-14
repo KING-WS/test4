@@ -17,6 +17,7 @@
                             <th>신고 대상 ID</th>
                             <th>신고 내용</th>
                             <th>신고 날짜</th>
+                            <th>제품명</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,6 +28,7 @@
                                 <td><a href="/cust/detail?id=${r.reportedId}">${r.reportedId}</a></td>
                                 <td>${r.reportContent}</td>
                                 <td>${r.reportDate}</td>
+                                <td><a href="/product/detail?id=${r.productId}">${r.productName}</a></td>
                             </tr>
                         </c:forEach>
                     </tbody>

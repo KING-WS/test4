@@ -99,6 +99,7 @@ public class CustController {
     @ResponseBody
     public String addReport(@RequestParam("reportedId") String reportedId,
                             @RequestParam("reportContent") String reportContent,
+                            @RequestParam("productId") int productId, // productId 파라미터 추가
                             HttpSession session) {
         try {
             // 세션에서 로그인 정보 가져오기
@@ -113,6 +114,7 @@ public class CustController {
             report.setReporterId(reporterId);
             report.setReportedId(reportedId);
             report.setReportContent(reportContent);
+            report.setProductId(productId); // productId 설정
 
             // 서비스 호출
             reportService.register(report);

@@ -3,8 +3,8 @@
 <mapper namespace="edu.sm.app.repository.ReportRepository">
 
     <insert id="insert" parameterType="edu.sm.app.dto.Report">
-        INSERT INTO report (reporter_id, reported_id, report_content, report_date)
-        VALUES (#{reporterId}, #{reportedId}, #{reportContent}, NOW())
+        INSERT INTO report (reporter_id, reported_id, report_content, report_date, product_id)
+        VALUES (#{reporterId}, #{reportedId}, #{reportContent}, NOW(), #{productId})
     </insert>
 
 </mapper>
