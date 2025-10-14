@@ -384,17 +384,17 @@
 </style>
 
 <div class="col-sm-10">
-<%--  <div class="welcome-section">--%>
-<%--    <c:choose>--%>
-<%--      <c:when test="${not empty sessionScope.cust.custName}">--%>
-<%--        <h2>${sessionScope.cust.custName}님, 환영합니다</h2>--%>
-<%--      </c:when>--%>
-<%--      <c:otherwise>--%>
-<%--        <h2>짭근마켓에 오신 것을 환영합니다</h2>--%>
-<%--      </c:otherwise>--%>
-<%--    </c:choose>--%>
-<%--    <h5>다양한 상품을 만나보세요</h5>--%>
-<%--  </div>--%>
+  <%--  <div class="welcome-section">--%>
+  <%--    <c:choose>--%>
+  <%--      <c:when test="${not empty sessionScope.cust.custName}">--%>
+  <%--        <h2>${sessionScope.cust.custName}님, 환영합니다</h2>--%>
+  <%--      </c:when>--%>
+  <%--      <c:otherwise>--%>
+  <%--        <h2>짭근마켓에 오신 것을 환영합니다</h2>--%>
+  <%--      </c:otherwise>--%>
+  <%--    </c:choose>--%>
+  <%--    <h5>다양한 상품을 만나보세요</h5>--%>
+  <%--  </div>--%>
 
   <form id="marketSearchForm" action="/market/search" method="get" class="search-form-container">
     <div class="form-group">
@@ -416,7 +416,7 @@
     <div class="slider-wrapper">
       <div class="slider-track">
         <div class="slide active">
-          <img src="/imgs/banner3.jpg" alt="배너 1">
+          <img src="/imgs/banner4.jpg" alt="배너 1">
         </div>
         <div class="slide">
           <img src="/imgs/banner2.jpg" alt="배너 2">
@@ -521,7 +521,7 @@
     let showPriceRanking = true; // true: 가격 순위, false: 등록 순위
     let previousPriceRanking = {}; // Store previous ranks {productId: rank}
 
-    // ========== 이미지 슬라이더 코드 ==========
+    // ========== 이미지 슬라이더 코드 ==========/
     let currentSlide = 0;
     const slides = $('.slide');
     const totalSlides = slides.length;
@@ -589,7 +589,7 @@
 
     // 자동 슬라이드 시작
     startAutoSlide();
-    // ========== 이미지 슬라이더 코드 끝 ==========
+    // ========== 이미지 슬라이더 코드 끝 ==========/
 
     // 가격 포맷팅 함수 (만, 억 단위)
     function formatKoreanPrice(price) {
@@ -640,7 +640,11 @@
               if (displayName.length > 7) {
                 displayName = displayName.substring(0, 7) + '...';
               }
-              const nameSpan = $('<span class="ranking-name"></span>').text(displayName);
+              const nameLink = $('<a></a>')
+                      .attr('href', '/market/detail?id=' + product.productId)
+                      .css({'text-decoration': 'none', 'color': 'inherit'})
+                      .addClass('ranking-name')
+                      .text(displayName);
 
               // "new" 뱃지 로직 추가
               const regDate = new Date(product.productRegdate);
@@ -648,8 +652,8 @@
               const diffSeconds = (now.getTime() - regDate.getTime()) / 1000;
 
               if (diffSeconds <= 180) {
-                const newBadge = $('<span class="new-badge">new</span>');
-                nameSpan.append(newBadge);
+                const newBadge = $('<span class="new-badge"> new</span>');
+                nameLink.append(newBadge);
               }
 
               const oldRank = previousPriceRanking[product.productId];
@@ -664,7 +668,7 @@
                 }
               }
 
-              li.append(rankSpan).append(nameSpan).append(rankChangeSpan);
+              li.append(rankSpan).append(nameLink).append(rankChangeSpan);
               ol.append(li);
             });
             rankingContent.append(ol);
@@ -706,7 +710,11 @@
               if (displayName.length > 7) {
                 displayName = displayName.substring(0, 7) + '...';
               }
-              const nameSpan = $('<span class="ranking-name"></span>').text(displayName);
+              const nameLink = $('<a></a>')
+                      .attr('href', '/market/detail?id=' + product.productId)
+                      .css({'text-decoration': 'none', 'color': 'inherit'})
+                      .addClass('ranking-name')
+                      .text(displayName);
 
               // "new" 뱃지 로직 추가
               const regDate = new Date(product.productRegdate);
@@ -714,11 +722,11 @@
               const diffSeconds = (now.getTime() - regDate.getTime()) / 1000;
 
               if (diffSeconds <= 180) {
-                const newBadge = $('<span class="new-badge">new</span>');
-                nameSpan.append(newBadge);
+                const newBadge = $('<span class="new-badge"> new</span>');
+                nameLink.append(newBadge);
               }
 
-              li.append(rankSpan).append(nameSpan);
+              li.append(rankSpan).append(nameLink);
               ol.append(li);
             });
             rankingContent.append(ol);

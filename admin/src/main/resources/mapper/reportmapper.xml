@@ -6,4 +6,16 @@
     <select id="selectAll" resultType="Report">
         SELECT * FROM report
     </select>
+
+    <select id="selectCount" resultType="int">
+        SELECT COUNT(*) FROM report
+    </select>
+
+    <select id="selectMostReportedUser" resultType="String">
+        SELECT reported_id
+        FROM report
+        GROUP BY reported_id
+        ORDER BY COUNT(reported_id) DESC
+        LIMIT 1
+    </select>
 </mapper>

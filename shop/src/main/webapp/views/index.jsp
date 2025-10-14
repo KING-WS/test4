@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bcc88354a0c06049623a690be552d3ac&libraries=services"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9122c6ed65a3629b19d62bab6d93ffaf&libraries=services"></script>
     
     <%-- highchart lib   --%>
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -66,9 +66,6 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/cust"/>">Cust</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/chart"/>">Chart</a>
             </li>
         </ul>
     </div>
