@@ -142,8 +142,6 @@
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>대시보드</span></a>
                 </li>
-
-
                 <c:if test="${sessionScope.admin.adminRole == 'super'}">
                     <li class="nav-item active">
                         <a class="nav-link" href="<c:url value="/chart" />">
